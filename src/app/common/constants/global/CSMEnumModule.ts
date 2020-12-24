@@ -14,7 +14,7 @@ export enum CSMEnumModule{
     CategoryView = 200, 
     CategoryCreate = 201, 
     CategoryPut = 202, 
-    CategoryDetele = 204, 
+    CategoryDetele = 203, 
     
     // Màn hình sửa giá nhóm máy.
     
