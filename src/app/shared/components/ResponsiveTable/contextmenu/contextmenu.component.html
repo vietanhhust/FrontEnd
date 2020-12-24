@@ -1,0 +1,14 @@
+<div class="contextmenu" [ngStyle]="{'left.px': x, 'top.px': y}">
+       <ul>
+           <ng-container *ngFor="let item of lstEvent">
+                <li *ngIf="item.isShow != false">
+                        <a (click)="item.action(value)" *ngIf="item.isShow != false"
+                        [ngClass]="{'del': item.name == 'Xóa', 'edit': item.type == 'edit', 'btn-update': item.type == 'edit', 'btn-censor': item.type == 'censor'}">
+                            <i *ngIf="item.icon.length > 1" class="fa {{item.icon}}"></i> {{item.name}}
+                        </a>
+                    </li>
+           </ng-container>
+        </ul>
+</div>
+      
+      

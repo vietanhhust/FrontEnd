@@ -1,0 +1,84 @@
+
+.modal .paging-input .tool3 {
+  width: auto;
+}
+.modal .accoutant-inputvaluebill {
+  padding: 0 11px;
+}
+.general-input-size .input-field {
+  max-width: 300px;
+}
+.confirmdiag {
+  height: 200px !important;
+}
+
+.modal.modal-fixed-footer .modal-content {
+  height: calc(100% - 90px);
+}
+
+.modal {
+  max-height: 80%;
+}
+.modal.modal-fixed-footer {
+  height: 80%;
+}
+.modal.modal-fixed-footer.hsmall {
+  height: 200px;
+}
+
+.modal.modal-fixed-footer.hmedium {
+  height: 340px;
+}
+.modal.modal-fixed-footer.modal-fullscreen {
+  height: 97%;
+  max-height: 99% !important;
+  top: 1% !important;
+  width: 99% !important;
+  max-width: 99%;
+  border-radius: 0 !important;
+}
+.modal.modal-fixed-footer.hlarge {
+  height: 450px;
+}
+
+.modal.modal-fixed-footer.hxlarge {
+  height: 600px;
+}
+
+.modal.modal-fixed-footer.hxxlarge {
+  height: 800px;
+}
+
+.modal.modal-fixed-footer.wmsmall {
+  width: 300px;
+}
+
+.modal.modal-fixed-footer.wmedium {
+  max-width: 500px;
+}
+.modal.modal-fixed-footer.wmedium .tool3 {
+  min-width: 200px;
+}
+.modal.modal-fixed-footer.wmediumPlus {
+  max-width: 600px;
+}
+.modal.modal-fixed-footer.wmlarge {
+  width: 800px;
+}
+.modal.modal-fixed-footer.wlarge {
+  width: 1000px;
+}
+.modal.modal-fixed-footer.modal-somifullscreen {
+  height: 96% !important;
+  max-height: 96% !important;
+  top: 2% !important;
+  width: 98% !important;
+  max-width: 98%;
+  border-radius: 3px !important;
+}
+.modal.modal-fixed-footer .modal-content.datepicker-container {
+  position: unset !important;
+}
+.modal-fix-report{
+overflow: hidden;
+}

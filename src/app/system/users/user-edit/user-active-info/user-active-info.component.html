@@ -1,0 +1,81 @@
+<div class="col s12 m6 input-custom-inline">
+    <div class="row">
+
+
+        <input-field [(ngModel)]="data.userName" type="text" name="userName" minlength="4" title="Tên đăng nhập"
+            [frm]="frm" [disabled]="isView || data.userId"></input-field>
+
+    </div>
+    <div class="row">
+        <p>Nhóm quyền</p>
+        <div class="input-field inline">
+            <select-field [(ngModel)]="data.roleId" [data]="lstRole" name="roleId" title="Nhóm quyền" [frm]="frm"
+                [disabled]="isView">
+            </select-field>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!isView">
+
+        <p>Mật khẩu</p>
+        <div class="input-field inline">
+            <input [(ngModel)]="data.password" type="password" #password="ngModel" name="password" class="validate">
+        </div>
+
+
+    </div>
+
+    <div class="row" *ngIf="!isView">
+
+        <p>Nhập lại mật khẩu:</p>
+        <div class="input-field inline">
+            <input [(ngModel)]="data.repassword" #repassword="ngModel" type="password" name="repassword"
+                class="validate">
+            <!-- <span *ngIf="password.value!= repassword.value && frm.submitted" class="helper-text">Mật khẩu
+                không giống nhau</span> -->
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <p>Trạng thái: </p>
+        <div class="input-field inline">
+            <select-field required [(ngModel)]="data.userStatusId" [data]="lstUserStatus" name="userStatusId"
+                title="Trạng thái" [frm]="frm" [disabled]="isView">
+            </select-field>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <p></p>
+        <div class="input-field inline">
+            <div class=" container-fluid">
+                <div id="avataPreview" *ngIf="data && data.avatarUrl" class="center"
+                    style="height: 140px; width: 140px; background-color:#DDD;">
+                    <img id="avatar" class="materialboxed" [imageLoader]="data.avatarUrl" alt="your image" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <p>Ảnh đại diện: </p>
+        <div class="file-field input-field inline" *ngIf="!isView">
+            <div class="btn btn-small">
+                <span>Tải ảnh</span>
+                <input (change)="onchange($event.target.files)" type="file" accept="image/*">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

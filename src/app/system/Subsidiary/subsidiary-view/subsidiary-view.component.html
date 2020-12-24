@@ -1,0 +1,95 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a>Công ty con</a> <span> / </span><a>Chi tiết</a>
+        </div>
+        <div class="tool1">
+        </div>
+        <div class="create-t3">
+            <a class="">Hoạt động</a>
+        </div>
+    </div>
+</div>
+
+<div overlay-loading [loading]="!isShowPage" class="row create-page animated">
+    <div class="col s12 create-page-content">
+        <div class="card">
+            <div class="card-content">
+                <div class="view">
+                    <div class="row input-custom-inline">
+                        <div class="col s6">
+                            <p>Tên công ty:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.subsidiaryName}}</h6>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <p>Mã công ty</p>
+                            <div class="input-field inline">
+                                <h6>{{data.subsidiaryCode}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row input-custom-inline">
+                        <div class="col s6">
+                            <p>Địa chỉ:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.address}}</h6>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <p>Mã số thuế:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.taxIdNo}}</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row input-custom-inline">
+                        <div class="col s6">
+                            <p>Số điện thoại:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.phoneNumber}}</h6>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <p>Email:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.email}}</h6>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row input-custom-inline">
+                        <div class="col s6">
+                            <p>Fax:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.fax}}</h6>
+                            </div>
+
+                        </div>
+                        <div class="col s6">
+                            <p>Mô tả:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.description}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row input-custom-inline">
+                        <div class="col s6">
+                            <p>ID cha:</p>
+                            <div class="input-field inline">
+                                <h6>{{data.parentSubsidiaryId}}</h6>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

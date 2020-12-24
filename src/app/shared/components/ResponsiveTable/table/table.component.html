@@ -1,0 +1,150 @@
+<div class="table-responsive"
+  [ngClass]="{'table-custom-color': configTable.mergeTable == true, 'table-custom': configTable.mergeTable != true, 'table-bill': configTable.billTable == true}"
+  (click)="disableContextMenu()" oncontextmenu="return false;">
+  <div class="context" *ngIf="configTable.mergeTable != true">
+    <a class="dropcustom"><i class="fas fa-ellipsis-v"></i></a>
+    <ul id="ulconfig" class='dropcustom-content drop-tables'>
+      <ng-container *ngFor="let col of configTable.columns">
+        <li *ngIf="col.isCheckbox != true">
+          <a>
+            <label>
+              <input type="checkbox" class="filled-in" [(ngModel)]="col.isShow" [checked]="col.isShow" />
+              <span>{{col.title}}</span>
+            </label>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <table [id]="id" class="highlight table glowTableBody" #tbl>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let col of configTable.columns;let isLast = last">
+          <th class="tableth" *ngIf="col.isShow" [ngClass]="{'col-id': col.isCheckbox == true|| col.isIndex == true}"
+            sharedtooltip="{{col.Tooltip}}" appResizeTable resizeTable='true'>
+
+            <div [ngClass]="col.cssClass">
+              <ng-container *ngIf="!col.isCheckbox">
+
+                <!-- Đoạn cái này click vào sẽ sort lại-->
+                <p (click)="sortData(col)" [ngClass]="col.cssClass">
+                  <b>{{col.title}}</b>
+                  <span class="right">
+                    <i [ngClass]="getSortClass(col.value)" *ngIf="col.isSortAble !== false"
+                      (click)="sortData(col)"
+                      style="transform: translateY(1px);margin-left: 5px; cursor: pointer;" class="fas fa-sort"></i>
+                  </span>
+                </p>
+
+              </ng-container>
+
+              <ng-container *ngIf="col.isCheckbox">
+                <label>
+                  <input class="filled-in" type="checkbox" [(ngModel)]="itemchecked" name="itemchecked"
+                    (change)="checkItem(-1,itemchecked)" />
+                  <span></span>
+                </label>
+              </ng-container>
+            </div>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let char of ((data | SearchPipeAsync: searchText) | async);let i = index">
+
+        <ng-container *ngFor="let col of configTable.columns ">
+          <td [ngClass]="{'col-id': col.isCheckbox == true || col.isIndex == true}"
+            *ngIf="col.isShow && col.isMerge != true" (contextmenu)="onrightClick($event,char)"
+            (click)="col.isCheckbox != true ? onLeftClick($event,char, col, char[col.value]): ''" [ngStyle]="col.style"
+            (dblclick)="onDbClick($event,char)">
+            <div [ngClass]="col.cssClass" [ngStyle]="col.style">
+              <ng-container *ngIf="col.tableDisplayTypeId == EnumTableDisplayType.Checkbox">
+                <label>
+                  <input class="filled-in" type="checkbox" (click)="shift(i, $event)" [(ngModel)]="char.checked"
+                    name="item.checked" (change)="checkItem(char)" />
+                  <span></span>
+                </label>
+              </ng-container>
+
+              <ng-container *ngIf="char[col.value] || char[col.value]===false">
+
+                <ng-container [ngSwitch]="col.tableDisplayTypeId">
+                  <ng-container *ngSwitchCase="EnumTableDisplayType.Date">
+                    {{char[col.value] * 1000 | date:"dd/MM/yyyy"}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="EnumTableDisplayType.Number">
+                    {{char[col.value] | number:'1.0-14'}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="EnumTableDisplayType.Boolean">
+                    <i class="fas fa-check-circle" *ngIf="char[col.value]"></i>
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="EnumTableDisplayType.ObjectMapping">
+                    <span [ngSwitch]="char[col.value]">
+                      <ng-container *ngFor="let item of col.objectMapping">
+                        <p *ngSwitchCase="item.value" [ngStyle]="item.style" [ngClass]="item.cssClass">
+                          {{item.title}}
+                        </p>
+                      </ng-container>
+                    </span>
+                  </ng-container>
+
+                  <ng-container *ngSwitchDefault>
+                    <ng-container *ngIf="col.tableDisplayTypeId != EnumTableDisplayType.Checkbox"> {{char[col.value]}}
+                    </ng-container>
+
+                  </ng-container>
+                </ng-container>
+
+              </ng-container>
+            </div>
+          </td>
+
+          <td [ngClass]="{'col-id': col.isCheckbox == true || col.isIndex == true}"
+            *ngIf="col.isShow && col.isMerge == true && char['checklength']" [attr.rowspan]="char['lengthRow']"
+            (contextmenu)="onrightClick($event,char)" (click)="col.isCheckbox != true ? onLeftClick($event,char, col, char[col.value]): ''"
+            (dblclick)="onDbClick($event,char)">
+
+            <ng-container *ngIf="col.isCheckbox != true && col.isDate == true">
+              <span title="{{char[col.value]}}">
+                <ng-container *ngIf="char[col.value]">{{char[col.value] * 1000 | date:"dd/MM/yyyy"}}</ng-container>
+              </span>
+            </ng-container>
+
+            <ng-container *ngIf="col.isCheckbox != true && col.isDate != true && col.isNumber != true">
+              <span title="{{char[col.value]}}">{{char[col.value]}}</span>
+            </ng-container>
+
+            <ng-container *ngIf="col.isCheckbox != true && col.isDate != true && col.isNumber == true">
+              <span title="{{char[col.value]}}">{{char[col.value] | number:'0.0-2'}}</span>
+            </ng-container>
+
+          </td>
+        </ng-container>
+      </tr>
+      <ng-container *ngIf="contextmenu==true">
+        <app-contextmenu [value]="currentValue" [Permission]="Permission" [lstEvent]="configTable.eventTable"
+          [x]="contextmenuX" [y]="contextmenuY"></app-contextmenu>
+      </ng-container>
+      <tr *ngIf="data && data.length==0">
+        <td [attr.colspan]="configTable.columns.length">
+          Không tìm thấy bản ghi nào
+        </td>
+      </tr>
+
+      <tr *ngIf="configTable.calcSum" class="calcsum">
+        <ng-container *ngFor="let col of configTable.columns ">
+          <th style="text-align: right; position: sticky;bottom: 0;" *ngIf="col.isShow && col.isMerge != true">
+            <b *ngIf="col.isCalcSum"> {{data | sum: col.value | number: '0.0-10'}}</b>
+          </th>
+        </ng-container>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

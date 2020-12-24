@@ -1,0 +1,373 @@
+.dropdown-menu-multi li a.active::after {
+  border-radius: 50%;
+}
+.dropdown-menu-multi .dropdown-submenu [type="radio"] + span:before,
+.dropdown-menu-multi .dropdown-submenu [type="radio"] + span:after {
+  content: "";
+  top: 5px;
+  margin: 4px;
+  width: 10px;
+  height: 10px;
+}
+.dropdown-menu-multi .dropdown-submenu [type="radio"]:not(:checked) + span:before,
+.dropdown-menu-multi .dropdown-submenu [type="radio"]:not(:checked) + span:after {
+  border: 1px solid #5a5a5a;
+}
+.tuchoi {
+  color: white;
+  font-size: 14px;
+  background: red;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.daduyet {
+  color: white;
+  font-size: 14px;
+  background: green;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.chuaduyet {
+  color: white;
+  font-size: 14px;
+  background: #dcac00;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.tabs .tab a.error {
+  border-top: 2px solid red;
+}
+.table-custom-role {
+  height: calc(100vh - 165px);
+  overflow: auto;
+  box-shadow: 0px 0px 20px #aaa;
+}
+.table-custom-role table.responsive-table thead {
+  border: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  color: var(--font-color);
+  background-color: var(--th-color);
+}
+.table-custom-role table.responsive-table thead {
+  display: block;
+  float: left;
+}
+.table-custom-role table.responsive-table thead tr {
+  display: block;
+  padding: 0 0px 0 0;
+  border-bottom: none;
+  width: 190px;
+}
+.table-custom-role table.responsive-table th {
+  display: block;
+  text-align: left;
+  margin: 0;
+  height: 40px;
+  border-bottom: 1px solid silver;
+  border-radius: 0;
+  line-height: 7px;
+  color: var(--font-color);
+  font-weight: 500;
+}
+.table-custom-role table.responsive-table thead tr th::before {
+  content: "\00a0";
+}
+.table-custom-role table.responsive-table tbody {
+  display: block;
+  width: calc(100vw - 200px);
+  position: relative;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.table-custom-role table.responsive-table tbody tr {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 155px;
+  color: var(--font-color);
+}
+.table-custom-role table.responsive-table tbody tr td:nth-child(1) {
+  color: var(--font-color);
+  background-color: var(--th-color);
+  font-weight: 500;
+}
+.table-custom-role table.responsive-table td {
+  display: block;
+  min-height: 40px;
+  height: 40px;
+  text-align: left;
+  line-height: 28px;
+  border-bottom: 1px solid silver;
+  padding-top: 4px;
+  padding-left: 10px;
+  color: var(--font-color);
+  border-radius: 0;
+}
+.table-custom-role table.responsive-table th,
+table.responsive-table td {
+  margin: 0;
+  vertical-align: top;
+}
+@media only screen and (max-width: 992px) {
+  .table-custom-role table.responsive-table tr {
+    border-bottom: none;
+    padding: 0 0px;
+  }
+}
+
+.view .input-custom-inline p,
+.view .input-custom-inline span {
+  transform: translateY(0px);
+  font-size: 14px;
+  width: auto;
+}
+.view .input-custom-inline span {
+  display: block;
+}
+
+.input-custom-inline p {
+  transform: translateY(7px);
+  font-weight: normal;
+}
+.input-custom-inline {
+  position: relative;
+  i.tooltipped:not(.material-icons) {
+    margin-left: 5px;
+    color: rgb(160, 160, 160);
+    position: absolute;
+    left: -12px;
+    top: 20px;
+  }
+}
+
+.pdf-container .textLayer .highlight {
+  margin: 0px !important;
+  padding: 0px 1px 4px !important;
+  border-radius: 1px !important;
+}
+.dropdown-submenu .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  margin-top: -6px;
+}
+.dropdown-submenu .ng-select .ng-arrow-wrapper {
+  margin-top: -1px;
+  padding-right: 0;
+  margin-right: -6px;
+}
+.dropdown-submenu .ng-select .ng-select-container {
+  background: #d6d6d6;
+  height: 30px;
+}
+.table-custom-color {
+  th span {
+    font-weight: 500;
+  }
+}
+
+.dropdown-submenu .ng-select .ng-clear-wrapper {
+  margin-top: 0;
+}
+.dropdown-submenu .ng-select {
+  margin-top: 0px;
+}
+.dropdown-submenu .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  padding: 0px 10px;
+  height: 30px;
+  line-height: 30px;
+}
+.dropdown-submenu .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: var(--primarybg-color) !important;
+  span {
+    color: var(--light-color) !important;
+  }
+}
+.dropdown-submenu .ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+  padding-top: 4px;
+  padding-left: 0;
+}
+.fixhover {
+  background: none !important;
+}
+.billimport {
+  .input-custom-inline p {
+    transform: translate(10px, 7px);
+  }
+}
+.dropdown-submenu .ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+  flex-wrap: unset;
+  width: 177px;
+}
+.dropdown-submenu .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  text-overflow: ellipsis;
+  width: 96px;
+  overflow: hidden;
+}
+.dropdown-submenu .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-label {
+  display: inline-block;
+  padding: 1px 3px;
+  text-overflow: ellipsis;
+  width: 69px;
+  overflow: hidden;
+  height: 30px;
+}
+.dropdown-submenu .ng-select .ng-select-container .ng-value-container .ng-input > input:focus {
+  width: 100%;
+  z-index: 99999999;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background: #d6d6d6;
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-disabled {
+  color: #3c3c3c;
+}
+
+.movediv {
+  cursor: col-resize;
+  float: left;
+  width: 5px;
+  height: 1200px;
+}
+
+.slide-in-edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-height: 100%;
+  width: 50%;
+  background: #fff;
+  box-shadow: #666 0px 0px 10px;
+  z-index: 1;
+  padding: 10px;
+}
+
+.slide-in-btn {
+  text-align: right;
+  margin: 5px 15px;
+}
+.slide-in-btn .btn-action {
+  border-radius: 3px;
+  padding: 4px 20px 4px 20px;
+  height: 28px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #fff;
+  text-transform: none;
+  margin: 3px;
+  position: relative;
+}
+
+.slide-in-btn .btn-action i {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  font-size: 0.7rem;
+}
+
+.slide-in-btn .btn-cancel {
+  background: #ddd;
+  color: #333;
+}
+
+.slide-in-btn .btn-save {
+  background: var(--primary-color);
+}
+
+.slide-in-btn .btn-del {
+  background: #bb6f6f;
+  color: #fff;
+}
+.slide-in-btn .btn-del i {
+  color: #fff;
+}
+
+.slide-in-btn .btn-edit {
+  background: #9a8869;
+  color: #fff;
+}
+.slide-in-btn .btn-new {
+  background: #528c04;
+}
+
+.btn-slide-small .btn-action {
+  padding: 0px 8px;
+  height: 22px;
+  line-height: 22px;
+  font-size: small;
+}
+
+.tabs-views-container {
+  float: left;
+  width: 20%;
+}
+
+.tab-view {
+  background: #ddd;
+  color: #333;
+  display: block;
+  padding: 7px;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.tab-view.tab-actived {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.tab-view-more {
+  float: left;
+  display: block;
+  color: var(--primary-color);
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.tabs-views-content {
+  float: right;
+  width: 79%;
+  margin-top: 5px;
+}
+
+.checkbox-inline {
+  float: right;
+}
+.checkbox-inline label {
+  top: -10px;
+}
+
+.slide-in-table {
+  font-size: small;
+}
+
+.slide-in-table .btn-slide-small {
+  display: none;
+  text-align: right;
+}
+
+.slide-in-table tr:hover .btn-slide-small,
+.slide-in-table .btn-slide-small.show-btn {
+  display: block;
+}
+
+.slide-in-table .browser-default {
+  height: 2rem;
+}
+
+.updated-icon {
+  color: #69bcec;
+  font-size: 6px;
+}
+
+.table-foot-diff-fn {
+  background: #fdeedd;
+}
+.uploadinput .mat-chip-list-wrapper {
+  margin-left: 6px;
+  transform: translateY(1px);
+  display: inline-flex;
+}
+
+/*End slide in style*/

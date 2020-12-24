@@ -1,0 +1,105 @@
+*{
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+.signpn{
+  display: flex;
+  justify-content: space-between !important;
+  align-items:center;
+  width: 100%;
+}
+.signpn .it-pn{
+  width: 20%;
+  text-align: center;
+}
+.signpn .it-pn p{
+  font-weight: bold;
+  }
+  .signpn .it-pn p span{
+      font-weight: 400;
+  }
+.ctpn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.ctpn p{
+  font-weight: bold;
+}
+.tblpn table {
+  border: 1px solid #000 !important;
+  border-collapse: collapse;
+  border-width: 1px;
+  margin-top: 15px;
+  width: 100%;
+page-break-after: auto;
+}
+.tblpn table tr{
+  height: 30px;
+  }
+  table { page-break-inside:auto }
+   tr    { page-break-inside:avoid; page-break-after:auto }
+.tblpn table th{
+  border: 1px solid #000 !important;
+  border-collapse: collapse;
+
+  border-width: 1px;
+  height: 30px;
+  padding: 5px 5px;
+  }
+  .tblpn table td{
+    border: 1px solid #000 !important;
+    border-collapse: collapse;
+
+    border-width: 1px;
+    height: 30px;
+  padding: 5px 5px;
+  }
+
+.thontinpn {
+display: inline-flex;
+width: 100%;
+margin-top: 15px;
+}
+.thontinpn .ttpn{
+width: 55%;
+}
+.thontinpn .ttpn2 {
+width: 45%;
+}
+.thontinpn .ttpn p{
+font-weight: bold;
+}
+@page {
+  size: A4 auto;
+margin: 3%;
+margin-bottom: 47px;
+
+}
+@media print {
+  @page { margin: 3%; }
+}
+.page{
+padding: 0mm;
+margin: 0mm auto;
+border: 0px #D3D3D3 solid;
+border-radius: 5px;
+page-break-after: auto;
+}
+.tendn p{
+font-weight: bold;
+}
+.tendn p span{
+font-weight: 400;
+}
+.titlepn{
+text-align: center;
+margin-top: 10px;
+}
+.titlepn h4{
+font-size: 26px;
+font-weight: 700;
+}
+.titlepn p{
+font-weight: bold;
+}

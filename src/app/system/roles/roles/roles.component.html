@@ -1,0 +1,73 @@
+<div class="row nav-tools">
+        <div class="col s12 flex">
+         <div class="title-n-t">
+            <a>Danh sách nhóm quyền</a> 
+         </div>
+         <div class="tool1">
+           <!-- <a class="mr5 btn-add" [routerLink]="['/system/roles/add']" ><i class="fa fa-plus"></i>Tạo mới</a> -->
+           <a class="btn-add" (click)='addNewRoleGroup()' ><i class="fa fa-plus"></i>Tạo mới</a>
+           <ng-container *ngIf="selectedValueTab">
+              <app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></app-actionmenu>
+          </ng-container>
+         </div>
+         <div class="tool2">
+           
+         </div>
+         <div class="tool3">
+            <div class="t3">
+                <a style="opacity: 0;">Bộ lọc <i class="fa fa-angle-down"></i></a>
+                
+            </div>
+            <div class="search">
+              <input placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text" (keyup.enter)="search(1)">
+              
+              <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i>
+              <button (click)="search(1)"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="pagination">
+               <select class="browser-default tooltipped" [(ngModel)]="limit"  data-position="top"  (change)="search(1)"
+               data-tooltip="Số hàng mỗi trang">
+                 <option value="10">10</option>
+                 <option value="20">20</option>
+                 <option value="50">50</option>
+                 <option value="100">100</option>
+               </select>
+             <input class="pf" readonly type="text" [(ngModel)]="fromRecord">-<input readonly [(ngModel)]="toRecord" class="pl" type="text"><span>/{{total}}</span>
+             <i class="fa fa-angle-left" (click)="prevPage()"></i><i (click)="nextPage()" class="fa fa-angle-right"></i>
+            </div>
+         </div>
+        </div>
+      </div>
+      <div overlay-loading [loading]="!isShowPage" id="container" class="row animated slideInDown" >
+
+        
+          <div class="daylatest" id="daylatest"  style="float: left;width: 30%;">
+            <app-table 
+            id="tablerole" 
+            (DoubleClickValue)="viewmode($event)"
+            (selectedValue)="recieve($event)"
+            [configTable]="configTable" 
+            [data]="data" 
+            [Permission]="curentPermission"
+            [totalData]="total">
+            </app-table>
+          </div>
+  
+          <div class="movediv"(mousedown)="mousePress($event)"(mouseup)="mousePress" (mousemove)="move($event)">
+          
+           
+   
+          </div>
+  
+          <div id="zzz" style="height: auto; float: left;width: 69%">
+            <!-- <app-role-grant (done)="ondone($event)" [roleId]="roleIdInput"></app-role-grant> -->
+          </div>
+
+
+
+        </div>
+
+
+     
+
+     

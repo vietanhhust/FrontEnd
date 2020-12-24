@@ -1,0 +1,9 @@
+.cao30{
+    height: 35vh;
+  }
+
+  @media only screen and (max-height: 700px) {
+    .cao30{
+      height: 40vh;
+    }
+  }

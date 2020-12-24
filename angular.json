@@ -1,0 +1,242 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "verp-web": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "lodash", "crypto-js", "ng2-pdf-viewer"
+           ],
+            "outputPath": "dist/verp-web",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "./assets/monaco/"
+              }
+            ],
+            "styles": [
+              "src/assets/VWTemplate/css/materialize.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/VWTemplate/fontawesome-free-5.9.0-web/css/all.min.css",
+              "node_modules/ionicons/dist/css/ionicons.min.css",
+              "node_modules/clockpicker/dist/jquery-clockpicker.min.css",
+              "node_modules/jquery-ui/themes/base/all.css",
+              "src/assets/flowexample/jquery.flowchart.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/drawflow/dist/drawflow.min.css",
+              "src/assets/VWTemplate/css/animation.css",
+              "src/assets/QueryBuilder/css/query-builder.default.css",
+              "src/assets/VWTemplate/css/style.css",
+              "src/assets/VWTemplate/css/mobile.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "src/assets/VWTemplate/js/jquery-3.4.1.min.js",
+              "src/assets/VWTemplate/js/materialize.js",
+              "node_modules/parsleyjs/dist/parsley.min.js",
+              "src/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js",
+              "node_modules/jquery-mousewheel/jquery.mousewheel.js",
+              "node_modules/jquery.panzoom/dist/jquery.panzoom.min.js",
+              "src/assets/flowexample/jquery.flowchart.js",
+              "node_modules/clockpicker/dist/jquery-clockpicker.min.js",
+              "node_modules/highcharts/highcharts.js",
+              "node_modules/drawflow/dist/drawflow.min.js",
+              "src/assets/js/JsBarcode.all.min.js",
+              "src/assets/js/jquery.PrintArea.js",
+              "src/assets/js/print.min.js",
+              "node_modules/xlsx-style/dist/xlsx.full.min.js",
+              "src/assets/js/xlsxcustom.js",
+              "node_modules/jspdf/dist/jspdf.debug.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js",
+              "src/assets/QueryBuilder/js/extendext.js",
+              "src/assets/QueryBuilder/js/interact.js",
+              "src/assets/QueryBuilder/js/bootstrap.js",
+              "src/assets/QueryBuilder/js/query-builder.standalone.js",
+              "src/assets/js/tinymce.js",
+              "src/assets/VWTemplate/js/main.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true
+            },
+            "production-endpoint": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.endpoint.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
+            "debug": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "verp-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "verp-web:build:production"
+            },
+            "staging": {
+              "browserTarget": "verp-web:build:staging"
+            },
+            "local": {
+              "browserTarget": "verp-web:build:local"
+            },
+            "debug": {
+              "browserTarget": "verp-web:build:debug"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "verp-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "verp-web-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "verp-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "verp-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "verp-web",
+  "cli": {
+    "warnings": {},
+    "analytics": false
+  }
+}

@@ -1,0 +1,16 @@
+<div class="modal-content">
+    <h5>{{data.title}}</h5>
+    <div style="margin-top: 10px">
+        {{data.message}}
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i class="fa fa-times"></i>Đóng</button>
+
+    <button id='confirm_button' class="modal-action modal-close waves-effect waves-blue btn-flat btn-update" (click)="confirm()"
+    *ngIf="data.isYesNoConfirm"><i class="fa fa-check"></i>{{data.okText?data.okText:'Đồng ý'}}</button>
+    <button id='denied_button' class="modal-action modal-close waves-effect waves-blue btn-flat btn-update" (click)="denied()"
+    *ngIf="data.isYesNoConfirm"><i class="fa fa-times"></i>{{data.okText?data.deniedText:'Không'}}</button>
+
+    
+</div>

@@ -1,0 +1,15 @@
+.checkbox {
+    label{
+        margin-top: -16px;
+           transform: translateY(0);  
+           input{
+            margin-top: 0px !important;
+            margin-bottom: 0;
+           }
+           &:nth-child(2){
+            margin-left: 235px;
+           }
+    }
+}
+
+  

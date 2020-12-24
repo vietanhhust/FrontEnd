@@ -1,0 +1,12 @@
+<div class="file-ac" [ngStyle]="{'margin-top': mode == 'view' ? '0' : ''}">
+    <a *ngIf="mode === 'edit'"><label for="upload-ac">{{title}}<i class="fa fa-paperclip"></i></label>
+        <input type="file" #file multiple (change)="imgUpload()" id="upload-ac" /></a>
+        <div class="c-ac" [ngStyle]="{'margin-left': mode == 'view' ? '-5px' : ''}">
+            <div class="chip" *ngFor="let img of imgArr" >
+               <a (click)="imgShow(img)"> {{img.name}}</a>
+               <i *ngIf="mode === 'edit'" (click)="imgRemove(img)" class="close material-icons">close</i>
+               <i *ngIf="mode === 'view'" (click)="imgShow(img)" class="close material-icons">cloud_download</i>
+            </div>
+          
+        </div>
+</div>

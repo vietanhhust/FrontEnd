@@ -1,0 +1,51 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a>Hướng dẫn</a>
+
+        </div>
+        <div class="tool1">
+        </div>
+        <div class="create-t3">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-content">
+    
+    
+
+    <div *ngIf='data.model.length > 0' class="row">
+        <div class="col s1 buffer-div-left"></div>
+        <div class="col s2 title-container">
+            <div class="guide-title-tabs">
+                <ul>
+                    <li *ngFor='let guide of data.model; let i = index' class="guide-item" (click)='renderGuide(i)'
+                        [ngClass]='i==active?"active":""'> <i class="fa fa-book" aria-hidden="true" style="color: rgb(91, 91, 243);"></i>&nbsp;&nbsp;
+                        <span [ngClass]='i==active?"active":""'>{{i+1}}.&nbsp;</span>{{guide.title}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col s6 body-container" style="padding: 0;">
+            <div class="description-body" #container>
+
+            </div>
+        </div>
+        <div class="col s3 buffer-div-right">
+            
+        </div>
+    </div>
+    
+
+    <div *ngIf='data.model.length == 0' class="row">
+        <shortcut-hint [data]='data.type'></shortcut-hint>
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i class="fa fa-times"></i>Đóng</a>
+</div>

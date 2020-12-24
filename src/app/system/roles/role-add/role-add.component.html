@@ -1,0 +1,144 @@
+<div class="row nav-tools">
+        <div class="col s12 flex">
+            <div class="title-n-t">
+                <a href="/system/roles">Nhóm quyền</a> <span> / </span><a >Tạo mới</a>
+            </div>
+            <div class="tool1">
+            </div>
+            <div class="create-t3">
+                <a class="">Hoạt động</a>
+            </div>
+        </div>
+    </div>
+
+<div overlay-loading [loading]="!isShowPage" class="row create-page animated slideInDown">
+        <div class="col s12 create-page-content">
+            <div class="card">
+                <div class="card-content">
+                        <form novalidate name="formAccountCreate" #formAccountCreate="ngForm" (ngSubmit)="formAccountCreate.valid && create()">
+                              
+                        <div class="row input-custom-inline">
+                                <div class="col s6">
+                                        <input-field required [(ngModel)]="data.roleName" type="text" name="data.roleName" title="Tên nhóm" [frm]="formAccountCreate"></input-field>                       
+                                               </div>
+                                  <div class="col s6">
+                                        <input-field required [(ngModel)]="data.description" type="text" name="data.description" title="Mô tả" [frm]="formAccountCreate"></input-field>
+                                    </div>
+                         </div>        
+                      
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Nhóm quyền cha</p>
+                                    <div class="input-field inline">
+                                            <select-field  [(ngModel)]="data.parentRoleId" [data]="lstRoleParent" name="data.parentRoleId" title="Nhóm quyền cha" [frm]="formAccountCreate">
+                                            </select-field>                              
+                                      </div>
+                             </div>
+                                <div class="col s6">
+                                    <p>Trạng thái</p>
+                                        <div class="input-field inline">
+                                                <select-field required [(ngModel)]="data.roleStatusId" [data]="lstRoleStatus" name="data.roleStatusId" title="Trạng thái" [frm]="formAccountCreate">
+                                                 </select-field>                              
+                                          </div>
+                                 </div>
+                         </div>
+                         <div class="row input-custom-inline">
+                            <div class="col s12">
+                                <p>Kế thừa</p>
+                                    <div class="input-field inline checkbox">
+                                        <label>
+                                            <input type="checkbox" class="filled-in" name="isModulePermissionInherit" #isModulePermissionInherit="ngModel" [(ngModel)]="data.isModulePermissionInherit" [checked]="data.isModulePermissionInherit" />
+                                            <span>Kế thừa quyền trên chức năng</span>
+                                          </label>       
+                                          <label>
+                                            <input type="checkbox" class="filled-in" name="isDataPermissionInheritOnStock" #isDataPermissionInheritOnStock="ngModel" [(ngModel)]="data.isDataPermissionInheritOnStock" [checked]="data.isDataPermissionInheritOnStock" />
+                                            <span>Kế thừa quyền trên kho</span>
+                                          </label>                           
+                                      </div>
+                             </div>
+                             
+                         </div>
+
+                        <div class="row submit-but">
+                            <button class="right ok-but btn-update" type="submit"><i class="far fa-save"></i>Lưu lại</button>
+                            <a class="right cancel-but" [routerLink]="['/system/users']"><i class="fa fa-times"></i>Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="activety">
+                    <div class="info-ac">
+                        <div class="title-ac">
+                            <a class="show-ac"><i class="fas fa-comment-dots"></i>Trao đổi</a>
+                            <a><i class="fas fa-user-clock"></i>Nhắc việc</a>
+                            <a class="show-u-ac dropdown-trigger" data-target='user-ac'><i class="fas fa-users"></i></a>
+                            <ul id='user-ac' class='dropdown-content drop-user-ac'>
+                                <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+                                <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+                                <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+        
+                            </ul>
+                        </div>
+                        <div class="content-ac">
+                            <textarea value="">Chú ý kiểm tra báo giá nhé các bạn!</textarea>
+                            <div class="c-ac">
+                                <div class="chip">
+                                    bao-gia-nguyen-lieu-ABX.xlsx
+                                    <i class="close material-icons">close</i>
+                                </div>
+                            </div>
+        
+                            <div class="file-ac">
+                                <a>Đăng</a>
+                                <label for="upload-ac"><i class="fa fa-paperclip"></i></label>
+                                <input type="file" name="photo" id="upload-ac" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-activety">
+        
+                        <div class="repeat">
+                            <div class="title-l-ac">
+                                <h4>Hôm nay</h4>
+                                <hr>
+                            </div>
+                            <ul class="list-ac">
+                                <li>
+                                    <img src="img/user-icon.png" alt="">
+                                    <div class="info-l-ac">
+                                        <p>Tính năng đang được phát triển</p>
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                            <!-- <div class="title-l-ac">
+                                <h4>12-11-2019</h4>
+                                <hr>
+                            </div>
+                            <ul class="list-ac">
+                                <li>
+                                    <img src="img/user-icon.png" alt="">
+                                    <div class="info-l-ac">
+                                        <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                        <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="img/user-icon.png" alt="">
+                                    <div class="info-l-ac">
+                                        <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                        <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                        <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                        <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                    </div>
+                                </li>
+                            </ul> -->
+                        </div>
+        
+                    </div>
+                </div>
+        </div>
+
+       
+
+</div>

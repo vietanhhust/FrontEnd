@@ -1,0 +1,10 @@
+<div class="div-input">
+    <input [required]="required" #modelName="ngModel" [(ngModel)]="date" [name]="name" type="text" [disabled]="disabled"
+        (keyup)="onKeyup()" (blur)="onBlur()" [readOnly]="readonly" placeholder="Chọn ngày"
+        [class.invalid]="modelName.invalid && frm && frm.invalid && frm.submitted" class="date-val validate" />
+    <i class="material-icons prefix icon-date" #pickerElm>date_range</i>
+    <!--  check required -->
+    <span
+        *ngIf="(frm && modelName?.errors?.required && frm.invalid && frm.submitted) || (frm && frm.submitted && modelName?.errors?.required)"
+        class="helper-text">Vui lòng nhập thời gian</span>
+</div>

@@ -1,0 +1,104 @@
+<!-- <div class="page-title">
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <h1>Đổi mật khẩu</h1>
+        </div>
+    </div>
+</div>
+
+<div class="card-panel" >
+    <form novalidate name="formAccountCreate" #formAccountCreate="ngForm" (ngSubmit)="formAccountCreate.valid && (newPassword.value=== renewPassword.value) && changepass()">
+      
+        <div class="row"> 
+            <div class="row" style="width:50%">
+                <div class="col m12 s12">
+                    <div class="input-field">
+                        <label for="input-oldPassword">Mật khẩu cũ</label>
+                        <input id="input-oldPassword" [(ngModel)]="model.oldPassword" name="oldPassword" #oldPassword="ngModel" type="password">
+                    </div>
+                </div>
+                <div class="col m12 s12">
+                    <div class="input-field">
+                        <label for="input-newPassword">Mật khẩu mới</label>
+                        <input id="input-newPassword" [(ngModel)]="model.newPassword" name="newPassword" #newPassword="ngModel" type="password">
+                    </div>
+                </div>
+                <div class="col m12 s12">
+                    <div class="input-field">
+                        <label for="input-renewPassword">Nhập lại mật khẩu mới</label>
+                        <input id="input-renewPassword" [(ngModel)]="model.renewPassword" name="renewPassword" #renewPassword="ngModel" type="password" [class.parsley-error]="newPassword.value!= renewPassword.value&& formAccountCreate.submitted">
+                        <ul class="parsley-errors-list filled" id="parsley-id-4" *ngIf="newPassword.value!= renewPassword.value && formAccountCreate.submitted">
+                            <li class="parsley-required">Mật khẩu không giống nhau</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="error" class="alert alert-danger">{{error}}</div> 
+          
+            <div class="row">
+                <button class="waves-effect waves-dark btn blue-grey pull-right" type="submit"><i
+                        class="fa fa-save"></i> Lưu lại</button>
+            </div>
+        </div>
+        <!-- /Validation -->
+
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a href="">Đổi mật khẩu</a>
+        </div>
+        <div class="tool1">
+
+        </div>
+
+        <div class="create-t3">
+
+        </div>
+    </div>
+</div>
+<div class="row create-page">
+    <div class="col s6 create-page-content">
+        <div class="card">
+            <div class="card-content">
+                <form novalidate name="formAccountCreate" #formAccountCreate="ngForm"
+                    (ngSubmit)="formAccountCreate.valid && (newPassword.value=== renewPassword.value) && changepass()">
+                    <div class="row input-custom-inline">
+                        <div class="col s12">
+                            <p>Mật khẩu cũ:</p>
+                            <div class="input-field inline">
+                                <input id="input-oldPassword" [(ngModel)]="model.oldPassword" name="oldPassword"
+                                    #oldPassword="ngModel" type="password">
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <p>Mật khẩu mới:</p>
+                            <div class="input-field inline">
+                                <input id="input-newPassword" [(ngModel)]="model.newPassword" name="newPassword"
+                                    #newPassword="ngModel" type="password">
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <p>Nhập lại mật khẩu mới:</p>
+                            <div class="input-field inline">
+                                <input id="input-renewPassword" [(ngModel)]="model.renewPassword" name="renewPassword"
+                                    #renewPassword="ngModel" type="password"
+                                    [class.parsley-error]="newPassword.value!= renewPassword.value&& formAccountCreate.submitted">
+                                <ul class="parsley-errors-list filled" id="parsley-id-4"
+                                    *ngIf="newPassword.value!= renewPassword.value && formAccountCreate.submitted">
+                                    <li class="parsley-required">Mật khẩu không giống nhau</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                    <div class="row submit-but">
+                        <button class="right ok-but btn-update" type="submit"><i class="far fa-save"></i>Lưu
+                            lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

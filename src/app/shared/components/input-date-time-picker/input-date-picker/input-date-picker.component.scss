@@ -1,0 +1,18 @@
+.date-picker-horizontal {
+    width: calc(100% - 104px) !important;
+}
+
+.date-picker-incell {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.input-field.date-picker-incell .prefix {
+    font-size: 1rem;
+    width: 1rem;
+    right: 0;
+    top: 6px;
+    z-index: 1;
+    background: #eee;
+    cursor: pointer;
+}

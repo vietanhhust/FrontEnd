@@ -1,0 +1,18 @@
+productionSteps 
+stepId = nhau thì gop, giữ stepId
+
+B1: có 2 step A + B cần gộp (2 thằng nay có cùng stepId) -- xóa
+B2: lấy productionStepLinkDataRoles của 2 thằng ra 1 mảng riêng
+B3: tạo 1 step C mới (có stepId trùng với A - B)
+B4: productionStepLinkDatas + productionStepLinks tạo mới productionStepCode = stepCOde C (productionStepId + productionStepLinkDataId = null)
+B5: thêm productionStepOrders 1 obj từ step C mới tạo. (Tao 2 obj có productionStepCode của 2 thằng sp)
+B6: Xóa obj trong productionStepOrders lien quan step A + B
+
+- khi tạo mới công đoạn thêm 
+tạo 2 obj mới cho productionStepOrders từ step mới
+
+
+
+
+GODAY.045 / Gỗ tinh chế dày 50 -Cao su ( gốc bào )
+	BTPHAM.GHE.009 

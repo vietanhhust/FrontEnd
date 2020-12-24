@@ -1,0 +1,5 @@
+<div class="input-field" class="clockpicker" >
+    <label [attr.for]="id" [ngClass]="text.length == 0?'':'active'"><i class="fa fa-calendar"></i>
+        Ngày nhập kho</label>
+    <input class="clockpicker" [(ngModel)]="value" [id]="id" [name]="name" type="text" [disabled]="disabled" />
+</div>

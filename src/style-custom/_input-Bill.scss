@@ -1,0 +1,627 @@
+
+// style for add inputBill
+.cateadd {
+  padding: 6px 14px;
+  .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+    margin-top: 15px;
+  }
+  .ng-select.ng-untouched.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 12px;
+  }
+}
+.accoutant-inputvaluebill {
+  .input-account {
+    display: inline-flex;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    .title-fie {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-right: 10px;
+      width: 182px;
+      font-size: 14px;
+    }
+    .input-fie {
+      .oenicon{
+        margin-top: 7px;
+      }
+      width: 100%;
+      .iccc {
+        height: 30px;
+        input {
+          height: 22px;
+        }
+      }
+      .iccc i {
+        color: #b1b1b1;
+        top: 5px !important;
+        right: 0px;
+      }
+      .fixacc .input-field .prefix {
+        top: 4px !important;
+        color: #b1b1b1;
+      }
+      input {
+        height: 24px;
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+    .ng-select.ng-select-single .ng-select-container {
+      height: 25px;
+    }
+    .ng-select.ng-select-single .ng-select-container.ng-has-value {
+      height: 25px;
+    }
+    .ng-select.ng-select-single .ng-select-container .ng-value-container {
+      height: 25px;
+    }
+    .fix .inline {
+      height: 25px;
+    }
+    .fix.fixacc.fixidate {
+      height: 24px;
+      input {
+        height: 24px;
+      }
+    }
+  }
+
+  .fix .fixacc .fixidate {
+    margin-top: -8px;
+  }
+
+  .table-custom-excel {
+    th {
+      cursor: pointer;
+    }
+    .file-ac {
+      margin-top: 0px;
+    }
+  }
+  .notmulti {
+    .ng-select.ng-untouched .ng-select-container .ng-value-container .ng-placeholder {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+    .ng-select.ng-touched .ng-select-container .ng-value-container .ng-placeholder {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .ng-select.ng-select-single .ng-select-container.ng-has-value .ng-value-container .ng-value {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+    .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+      top: 6px;
+    }
+    .ng-select .ng-select-container {
+      border-bottom: 1px solid #c9c8c8;
+    }
+    .ng-select .ng-clear-wrapper {
+      margin-top: 16px;
+    }
+    .ng-select .ng-select-container.ng-has-value .ng-arrow-wrapper {
+      margin-top: 15px;
+    }
+  }
+
+  .ng-select.ng-untouched.ng-select-single .ng-select-container.ng-has-value .ng-value-container .ng-value {
+    margin-top: 6px;
+  }
+  .ng-select.ng-untouched .ng-select-container.ng-has-value .ng-arrow-wrapper {
+    margin-top: 4px;
+  }
+  .ng-select.ng-select-single.ng-untouched .ng-select-container.ng-has-value .ng-clear-wrapper {
+    margin-top: 6px;
+  }
+  .ng-select .ng-clear-wrapper {
+    margin-top: 17px;
+  }
+  .ng-select.ng-select-single .ng-select-container {
+    height: 34px;
+  }
+  .ng-select .ng-select-container.ng-has-value .ng-arrow-wrapper {
+    margin-top: 16px;
+  }
+  .ng-select .ng-arrow-wrapper {
+    margin-top: 0px;
+  }
+  .ng-select.ng-touched .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 10px;
+  }
+  .ng-select.ng-untouched.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 10px;
+  }
+  .ng-select .ng-select-container {
+    border-bottom: 1px solid white;
+  }
+  .ng-select .ng-select-container:hover {
+    border-bottom: 1px solid #c9c8c8;
+  }
+  .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    top: 8px;
+  }
+  .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+    margin-top: 16px;
+  }
+  .ng-select.ng-select-single .ng-select-container.ng-has-value .ng-value-container .ng-value {
+    margin-top: 15px;
+  }
+  .ng-select.ng-select-single .ng-select-container.ng-has-value {
+    height: 33px;
+  }
+}
+.field-inputs {
+  overflow-x: auto;
+  padding: 10px;
+  table {
+    margin-bottom: 3px;
+    tr {
+      th {
+        height: 30px;
+        border: 1px solid #bdbdbd;
+      }
+      td {
+        .fix.fixacc.fixidate {
+          height: 24px;
+          margin-top: -1px;
+          .input-field .prefix {
+            top: 1px;
+          }
+        }
+
+        position: relative;
+        > a {
+          color: inherit;
+          font-size: 14px;
+          position: absolute;
+          right: 1px;
+          top: 14px;
+          &:hover {
+            color: #2b5797;
+          }
+        }
+        .select-custom i {
+          top: 16px !important;
+        }
+        [type="checkbox"] + span:not(.lever) {
+          transform: translateY(-3px);
+          height: 18px;
+          padding-left: 0;
+        }
+        .file-ac {
+          height: 23px;
+          margin-top: 1px !important;
+        }
+      }
+    }
+  }
+}
+.search-view-col {
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+    top: -4px;
+    padding-left: 0;
+  }
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+    height: 34px;
+  }
+  .ng-select.ng-select-multiple.ng-untouched .ng-select-container .ng-value-container .ng-placeholder {
+    top: 10px;
+    padding-left: 0;
+  }
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+    white-space: nowrap;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    display: flex;
+  }
+  .ng-select .ng-has-value .ng-arrow-wrapper {
+    margin-top: 7px;
+  }
+  .ng-select .ng-arrow-wrapper {
+    margin-right: -3px;
+  }
+  .ng-select .ng-has-value .ng-clear-wrapper {
+    margin-top: 7px;
+  }
+  .ng-select.ng-select-multiple.ng-untouched.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 2px;
+  }
+  .ng-select.ng-select-multiple .ng-select-container {
+    height: 34px;
+  }
+  .ng-select.ng-select-multiple.ng-touched .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 16px;
+  }
+  .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-input > input:focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .select-custom {
+    padding-top: 11px !important;
+    i {
+      top: 16px !important;
+    }
+  }
+
+  .fixacc .input-field .prefix {
+    top: 9px;
+  }
+  .iccc i {
+    top: 11px !important;
+  }
+}
+.tabler .ng-select {
+  margin-top: 0;
+}
+.tabler .ng-select.ng-select-single .ng-select-container {
+  background: transparent;
+}
+.table-custom-excel {
+  min-width: 1000px;
+  .ng-select.ng-select-single .ng-select-container {
+    height: 24px !important;
+    border-bottom: none !important;
+    min-height: 24px !important;
+  }
+  .ng-select.ng-touched .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 0 !important;
+  }
+  .ng-select.ng-untouched.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
+    margin-top: 0px;
+  }
+  .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    top: 0px !important;
+    height: 24px !important;
+  }
+  .ng-select.ng-select-single .ng-select-container.ng-has-value .ng-value-container .ng-value {
+    margin-top: 0px !important;
+    margin-left: 3px;
+  }
+  .ng-select.ng-select-single .ng-select-container .ng-value-container {
+    font-size: 14px;
+    margin-left: 4px;
+  }
+  .ng-select .ng-clear-wrapper {
+    margin-top: 0px !important;
+  }
+  .ng-select .ng-select-container.ng-has-value .ng-arrow-wrapper {
+    margin-top: -2px !important;
+  }
+  .ng-select {
+    margin-top: 0px !important;
+  }
+  .fa-trash {
+    font-size: 13px !important;
+  }
+  .iccc i {
+    top: 2px !important;
+    right: 3px !important;
+    background: white;
+  }
+  th {
+    vertical-align: middle;
+    height: 25px !important;
+  }
+  td {
+    padding: 0;
+    border: 1px solid #cacaca;
+    height: 24px !important;
+    overflow: inherit !important;
+    input:not([type="checkbox"]) {
+      font-size: 14px;
+      width: calc(100% - 10px) !important;
+      height: 19px !important;
+      border: 1px solid transparent !important;
+      padding: 0px 4px 3px !important;
+      margin: 0 !important;
+      &:focus {
+        box-shadow: none !important;
+        border: 1px solid #464646 !important;
+        border-bottom-color: #464646 !important;
+      }
+    }
+    select {
+      > option {
+        height: 200px;
+      }
+      &:hover {
+        border: 1px solid rgb(194, 193, 193) !important;
+      }
+      height: 30px;
+      border: 1px solid transparent !important;
+      padding: 0px 2px;
+      text-align: center;
+      background: none;
+      cursor: pointer;
+      padding-right: 6px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      &:focus {
+        border: 1px solid #2b5797 !important;
+        outline: none;
+        border-radius: 1px;
+      }
+    }
+  }
+}
+// End style for add inputBill
+
+// query builder
+#builder {
+  select {
+    display: unset !important;
+    height: 30px;
+    line-height: 10px;
+    padding: 0 5px;
+    border: 1px solid #b7b7b7;
+  }
+  input {
+    height: 30px;
+    margin: 0;
+    border-bottom-color: #b7b7b7 !important;
+  }
+  .glyphicon {
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+  }
+  .btn {
+    border: none;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+  .btn-danger {
+    background: #c35d5d !important;
+  }
+  .btn-info {
+    box-shadow: none;
+    background: transparent !important;
+    i {
+      color: #7d7d7d;
+    }
+  }
+  .rule-actions {
+    float: right;
+  }
+  .rules-group-header .drag-handle {
+    position: absolute;
+    top: 14px;
+    left: 156px;
+  }
+  .glyphicon-warning-sign::before {
+    content: "\f071";
+  }
+  .tooltip-inner {
+    background: black;
+    margin-left: 7px;
+    padding: 1px 5px;
+  }
+  .glyphicon-sort {
+    transform: rotate(90deg);
+  }
+  .glyphicon-sort::before {
+    content: "\f362";
+  }
+  .glyphicon-plus-sign:before {
+    content: "\f0fe";
+  }
+  .glyphicon-info-sign::before {
+    content: "\f05a";
+  }
+  .glyphicon-plus:before {
+    content: "\f067";
+  }
+  .glyphicon-remove::before {
+    content: "\f2ed";
+  }
+  .glyphicon-check::before {
+    content: "\f14a";
+  }
+  .glyphicon-unchecked {
+    font-weight: 100;
+  }
+  .glyphicon-unchecked::before {
+    content: "\f0c8";
+  }
+  .group-actions {
+    float: right;
+  }
+  .rule-actions {
+    button {
+      padding: 0 8px;
+      height: 30px;
+      line-height: 22px;
+      background: #498000;
+      &:hover {
+        color: #ffdcb1;
+      }
+      i {
+        font-size: 14px;
+        margin-right: 1px;
+      }
+    }
+  }
+  .group-conditions {
+    button {
+      padding: 0 8px;
+      height: 30px;
+      line-height: 22px;
+      background: #ffffff;
+      &:hover {
+        color: black;
+      }
+      i {
+        font-size: 14px;
+        margin-right: 1px;
+      }
+    }
+    label {
+      margin-left: -4px;
+      margin-top: 1.4px;
+      &:hover {
+        color: #fff;
+      }
+      &.active {
+        background: #006584;
+      }
+      padding: 0 8px;
+      height: 30px;
+      line-height: 27px;
+      background: #008fbb;
+      input {
+      }
+    }
+  }
+  .rules-group-header {
+    .group-actions {
+      button {
+        padding: 0 8px;
+        height: 30px;
+        line-height: 22px;
+        background: #498000;
+        &:hover {
+          color: #ffdcb1;
+        }
+        i {
+          font-size: 14px;
+          margin-right: 1px;
+        }
+      }
+    }
+  }
+}
+.radio.radio-default {
+  label {
+    font-size: 14px;
+    color: black;
+    margin-left: 18px;
+  }
+  margin-right: 20px;
+  input[type="radio"] {
+    opacity: 1;
+    height: 26px !important;
+    pointer-events: auto;
+  }
+}
+.query-builder .rule-container .rule-value-container {
+  display: inline-flex;
+}
+
+.fullmanhinh {
+  width: 80%;
+  opacity: 0.8;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+}
+
+.unselectable::selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+}
+
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.isvalid {
+  background: #02cc3f28 !important;
+}
+.isinvalid {
+  background: #fb6d7a33 !important;
+}
+
+.isvalidSingle {
+  box-shadow: 0px 1px 1px 0px green !important;
+}
+.isinvalidSingle {
+  box-shadow: 0px 1px 1px 0px rgb(156, 0, 0) !important;
+}
+.table-custom-excel td .tooltipped,
+.table-customacc2 td .tooltipped {
+  position: absolute;
+  left: -6px;
+  top: 0px;
+  font-size: 8px;
+  color: #9c9c9c !important;
+}
+.sidenav {
+  width: 300px;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.table-custom-excel td:hover {
+  .toolsbill {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5;
+  }
+}
+.toolsbill {
+  position: absolute;
+  right: 0;
+  background: white;
+  z-index: 1;
+  top: -27px;
+  box-shadow: 0 0 4px 0 #83a4d4;
+  height: 26px;
+  padding: 3px 6px 3px 5px;
+  border-radius: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5;
+  .fa-times {
+    position: absolute;
+    top: -5px;
+    font-size: 8px;
+    right: -4px;
+    background: #b70d0d;
+    color: white;
+    padding: 1px 3px;
+    border-radius: 55%;
+  }
+  i {
+    color: #0d47a1;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 3px;
+    &:hover {
+      color: black;
+    }
+  }
+}
+.multirowd .file-ac {
+  border: none !important;
+}

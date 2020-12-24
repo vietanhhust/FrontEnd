@@ -1,0 +1,197 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a>Công ty con</a> <span> / </span><a>Cập nhật</a>
+        </div>
+        <div class="tool1">
+        </div>
+        <div class="create-t3">
+
+        </div>
+    </div>
+</div>
+<div overlay-loading [loading]="!isShowPage" class="row create-page animated">
+    <div class="col s12 create-page-content">
+        <div class="card">
+            <div class="card-content">
+                <form novalidate name="SubSidiaryForm" autocomplete="off" #SubSidiaryForm="ngForm"
+                    (ngSubmit)="SubSidiaryForm.valid && updateSub()">
+                    <div *ngIf="!isView">
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.subsidiaryName" type="text"
+                                    name="subsidiaryName" title="Tên công ty" [frm]="SubSidiaryForm"></input-field>
+                            </div>
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.subsidiaryCode" type="text"
+                                    name="subsidiaryCode" title="Mã công ty" [frm]="SubSidiaryForm">
+                                </input-field>
+                            </div>
+                        </div>
+
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.address" type="text" name="address"
+                                    title="Địa chỉ" [frm]="SubSidiaryForm"></input-field>
+                            </div>
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.taxIdNo" type="text" name="taxIdNo"
+                                    title="Mã số thuế" [frm]="SubSidiaryForm">
+                                </input-field>
+                            </div>
+                        </div>
+
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.phoneNumber" type="text" name="phoneNumber"
+                                    title="Số điện thoại" [frm]="SubSidiaryForm"></input-field>
+                            </div>
+                            <div class="col s6">
+                                <input-field required [(ngModel)]="datas.email" type="text" name="email" title="Email"
+                                    [frm]="SubSidiaryForm">
+                                </input-field>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <input-field [(ngModel)]="datas.fax" type="text" name="fax" title="Fax"
+                                    [frm]="SubSidiaryForm"></input-field>
+                            </div>
+                            <div class="col s6">
+                                <p>Công ty mẹ</p>
+                                <div class="input-field inline">
+                                    <select-field [(ngModel)]="datas.parentSubsidiaryId" [data]="listSubs"
+                                        name="parentId" title="Công ty mẹ" [frm]="SubSidiaryForm">
+                                    </select-field>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <input-field [(ngModel)]="datas.description" type="text" name="description"
+                                    title="Mô tả" [frm]="SubSidiaryForm"></input-field>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div *ngIf="isView" class="view">
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Tên công ty:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.subsidiaryName}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <p>Mã công ty</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.subsidiaryCode}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Địa chỉ:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.address}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <p>Mã số thuế:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.taxIdNo}}</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Số điện thoại:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.phoneNumber}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <p>Email:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.email}}</h6>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Fax:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.fax}}</h6>
+                                </div>
+
+                            </div>
+                            <div class="col s6">
+                                <p>Mô tả:</p>
+                                <div class="input-field inline">
+                                    <h6>{{datas.description}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s12">
+                                <p>Công ty mẹ:</p>
+                                <div class="input-field inline">
+                                    <h6>{{parentName}}</h6>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s12">
+                                <p><strong>Sở hữu:</strong></p>
+                                <div class="input-field inline">
+                                    <p><strong>{{datas.ownerDisplay}}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row submit-but" *ngIf="isView != true">
+                        <button class="right ok-but btn-update" type="submit"><i class="far fa-save"></i>Lưu
+                            lại</button>
+                        <a class="right cancel-but" [routerLink]="['/system/subsidiary']"><i
+                                class="fa fa-times"></i>Hủy</a>
+                    </div>
+                    <div class="row submit-but" *ngIf="isView == true">
+                        <a class="right " *ngIf="curentPermission.isUpdate"
+                            routerLink="/system/subsidiary/edit/{{subSidiaryId}}"><i class="fa fa-edit"></i>Sửa</a>
+                        <a class="right cancel-but" [routerLink]="['/system/subsidiary']"><i
+                                class="fas fa-undo"></i>Quay lại</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>

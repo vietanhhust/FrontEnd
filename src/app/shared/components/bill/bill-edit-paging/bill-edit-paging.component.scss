@@ -1,0 +1,29 @@
+.pagination select {
+  background: #e8e8e8;
+  height: 30px;
+}
+.search button {
+  top: 6px;
+  background: #e8e8e8;
+}
+.search i.fa-times {
+  top: 12px;
+}
+.search {
+  display: inline-block;
+}
+.search input {
+  margin-bottom: 0;
+  background: #e8e8e8;
+  padding-left: 9px;
+}
+.pagination {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.disablepagi{
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
+}

@@ -1,0 +1,120 @@
+
+.overlay-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #7d7d7d27;
+  display: none;
+  text-align: center;
+  z-index: 1;
+}
+
+
+.opaclayer {
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.overlay-loading-wraper {
+  /*position: relative;*/
+}
+.overlay-loading-wraper .overlay-loading {
+  display: block;
+}
+
+.overlay-loading-wraper .overlay-loading .loadercss:after {
+  background:#ebebeb;
+}
+
+.loadercss {
+  margin-top: 1px;
+  margin-left: 1px;
+  font-size: 10px;
+  text-indent: -9999em;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: linear-gradient(to right, #989898 15%, rgba(255, 255, 255, 0) 100%);
+
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+
+}
+.loadercss:before {
+ 
+  background: #7a91b3;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+}
+.loadercss:after {
+  background: #ffffff;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  content: "";
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.loadingio-spinner {
+ width: 75px;
+    height: 75px;
+    background: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 27vh;
+    bottom: 0;
+    display: block;
+ 
+}
+ .loadingio-spinner img{
+  position: absolute;
+    top: 24px;
+    left: 15px;
+    z-index: 99;
+    width: 41px;
+  }

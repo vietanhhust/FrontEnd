@@ -1,0 +1,125 @@
+*{
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+@page {
+  size: A4 portrait;
+margin: 3%;
+mso-title-page:no;
+    mso-page-orientation: portrait;
+}
+.page{
+padding: 0mm;
+margin: 0mm auto;
+border: 0px #D3D3D3 solid;
+border-radius: 5px;
+background: rgb(245, 175, 175);
+}
+#print{
+  position: relative;border: 1px solid;width:844px; background-color: white;
+}
+#printdtnounit{
+  position: relative;border: 1px solid;width:844px; background-color: white;
+}
+#printdtnovatdvcd{
+  position: relative;border: 1px solid;width:844px; background-color: white;
+}
+#printdtnovat{
+  position: relative;border: 1px solid;width:844px; background-color: white;
+}
+#printdt{
+  position: relative;border: 1px solid;width:844px; background-color: white;
+}
+
+ table { page-break-inside:auto }
+   tr    { page-break-inside:avoid; page-break-after:auto }
+
+.tittlepo{
+  height: 36px;
+        border-bottom: 1px solid;
+        padding: 5px 15px;line-height: 1px;
+}
+.tittlepo h4{
+  font-size: 24px;
+            font-weight: 600;margin-top:0px;
+}
+.conpo{
+  display: flex;flex-wrap: wrap;
+        justify-content: space-between;
+}
+.tblpn table {
+  border: 1px solid #000 !important;
+  border-collapse: collapse;
+  border-width: 1px;
+  margin-top: 15px;
+  width: 100%;
+ 
+}
+.tblpn table tr{
+  height: 25px;
+  }
+  thead {display: table-row-group;}
+
+.tblpn table th{
+  border: 1px solid #000 !important;
+  border-collapse: collapse;
+position: static;
+  border-width: 1px;
+  height: 25px;
+  padding: 0px 5px;
+  font-size: 12px;
+  }
+  .tblpn table td{
+    border: 1px solid #000 !important;
+    border-collapse: collapse;
+    font-size: 12px;
+    border-width: 1px;
+    height: 25px;
+    line-height: 15px;
+  padding: 0px 5px;
+  }
+.signpn{
+	margin-top:15px;
+  display: flex;
+  justify-content: space-between !important;
+  align-items:center;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 15px;
+}
+.signpn .it-pn{
+  width: 25%;
+  text-align: center;
+  position: relative;
+  height: 80px;
+}
+.signpn .it-pn p{
+  font-weight: bold;
+}
+.signpn .it-pn b{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+}
+  .signpn .it-pn p span{
+      font-weight: 400;
+  }
+.copyright{
+text-align: center;
+color: blue;
+position: absolute;
+bottom: -30px;
+right: 0;
+left: 0;
+margin: auto;
+display: block;
+}
+.copyright img{
+  width: 25px !important;  width: auto !important;
+  transform: translateY(7px);
+}

@@ -1,0 +1,62 @@
+<form novalidate name="frmEditUnit" #frmEditUnit="ngForm" (ngSubmit)="frmEditUnit.valid && save()">
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a *ngIf="unitId > 0">Sửa thông tin Đơn vị tính</a>
+                    <a *ngIf="!(unitId > 0)">Tạo mới Đơn vị tính</a>
+                </div>
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div overlay-loading [loading]="!isShowPage" class="modal-content animated fadeInLeft" *ngIf="!data.viewmode">
+        <div class="row input-custom-inline general-input-size">
+            <input-field required [(ngModel)]="info.unitName" type="text" name="info.unitName" title="Tên Đơn vị tính"
+                [frm]="frmEditUnit"></input-field>
+        </div>
+        <div class="row input-custom-inline general-input-size">
+            <p>Trạng thái:</p>
+            <div class="input-field inline">
+                <select-field [(ngModel)]="info.unitStatusId" [data]="lstStatus" name="info.unitStatusId"
+                    title="Trạng thái" [frm]="frmEditUnit">
+                </select-field>
+            </div>
+        </div>
+    </div>
+    <div overlay-loading [loading]="!isShowPage" class="modal-content view animated fadeIn" *ngIf="data.viewmode">
+        <div class="incontent-controls">
+            <button class="modal-action waves-effect waves-blue btn-flat" type="button" (click)="data.viewmode = false"
+                *ngIf="data.viewmode == true&& curentPermission.isUpdate">
+                <i class="fa fa-edit"></i> Sửa
+            </button>
+        </div>
+        <div class="row input-custom-inline">
+            <p>Tên Đơn vị tính:</p>
+            <div class="input-field inline">
+                <span>{{info.unitName}}</span>
+            </div>
+        </div>
+        <div class="row input-custom-inline">
+            <p>Trạng thái:</p>
+            <div class="input-field inline">
+                <span *ngIf="info.unitStatusId == 1">Kích hoạt</span>
+                <span *ngIf="info.unitStatusId == 0">Khóa</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit"
+            *ngIf="data.viewmode != true">
+            <i class="far fa-save"></i> Lưu lại
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i
+                class="fa fa-times"></i>Đóng</a>
+    </div>
+
+
+
+
+</form>

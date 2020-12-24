@@ -1,0 +1,136 @@
+<!-- <div class="card-panel animated slideInDown" *ngIf="roleId">
+
+  <div class="row">
+
+    <div class="col s12 m12" style="overflow: auto; height: 66vh;">
+
+      <div class="card">
+        <div>
+          <div class="content orders-card">
+            <div class="col s12">
+              <ul style="width: 100%;" id="tabrole" tabs class="tabs tabs-horizontal">
+                <li class="tab" style="display: inline-block" *ngFor="let group of lstGroup;let i = index"
+                  (click)='select(i)'>
+                  <a [ngClass]="{'active': selected==i}" id="{{'hr'+i}}" style="color:black">
+                    {{group.moduleGroupName}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col s12">
+              <div style="padding: 0;" *ngFor="let group of lstGroup; let i = index"
+                id="{{'moduleGroup'+group.moduleGroupId}}" class="col s12 table-role">
+                <table *ngIf='selected==i' class="display table-custom-color table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Chức năng</th>
+                      <th class="text-center">Tất cả</th>
+                      <th class="text-center">Xem</th>
+                      <th class="text-center">Thêm</th>
+                      <th class="text-center">Cập nhật</th>
+                      <th class="text-center">Xóa</th>
+                      <th class="text-center">Kiểm tra</th>
+                      <th class="text-center">Duyệt</th>
+                      <th class="text-center">Chức năng khác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <ng-container *ngFor="let item of lstModuleRolePermission ; index as i">
+                      <tr *ngIf="(item.moduleGroupId===group.moduleGroupId)" class="normal">
+                        <ng-container *ngIf="item.isGroup">
+                          <td colspan="8">
+                            <b>{{item.moduleName}}</b>
+                          </td>
+                        </ng-container>
+                        <ng-container *ngIf="!item.isGroup">
+                          <td>
+                            <span *ngIf="item.level>0">{{getDash(item.level)}}</span>
+                            {{item.moduleName}}
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="checkFull(item)"
+                                [(ngModel)]="item.isFull" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isView" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isAdd" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isUpdate" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isDelete" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isCheck" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <label>
+                              <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                [(ngModel)]="item.isCensor" />
+                              <span></span>
+                            </label>
+                          </td>
+                          <td class="text-center">
+                            <ng-container *ngFor="let a of item.actionObjects; index as j">
+                              <label>
+                                <input type="checkbox" class="filled-in" (change)="changeCheck(item)"
+                                  [(ngModel)]="a.isAllow" />
+                                <span>{{a.title}}</span>
+                              </label>
+                            </ng-container>
+                          </td>
+                        </ng-container>
+                      </tr>
+                    </ng-container>
+                    <tr>
+                      <td colspan="8" title="Chọn tất cả">
+                        <label>
+                          <input type="checkbox" class="filled-in" (change)="checkAllGroup(group)"
+                            [(ngModel)]="group.isAll" />
+                          <span>Chọn tất cả</span>
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row submit-but" style="margin-top: 15px;">
+    <button class="right ok-but btn-update" type="button" (click)="update()"><i class="far fa-save"></i>Lưu lại</button>
+  </div>
+</div> -->

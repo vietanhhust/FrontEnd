@@ -1,0 +1,18 @@
+:root {
+    --expand-clor: #b3b1b1;
+    --edit-color: #9a8869;
+    --inform-title-color: #4682b4;
+    --success-color: green;
+    --number-color: red;
+}
+
+@import "style-custom/style-original";
+@import "style-custom/style-modal";
+@import "style-custom/style-select2-fix";
+@import "style-custom/other-custom";
+@import "style-custom/bill-form";
+@import "style-custom/input-Bill";
+@import "style-custom/input-type";
+@import "style-custom/report";
+@import "style-custom/popup-import";
+@import "style-custom/drawflow";

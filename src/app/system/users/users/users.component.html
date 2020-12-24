@@ -1,0 +1,89 @@
+<div class="row nav-tools">
+        <div class="col s12 flex">
+         <div class="title-n-t">
+            <a>Nhân viên & Tài khoản</a>
+         </div>
+         <div class="tool1">
+           <a class="mr5 btn-add" [routerLink]="['/system/users/add']" ><i class="fa fa-plus"></i>Tạo mới</a>
+
+           <ng-container *ngIf="selectedValueTab">
+              <app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></app-actionmenu>
+          </ng-container>
+         </div>
+         <div class="tool2">
+          <ng-container *ngFor="let item of lstRole">
+            <div class="chip single-chip" *ngIf="item.checked == true">
+                <div>
+                  <p>{{item.roleName}}</p>
+                  <i class="close fa fa-times" (click)="uncheckFilter(item)"></i>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let item of lstUserStatusCheck">
+          <div style="background: #26a69a" class="chip single-chip" *ngIf="item.checked == true">
+              <div>
+                <p>{{item.title}}</p>
+              </div>
+          </div>
+      </ng-container>
+         </div>
+         <div class="tool3">
+            <div class="t3">
+              <a class="dropdown-trigger dropdown-trigger2" dropdown  data-target='boloc'>Bộ lọc <i class="fa fa-angle-down"></i></a>
+              <ul id='boloc' class='dropdown-content drop-tool3'>
+                <li style="min-height: 25px; pointer-events: none;">
+                  <a style="height: 25px; color: var(--primarybg-color);">
+                    Nhóm quyền
+                  </a>
+                  </li>
+                 <li *ngFor="let item of lstRole">
+                  <a>
+                      <label>
+                          <input type="checkbox" class="filled-in" [(ngModel)]="item.checked" name="item.checked" (change)="checkItemSearch(item)" />
+                          <span>
+                            {{item.roleName}}</span>
+                        </label>
+                  </a>
+                  </li>
+                  <li style="min-height: 25px; pointer-events: none;">
+                    <a style="height: 25px; color: var(--primarybg-color);">
+                      Trạng thái
+                    </a>
+                    </li>
+                    <li *ngFor="let item of lstUserStatusCheck">
+                      <a>
+                          <label>
+                              <input type="checkbox" class="filled-in" [(ngModel)]="item.checked" name="lue" (change)="checkItemSearch2(item)" />
+                              <span>
+                                {{item.title}}</span>
+                            </label>
+                      </a>
+                      </li>
+                </ul>
+            </div>
+            <div class="search">
+              <input autocomplete="off" placeholder="Tìm kiếm.../" [(ngModel)]="keyword" name="keyword" type="text" (keyup.enter)="search(1)">
+              <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i>
+              <button (click)="search(1)"><i class="fa fa-search"></i></button>
+            </div>
+            <app-paging-data (changeLimit)="limit = $event;search(1)" (next)="pageIndex = $event;search(pageIndex)"
+            (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data>
+         </div>
+        </div>
+      </div>
+
+      <div overlay-loading [loading]="!isShowPage" class="row animated slideInDown">
+            <app-table
+            id="tableus"
+            (DoubleClickValue)="viewmode($event)"
+            (selectedValue)="selectedValueTab = $event"
+            [configTable]="configTable"
+            [data]="dataFilled"
+            [Permission]="curentPermission"
+            [totalData]="total">
+            </app-table>
+
+
+
+
+        </div>

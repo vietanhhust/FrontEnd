@@ -1,0 +1,24 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            Edit code
+        </div>
+        <div class="tool1">
+        </div>
+        <div class="create-t3">
+           
+        
+        </div>
+    </div>
+</div>
+
+<div class="editorcontainer modal-content animated fadeInDown" overlay-loading [loading]="!isLoaded">
+    <div style="display: none;">
+        <ngx-monaco-editor #mona class="mona-code-editor" [options]="options" [(ngModel)]="code"></ngx-monaco-editor>
+    </div>
+    <div id="monacoeditor" class="mona-code-editor" ></div>
+</div>
+<div class="modal-footer">
+    <button (click)="saveCode()" id="save_code" class="right ok-but btn-update modal-action btn-flat"><i class="far fa-save"></i>Lưu</button>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i class="fa fa-times"></i>Hủy</a>
+</div>

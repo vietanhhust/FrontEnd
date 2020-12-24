@@ -1,0 +1,132 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a>Thông tin cá nhân</a> <span> </span>
+        </div>
+        <div class="tool1">
+        </div>
+        <div class="create-t3">
+            <a class="">Hoạt động</a>
+        </div>
+    </div>
+</div>
+<div overlay-loading [loading]="!isShowPage" class="row create-page animated slideInDown">
+    <div class="col s12 create-page-content">
+        <div class="card">
+            <div class="card-content">
+                <form novalidate name="formAccountCreate" autocomplete="off" #formAccountCreate="ngForm">
+                    <!--View-->
+
+                    <div class="view">
+                        <div class="row input-custom-inline">
+
+                            <div class="col s12">
+                                <p>Họ và tên:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.fullName}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+
+                            <div class="col s12">
+                                <p>Bộ phận:</p>
+                                <div class="input-field inline">
+                                    <h6 *ngIf="data && data.departments">
+                                        <span *ngFor="let b in data.departments; let idx= index">
+                                            {{idx>0?", ":""}} {{b.departmentName}}
+                                        </span>
+
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Email:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.email}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <p>Số điện thoại:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.phone}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6">
+                                <p>Giới tính: </p>
+                                <div class="input-field inline">
+                                    <!-- <select-field required [(ngModel)]="data.genderId" [data]="lstGender" name="data.genderId" title="Giới tính" [frm]="formAccountCreate">
+                                                                </select-field>                                      -->
+                                    <h6 *ngIf="data.genderId == 2">Nữ</h6>
+                                    <h6 *ngIf="data.genderId == 1">Nam</h6>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <p>Địa chỉ:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.address}}</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row input-custom-inline">
+                            <div class="col s6 ">
+                                <p>Tên đăng nhập:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.userName}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6 ">
+                                <p>Nhóm quyền:</p>
+                                <div class="input-field inline">
+                                    <h6>{{getRole(data.roleId)}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row input-custom-inline">
+                            <div class="col s6 ">
+                                <p>Mã nhân viên:</p>
+                                <div class="input-field inline">
+                                    <h6>{{data.employeeCode}}</h6>
+                                </div>
+                            </div>
+                            <div class="col s6 ">
+                                <p>Trạng thái:</p>
+                                <div class="input-field inline">
+                                    <h6 *ngIf="data.userStatusId == 0">Chưa kích hoạt</h6>
+                                    <h6 *ngIf="data.userStatusId == 1">Hoạt động</h6>
+                                    <h6 *ngIf="data.userStatusId == 2">Khóa</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="avatar-container">
+                            <img id="avatarView" class="materialboxed" [imageLoader]="data.avatarUrl" alt="User Avatar">
+                        </div>
+                    </div>
+
+                    <!--Edit-->
+
+
+                    <!--Submit-->
+                    <div class="row submit-but">
+
+                        <a class="right cancel-but" [routerLink]="['/']"><i class="fa fa-times"></i>Trang chủ</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

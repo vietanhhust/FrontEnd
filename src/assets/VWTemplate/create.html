@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8" />
+  <link href="css/materialize.css" rel="stylesheet" />
+  <link href="fontawesome-free-5.9.0-web/css/all.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/mobile.css" rel="stylesheet" />
+  <title>VW</title>
+</head>
+
+<body>
+   <!-- header -->
+   <div class="navbar-fixed">
+    <nav class="navbar"> <!-- navbar content here  -->
+      <div class="nav-wrapper">
+        <ul class="left">
+            <li><a href="#" data-target="slide-out" class="sidenav-open">
+              <div id="btn-menu" class="">
+                <span class=""></span>
+                <span class=""></span>
+                <span class=""></span>
+    
+            </div>
+            </a>
+          </li>
+          <li class="mainTitle"><a style="cursor: text;">Inventory</a></li>
+          <li class="hide-on-small-and-down"><a href="#">Menu 1</a></li>
+          <li class="hide-on-small-and-down"><a href="#">Menu 2</a></li>
+          <li class="active hide-on-small-and-down"><a href="#">Menu 3</a></li>
+        </ul>
+        <ul class="right icon">
+            <li><a href="#" class="dropdown-trigger"  data-target='notify'><i class="fas fa-bell"></i><span class="new badge">4</span></a>
+              <ul id='notify' class='dropdown-content drop-notify'>
+                <li class="title-dr">Yêu cầu xử lý (1)</li>
+                  <li class="info-d">
+                    <img src="img/user-icon.png" alt="">
+                    <div class="info-d-u">
+                      <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                      <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                    </div>
+                  </li>
+                  <li class="info-d">
+                      <img src="img/user-icon.png" alt="">
+                      <div class="info-d-u">
+                        <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                        <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                      </div>
+                    </li>
+                  <li class="title-dr">Hoạt động liên quan</li>
+                  <li class="info-d">
+                      <img src="img/user-icon.png" alt="">
+                      <div class="info-d-u">
+                        <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                        <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                      </div>
+                    </li>
+                    <li class="info-d">
+                        <img src="img/user-icon.png" alt="">
+                        <div class="info-d-u">
+                          <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                          <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                        </div>
+                      </li>
+                </ul>
+            </li>
+            <li><a href="#" class="dropdown-trigger"  data-target='profile'><i class="fa fa-user"></i></a>
+              <ul id='profile' class='dropdown-content drop-profile'>
+                  <li><a href="#!"><i class="fa fa-info-circle"></i>Hồ sơ cá nhân</a></li>
+                  <li><a href="#!"><i class="fa fa-check-circle"></i>Chấm công</a></li>
+                  <li><a href="#!"><i class="fa fa-power-off"></i>Đăng xuất</a></li>
+                </ul>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    </div>
+<!-- End header -->
+  <!-- nav -->
+  <ul id="slide-out" class="sidenav">
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li class="active">
+              <a class="collapsible-header waves-effect" href="#!"><i class="fas fa-tools"></i> Thiết lập</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li ><a href="index.html"><i class="fas fa-tools"></i>Index.html</a></li>
+                  <li class="active"><a href="c-process.html"><i class="fas fa-tools"></i>C-process.html</a></li>
+                  <li><a href="create.html"><i class="fas fa-tools"></i>Create.html</a></li>
+                  <li><a href="khochua.html"><i class="fas fa-tools"></i>Khochua.html</a></li>
+                  <li><a href="listpage.html"><i class="fas fa-tools"></i>Listpage.html</a></li>
+                  <li><a href="twotable.html"><i class="fas fa-tools"></i>Twotable.html</a></li>
+                </ul>
+              </div>
+          </li>
+          <li class="">
+            <a class="collapsible-header waves-effect "><i class="fas fa-boxes"></i> Kho hàng</a>
+            <div class="collapsible-body">
+              <ul>
+                <li ><a href="#!"><i class="fas fa-tools"></i>First</a></li>
+                <li class="active"><a href="#!"><i class="fas fa-tools"></i>Second</a></li>
+                <li><a href="#!"><i class="fas fa-tools"></i>Third</a></li>
+                <li><a href="#!"><i class="fas fa-tools"></i>Fourth</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="collapsible-header waves-effect " href="#!"><i class="fas fa-cogs"></i> Hệ Thống</a></li>
+        </ul>
+     </li>
+</ul>
+<!-- end nav -->
+  <!-- Main -->
+  <main>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col s12">
+                <div class="row nav-tools">
+                  <div class="col s12 flex">
+                   <div class="title-n-t">
+                      <a href="">Danh sách sản phẩm</a> <span>/</span> <a >Create</a>
+                   </div>
+                   <div class="tool1">
+                     <a href="">Tính năng 1</a>
+                   </div>
+                 
+                   <div class="create-t3">
+                      <a class="">Hoạt động</a>
+                   </div>
+                  </div>
+                </div>
+                <div class="row create-page">
+                    <div class="col s12 create-page-content">
+                      <div class="card" >
+                        <div class="card-content">
+                        <form>
+                            <div class="row name-product">
+                                <div class="input-field col s7">
+                                  <input value="4 Doors Mirrored Accent Cabinet" id="first_name" type="text" class="validate">
+                                  <label for="first_name">Tên sản phẩm</label>
+                                </div>
+                                <div class="col s4">
+                                 <img src="img/no-photo-icon-5.jpg" alt="">
+                                </div>
+                              </div>
+                              <div class="row">
+                                  <ul class="tabs tab-create">
+                                      <li class="tab"><a class="active" href="#tab1">Thông tin chung</a></li>
+                                      <li class="tab"><a href="#tab2">Lưu kho</a></li>
+                                    </ul>
+                                    <div id="tab1" class="col s12 tab-content-custom">
+                                        <div class="row input-custom-inline">
+                                            <div class="col l6">
+                                              <p>Mã sản phẩm:</p>
+                                              <div class="input-field inline">
+                                                <input id="email_inline" type="text" class="validate">
+                                              </div>
+                                            </div>
+                                            <div class="col l6">
+                                                <p>Barcode:</p>
+                                                <div class="input-field inline">
+                                                   <div class="select-custom ip3-left">
+                                                      <select class="browser-default">
+                                                          <option value="" disabled selected>Choose your option</option>
+                                                          <option value="1">Option 1</option>
+                                                          <option value="2">Option 2</option>
+                                                          <option value="3">Option 3</option>
+                                                        </select>
+                                                   </div>
+                                                  <i class="material-icons prefix">flash_on</i>
+                                                  <input id="" type="text" class="ip7-left validate">
+                                                </div>
+                                              </div>
+                                          </div>
+                                          <div class="row input-custom-inline">
+                                              <div class="col l6">
+                                                  <p>Đơn vị chính:</p>
+                                                  <div class="input-field inline">
+                                                     <div class="select-custom select-custom-s12">
+                                                        <select class="browser-default">
+                                                            <option value="1">Option 1</option>
+                                                            <option value="2">Option 2</option>
+                                                            <option value="3">Option 3</option>
+                                                          </select>
+                                                     </div>
+                                                  </div>
+                                                </div>
+                                            <div class="col l6">
+                                              <p>Quy cách:</p>
+                                              <div class="input-field inline">
+                                                
+                                                <input id="email_inline" type="text" class="validate">
+                                                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row input-custom-inline">
+                                              <div class="col l6">
+                                                  <p>Hạn sử dụng:</p>
+                                                  <div class="input-field inline">
+                                                      <input id="" type="text" value="300" class="ip7-right validate">
+                                                     <div class="select-custom ip3-right">
+                                                        <select class="browser-default">
+                                                            <option value="1">Option 1</option>
+                                                            <option value="2">Option 2</option>
+                                                            <option value="3">Option 3</option>
+                                                          </select>
+                                                     </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col l6">
+                                                  <p>Ngày SX:</p>
+                                                  <div class="input-field inline">
+                                                    <i class="material-icons prefix datepicker">date_range</i>
+                                                    <input id="" type="text" class="date-val validate">
+                                                  </div>
+                                                </div>
+                                            </div>
+                                            <div class="row input-custom-inline">
+                                                <div class="col s12">
+                                                    <p>Ghi chú:</p>
+                                                <div class="input-field inline-s12">
+                                                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row input-custom-inline">
+                                              <div class="col s12">
+                                                <p>Barcode:</p>
+                                                <div class="input-field inline">
+                                                   <div class="select-custom select-multi">
+                                                      <select multiple>
+                                                          <option value="" disabled selected>Choose your option</option>
+                                                          <option value="1">Option 1</option>
+                                                          <option value="2">Option 2</option>
+                                                          <option value="3">Option 3</option>
+                                                        </select>
+                                                   </div>
+
+                                                </div>
+                                              </div>
+                                            </div>
+                                           
+                                    </div>
+                                    <div id="tab2" class="col s12 tab-content-custom">
+                                        <div class="row input-custom-inline">
+                                            <div class="col l6">
+                                              <p>Mã sản phẩm:</p>
+                                              <div class="input-field inline">
+                                                <input id="email_inline" type="text" class="validate">
+                                              </div>
+                                            </div>
+                                            <div class="col l6">
+                                                <p>Barcode:</p>
+                                                <div class="input-field inline">
+                                                   <div class="select-custom ip3-left">
+                                                      <select class="browser-default">
+                                                          <option value="" disabled selected>Choose your option</option>
+                                                          <option value="1">Option 1</option>
+                                                          <option value="2">Option 2</option>
+                                                          <option value="3">Option 3</option>
+                                                        </select>
+                                                   </div>
+                                                  <i class="material-icons prefix">flash_on</i>
+                                                  <input id="" type="text" class="ip7-left validate">
+                                                </div>
+                                              </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              
+                              <div class="row submit-but">
+                                  <button class="right" type="submit">Tạo mới</button>
+                                <a class="right" href="">Hủy</a>
+                              </div>
+                        </form>
+                        </div>
+                        </div>
+                        <div class="activety">
+                            <div class="info-ac active">
+                              <div class="title-ac">
+                                <a class="show-ac active"><i class="fas fa-comment-dots"></i>Trao đổi</a>
+                                <a><i class="fas fa-user-clock"></i>Nhắc việc</a>
+                                <a class="show-u-ac dropdown-trigger" data-target='user-ac'><i class="fas fa-users"></i></a>
+                                <ul id='user-ac' class='dropdown-content drop-user-ac'>
+                                  <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+                                  <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+                                  <li><a href="#!"><i class="fa fa-times"></i>Hồ sơ cá nhân</a></li>
+  
+                                </ul>
+                              </div>
+                              <div class="content-ac">
+                                <textarea value="">Chú ý kiểm tra báo giá nhé các bạn!</textarea>
+                                <div class="c-ac">
+                                  <div class="chip">
+                                    bao-gia-nguyen-lieu-ABX.xlsx
+                                    <i class="close material-icons">close</i>
+                                  </div>
+                                </div>
+                          
+                                <div class="file-ac">
+                                  <a>Đăng</a>
+                                  <label for="upload-ac"><i class="fa fa-paperclip"></i></label>
+                                  <input type="file" name="photo" id="upload-ac" />
+                               </div>
+                            </div>
+                          </div>
+                          <div class="list-activety">
+  
+                            <div class="repeat">
+                                <div class="title-l-ac">
+                                    <h4>Hôm nay</h4>
+                                    <hr>
+                                  </div>
+                                  <ul class="list-ac">
+                                    <li>
+                                      <img src="img/user-icon.png" alt="">
+                                      <div class="info-l-ac">
+                                        <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                        <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                      </div>
+                                    </li>
+                                    <li>
+                                        <img src="img/user-icon.png" alt="">
+                                        <div class="info-l-ac">
+                                          <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                          <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                          <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                          <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                        </div>
+                                      </li>
+                                  </ul>
+                                  <div class="title-l-ac">
+                                      <h4>12-11-2019</h4>
+                                      <hr>
+                                    </div>
+                                    <ul class="list-ac">
+                                      <li>
+                                        <img src="img/user-icon.png" alt="">
+                                        <div class="info-l-ac">
+                                          <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                          <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                        </div>
+                                      </li>
+                                      <li>
+                                          <img src="img/user-icon.png" alt="">
+                                          <div class="info-l-ac">
+                                            <h4>Nguyễn Văn A - <span>12h30ph</span></h4>
+                                            <p>Đã sửa thông tin: đơn vị chính, QC</p>
+                                            <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                            <a href=""><i class="fa fa-download"></i>bao-gia-nguyen-lieu-2019.xlsx</a>
+                                          </div>
+                                        </li>
+                                    </ul>
+                            </div>
+                            
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+      </div>
+  </main>
+
+  <!-- End main -->
+
+  <!-- footer -->
+  <footer>
+ 
+  </footer>
+  <!-- End footer -->
+  <div class="switch dlmode" style="display:block; position:fixed; bottom:25px; cursor:pointer; right:10px;z-index:999999;">
+      <label>
+        Light
+        <input type="checkbox">
+        <span class="lever"></span>
+        Dark
+      </label>
+    </div>
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

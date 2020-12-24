@@ -1,0 +1,73 @@
+
+/*tab*/
+
+.tabs-verticle {
+    width: auto !important;
+    height: auto !important;
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .tabs-verticle .tab {
+    display: block;
+    float: none;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .tabs-verticle1 .tab a {
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    line-height: 24px;
+    margin-top: 12px;
+  }
+  
+  .tabs-verticle .indicator {
+    display: none;
+  }
+  
+  .tabs-verticle a {
+    color: #000000 !important;
+    border-right: solid 3px #ffefef;
+  }
+  
+  .tabs-verticle a.active {
+    border-right: solid 3px var(--primarybg-color);
+    color: var(--primarybg-color) !important;
+    background-color: #f7f0f1 !important;
+  }
+ .tabs-horizontal a.active{
+  background-color: #ccdef7;
+  color: white;
+  
+} 
+.tabs .indicator{
+    background-color: #3f8828
+ }
+ .card-panel{
+  margin-top: 0px;
+  margin-top: 0px;
+  padding: 0px 5px 5px 0px;
+ }
+ .card{
+  margin: 0;
+  .tabs .tab {
+    line-height: 40px;
+    height: 40px;
+}
+.tabs {
+  border-bottom: 2px solid #2b5797;
+  height: 40px;}
+ }
+ .tabs .indicator {
+  display: none !important;
+}
+
+.activer{
+  display: block !important
+}
+.indicator{
+  display: none;
+}

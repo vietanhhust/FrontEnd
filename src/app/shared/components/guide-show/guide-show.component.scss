@@ -1,0 +1,100 @@
+.guide-title-tabs{
+    ul{
+        list-style-type: none;
+    }
+    .guide-item{
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #1a1010;
+        vertical-align: middle;
+        min-height: 35px;
+        padding-top: 6px;
+        transition: background-color 0.4s, color 0.3s;
+        cursor: pointer;
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 20px;
+        line-height: 1.4
+        
+    }
+}
+
+.description-body{
+    min-height: calc(100vh - 170px);
+    max-height: calc(100vh - 170px);
+    border: 1px solid lightblue;
+    overflow: scroll;
+    margin-top: -1px;
+    padding-top: 60px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.active{
+    // background-color: rgb(47, 47, 233);
+
+    position: relative;
+    font-weight: 500;
+}
+
+.body-container{
+    background-color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .buffer-div-left, .buffer-div-right {
+        display: none;
+    }
+
+    
+    .title-container{
+        width: 25% !important;
+        margin-left: 65px !important;
+        li{
+            font-size: 17px !important;
+        }
+    }
+    .body-container{
+        font-size: 1.4rem;
+        width: 60% !important;
+
+    }
+    .description-body{
+        padding-top: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    .buffer-div-left, .buffer-div-right {
+        display: none;
+    }
+
+    
+    .title-container{
+        width: 80% !important;
+        margin-left: 10% !important;
+        li{
+            font-size: 17px !important;
+        }
+    }
+    .body-container{
+        font-size: 1.4rem;
+        width: 100% !important;
+    }
+    .description-body{
+        padding-top: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+}

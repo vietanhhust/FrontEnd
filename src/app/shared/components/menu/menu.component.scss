@@ -1,0 +1,211 @@
+.row{
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.header-home { 
+  background: white;
+  a:hover{
+  background-color: #c6def7;  
+  }
+}
+.header-home > a:hover i{
+  // color: white !important;
+  color: initial;
+}
+.s12, .m12{
+  padding-left: 0;
+  padding-right: 0;
+}
+.logoul{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    a{
+        color: black;
+        font-size: 11px;
+        margin-left: 7px;
+    }
+    img{
+        width: 48px;
+        height: auto;
+        margin-right: 4px;
+        transform: translateY(4px);
+    }
+}
+.sidenav .collapsible-body li a{
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 0px !important;
+
+}
+.sidenav .collapsible-body li .collapsible-body li a {
+    padding: 0 23.5px 0 54px;
+    background: white;
+}
+.sidenav .collapsible-body li .collapsible-body li .collapsible-body li a {
+  padding: 0 23.5px 0 84px;
+  background: white;
+}
+
+.sidenav .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body  a {
+  padding: 0 23.5px 0 100px;
+  background: white;
+}
+
+.sidenav .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body a {
+  padding: 0 23.5px 0 115px;
+  background: white;
+}
+
+.sidenav .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body a {
+  padding: 0 23.5px 0 130px;
+  background: white;
+}
+
+.sidenav .collapsible-body li .collapsible-body li .collapsible-body
+li .collapsible-body li .collapsible-body li .collapsible-body li .collapsible-body a {
+  padding: 0 23.5px 0 145px;
+  background: white;
+}
+
+.group{
+    background: #f9f9f9;
+}
+.fixactive.active{
+  border-left: 3px solid var(--secondary-color);
+}
+.sidenav li.active > a {
+  border-right: 3px solid var(--secondary-color);
+}
+.collapsible-body li a i {
+  text-align: left;
+}
+
+
+.lv0{
+  padding-left: 10px ;
+  white-space: nowrap;
+
+}
+
+.lv1{
+  padding-left: 20px;
+  white-space: nowrap;
+
+}
+
+.lv2{
+  padding-left: 30px ;
+  white-space: nowrap;
+
+}
+
+.lv3{
+  padding-left: 40px;
+  white-space: nowrap;
+
+}
+
+.lv4{
+  padding-left: 50px;
+  white-space: nowrap;
+
+}
+
+.collapsible-header{
+  padding: 0 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: white;
+}
+.collapsible-body{
+  padding: 0 !important;
+}
+
+.collapsible-body{
+  max-width: 100%;
+
+}
+.row{
+  max-width: 100%;
+}
+
+ul, li, .collapsible-body, .collapsible-header{
+  padding-right: 0 !important;
+}
+
+.active-a{
+  border-right: 5px solid #2b5797;
+}
+
+.expand-icon{
+  font-size: 12px;
+    position: absolute;
+    top: 4px;
+    right: 7px;
+    width: 10px;
+}
+
+.sidenav > li a:not(.active-a){
+  padding-right: 0px !important;
+  border-right: 0px;
+}
+.fa-caret-down{
+  width: 14px !important;
+}
+
+.sidenav{
+  box-sizing: border-box !important;
+  overflow-y: auto;
+  background-color: white;
+}
+// .sidenav ::-webkit-scrollbar{
+//   background-color: red !important; 
+// }
+
+// .sidenav::-webkit-scrollbar{
+//   background-color: red !important; 
+// }
+
+// .sidenav:-webkit-scrollbar{
+//   background-color: red !important; 
+// }
+
+.sidenav::-webkit-scrollbar-track {
+ 
+  border-radius: 1px;
+  color:white;
+  background-color:white;
+  
+}
+
+.sidenav::-webkit-scrollbar {
+  
+}
+
+.collapsible-header > a:hover{
+  background-color: #c6def7 !important;
+  // color: white;
+  // i {
+  //   color: white !important;
+  // }
+}
+
+.expand-sidenav{
+  background: #2b5797;
+  width: 34px;
+  height: 33px;
+  font-size: 17px;
+  color: white;
+  outline: none;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

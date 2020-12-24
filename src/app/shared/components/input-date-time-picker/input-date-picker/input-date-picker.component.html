@@ -1,0 +1,11 @@
+
+<p class="date-title" [class.sm-label]="isHorizontal">{{title}} <span *ngIf='required!=null' style="color: red;">&nbsp;(*)</span></p>
+<div class="input-field inline" [class.date-picker-horizontal]="isHorizontal" [class.date-picker-incell]="isInCell" >
+        <i class="material-icons prefix icondate" #pickerElm>date_range</i>
+        <input (focus)="focusFunction()" [required]="required" #modelName="ngModel" [(ngModel)]="value" [id]="id" [name]="name" type="text" [disabled]="disabled"
+        onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"[readOnly]="readonly" [placeholder]="placeholder" [class.invalid]="modelName.invalid && frm.invalid && frm.submitted"
+         class="date-val validate" [ngStyle]="customStyle">
+     <!--  check required -->
+    <span *ngIf="(frm && modelName?.errors?.required && frm.invalid && frm.submitted) || (frm && frm.submitted && modelName?.errors?.required)"
+    class="helper-text" >Vui lòng nhập {{title}}</span>
+ </div>

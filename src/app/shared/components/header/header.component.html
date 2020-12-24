@@ -1,0 +1,180 @@
+<!-- header -->
+<div class="navbar-fixed" id="navbar-fixed">
+  <nav class="navbar">
+    <!-- navbar content here  -->
+    <div class="nav-wrapper">
+
+      <ul class="left" #widtne [class.expend]="isExpand" [style.max-width]="isExpand? '':'903px'">
+        <li><a data-target="slide-out" class="sidenav-open">
+            <div id="btn-menu" class="">
+              <img src="/assets/images/menub.png" alt="">
+              <!-- <span class=""></span>
+                  <span class=""></span>
+                  <span class=""></span> -->
+            </div>
+          </a>
+        </li>
+
+        <li class="mainTitle"><a style="pointer-events: none;"> Phần mềm tính giờ </a></li>
+
+
+        <!--Phần này là list menu load về cũ-->
+
+        <!-- <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: recursiveList }"> </ng-container>
+
+            <ng-template #recursiveListTmpl let-list="list">
+              <ng-container *ngFor="let item of list | sortwithName : 'sortOrder'">
+              <li [ngClass]="{'parentul': item.level == 2 && item.child.length>0}" *ngIf="item.isShow" class="hide-on-small-and-down"  routerLinkActive="active">
+
+                <a *ngIf="!item.isDisabled && item.child.length == 0 && item.isShow" [routerLink]="item.url" [queryParams]="item.param">{{item.menuName}}
+                </a>
+
+                <a *ngIf="!item.isDisabled && item.child.length > 0 && item.isShow">{{item.menuName}}
+                  <i *ngIf="item.level == 1" style="font-size: 14px;height: 10px;line-height: 13px;" class="fa fa-angle-down"></i>
+                  <i *ngIf="item.level != 1" style="font-size: 14px;height: 10px;line-height: 13px;position: absolute;right: 7px;top: 10px;" class="fa fa-angle-right"></i>
+                </a>
+
+                  <ul [ngClass]="{'dropdown-header': item.level < 3,'childul': item.level == 2 && item.child.length>0}" >
+                    <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: item.child }"></ng-container>
+                 </ul>
+
+              </li>
+            </ng-container>
+            </ng-template> -->
+
+
+        <!--Phần chứa nút tìm kiếm của menu cũ-->
+
+        <!-- <li class="searchmenu" [ngClass]="{'active': isActive}" [style.right]="isActive ? '-248px':'-35px'">
+              <input placeholder="Tìm kiếm..." autocomplete="off" [(ngModel)]="keyword" #inputSearch name="keyword" [ngModelOptions]="{standalone: true}" type="text"/>
+                <a>
+                  <i title="Truy cập nhanh" class="fa fa-search" [ngClass]="{'fa-times': isActive}" (click)="isActive ? isActive = false : isActive = true; showSearch()"></i>
+                </a>
+              <div class="list-menu" *ngIf="isActive">
+                <ng-container *ngFor="let menu of searchList | SearchPipe: keyword ; let i = index" >
+                  <a class="item-menu" *ngIf="i < 10" (click)="isActive = false" [routerLink]="menu.url" [queryParams]="menu.param">{{menu.menuName}}</a>
+                </ng-container>
+              </div>
+            </li>
+            <li class="onoff" *ngIf="widtne.offsetWidth > 902 && !isActive">
+                <i class="fa " [ngClass]="{'fa-caret-left': isExpand, 'fa-caret-right': !isExpand}" (click)="isExpand ? isExpand = false : isExpand = true"></i>
+            </li> -->
+
+        <li>
+          <a>Dashboard</a>
+        </li>
+        <li>
+          <a>Phân quyền</a>
+        </li>
+        <li>
+          <a>Tài khoản</a>
+        </li>
+        <li>
+          <a>Danh mục</a>
+        </li>
+        <li>
+          <a>Nhóm máy</a>
+        </li>
+        <li>
+          <a>Báo cáo</a>
+        </li>
+        <li>
+          <a>
+            Chức năng khác
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+      </ul>
+
+      <ul class="right icon">
+        <!-- <li style="pointer-events: none; opacity: 0.7;"><a class="dropdown-trigger" data-target='notify'><i class="fas fa-bell"></i><span class="new badge">0</span></a>
+                <ul id='notify' class='dropdown-content drop-notify'>
+                  <li class="title-dr">Yêu cầu xử lý (1)</li>
+                    <li class="info-d">
+                      <img src="../../../../assets/images/user-icon.png" alt="">
+                      <div class="info-d-u">
+                        <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                        <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                      </div>
+                    </li>
+                    <li class="info-d">
+                      <img src="../../../../assets/images/user-icon.png" alt="">
+                        <div class="info-d-u">
+                          <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                          <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                        </div>
+                      </li>
+                    <li class="title-dr">Hoạt động liên quan</li>
+                    <li class="info-d">
+                      <img src="../../../../assets/images/user-icon.png" alt="">
+                        <div class="info-d-u">
+                          <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                          <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                        </div>
+                      </li>
+                      <li class="info-d">
+                        <img src="../../../../assets/images/user-icon.png" alt="">
+                        <div class="info-d-u">
+                            <h4>Nguyễn Văn A <span>- 18h:15p</span></h4>
+                            <p>Yêu cầu duyệt phiếu nhập kho NK001</p>
+                          </div>
+                        </li>
+                  </ul>
+              </li> -->
+        <li class="comp"><a class="company"><span class="hide-on-md" *ngIf="!isExpand">Administrator</span> <img
+              *ngIf="logo" [src]="logo" alt=""></a>
+          <!-- <div class="infohovercomp">
+            <p style="font-weight: 500;">{{Company?.companyName}}</p>
+            <p>Đại diện: {{Company?.legalRepresentative}}</p>
+            <p>Email: {{Company?.email}}</p>
+            <p>SĐT: {{Company?.phoneNumber}}</p>
+            <p>MST: {{Company?.taxIdNo}}</p>
+            <p>Website: {{Company?.website}}</p>
+            <p>ĐC: {{Company?.address}}</p>
+
+          </div> -->
+        </li>
+        <li class="prof"><a class="dropdown-trigger avatar" data-target='profile'><img
+              *ngIf="avatar && avatar.length > 30" [src]="avatar">
+            <div *ngIf="!avatar || avatar.length < 30" class="avarnull">{{nameSplit}}</div> <i
+              class="fa fa-angle-down avatari"></i>
+          </a>
+          <ul id='profile' class='dropdown-content drop-profile'>
+            <!-- <li><a><i class="far fa-smile"></i>{{user?.fullName}}</a></li> -->
+            <li><a [routerLink]="['/system/profile']" [queryParams]='{viewmode: " "}'><i
+                  class="fa fa-info-circle"></i>Thông tin tài khoản</a></li>
+            <li><a [routerLink]="['/system/changepass']"><i class="fas fa-key"></i>Đổi mật khẩu</a></li>
+            <li (click)="loguot()"><a><i class="fa fa-power-off"></i>Đăng xuất</a></li>
+            <!-- <li (click)='openListError()'><a><i class="fa fa-bug"></i>Danh sách lỗi</a></li> -->
+            <!-- <li>
+                        <div class="switch dlmode">
+                        <label style="margin-left: 16px;">
+                          Light
+                          <input class="dmode" type="checkbox">
+                          <span class="lever"></span>
+                          Dark
+                        </label>
+                      </div>
+                    </li> -->
+          </ul>
+          <!-- <div class="infohoverprofile">
+            <p style="font-weight: 500;">Tài khoản VERP</p>
+            <p>[{{user?.employeeCode}}] - {{user?.fullName}}</p>
+            <p>{{user?.email}}</p>
+            <p>{{user?.phone}}</p>
+          </div> -->
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- End header -->

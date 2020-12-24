@@ -1,0 +1,49 @@
+a.openModal {
+    padding: 0px 10px 5px;
+    text-align: center;
+    i {
+        margin: 0;
+        font-size: 16px;
+    }
+}
+.modal-lg {
+    min-height: 190px;
+    width: 350px !important;
+}
+.nav-tools .tool3 a {
+    background: none !important;
+}
+.modal .modal-title .tool3 {
+    min-width: 50px;
+    width: 50px;
+    padding-right: 14px;
+}
+[type="radio"]:not(:checked) + span,
+[type="radio"]:checked + span {
+    position: relative;
+    padding-left: 25px;
+}
+.thang {
+    p {
+        display: inline;
+        color: black;
+        font-size: 16px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: -1px;
+        line-height: 1.5em;
+        vertical-align: middle;
+    }
+    select {
+        width: 67px;
+        display: inline;
+        height: 36px;
+    }
+}
+label span {
+    color: black;
+}
+.fa-calendar-week {
+    transform: translateX(2px);
+    color: #b1b1b1 !important;
+}

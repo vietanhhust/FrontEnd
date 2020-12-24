@@ -1,0 +1,66 @@
+<ul [@expand]='states' id="slide-out" class="sidenav" #sidenav collapsible>
+  <li class="no-padding header-home">
+    <a style="width: 100%;" class="" routerLink="/">
+      <i class="fas fa-home"></i>Trang chủ
+    </a>
+  </li>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="accordion">
+      <ng-container *ngTemplateOutlet='treeMenu; context: {list: recursiveList}'></ng-container>
+    </ul>
+  </li>
+  <button (click)='expandMenu()' type="button" title="Mở rộng menu" class="expand-sidenav">
+    <i *ngIf='states=="width"' class="fa fa-chevron-circle-left"></i>
+    <i *ngIf='states=="normal"' class="fa fa-chevron-circle-right"></i>
+  </button>
+</ul>
+
+
+
+<ng-template #treeMenu let-list='list'>
+  <ng-container *ngFor='let item of list'>
+    <li style="position: relative;" #item_li class="menu_li">
+      
+      <div class="collapsible-header">
+        <a  title="{{item.menuName}}" *ngIf='!item.isDisabled && item.child.length > 0 && item.isShow' style="width: 100%;"
+          class="wave-effect" [ngClass]="
+          {
+            'lv0': item.level==0,
+            'lv1': item.level==1,
+            'lv2': item.level==2,
+            'lv3': item.level==3,
+            'lv4': item.level==4
+          }
+          ">
+          <i style="font-size: 14px" class="{{item.icon}}"></i> {{item.menuName}}
+          <i *ngIf='!item_li.className.includes("active") && item.child.length > 0' class="fas fa-caret-right expand-icon"></i>
+          <i *ngIf='item_li.className.includes("active") && item.child.length > 0' class="fas fa-caret-down expand-icon"></i>
+        </a>
+
+        <a style="width: 100%;" routerLinkActive [routerLink]="item.url" [ngClass]="{ 'active-a': rla.isActive && item.url && item.url.length > 4,
+          'lv0': item.level==0,
+          'lv1': item.level==1,
+          'lv2': item.level==2,
+          'lv3': item.level==3,
+          'lv4': item.level==4
+          }" #rla="routerLinkActive" title="{{item.menuName}}" [queryParams]="item.param"
+          *ngIf="!item.isDisabled && item.child.length == 0 && item.isShow">
+          <i style="font-size: 14px" class="{{item.icon}}"></i>{{item.menuName}}
+        </a>
+
+      </div>
+
+      <div class="collapsible-body" *ngIf='item.child.length > 0'>
+        <div class="row">
+          <div class="col s12 m12">
+            <ul class="collapsible" data-collapsible="accordion">
+              <ng-container *ngTemplateOutlet='treeMenu; context:{list: item.child}'></ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="collapsible-body" *ngIf='item.child.length == 0' style="height: 0 !important;"></div>
+      
+    </li>
+  </ng-container>
+</ng-template>

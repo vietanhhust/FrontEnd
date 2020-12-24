@@ -1,0 +1,167 @@
+.report-table {
+  width: 100%;
+ // min-width: 2200px;
+}
+.tabler{
+padding: 0;
+height: calc(100vh - 96px);
+position: relative;
+}
+
+.report-table th{
+font-weight: 500;
+border: 1px solid #bdbdbd;
+  position: sticky;
+  z-index: 2;
+  top: -1px;
+}
+
+.report-table tr td{
+white-space: pre-line;
+overflow: unset;
+max-width: 200px;
+}
+
+.nav-tools .drop-tool1 {
+width: 222px !important;
+}
+.rowReport{
+height: calc(100vh - 100px);
+display: inline-flex;
+padding: 0 5px;
+position: relative;
+margin-top: 4px;
+.leftReport{
+  width: 195px;
+  border-right: 0;
+  position: relative;
+  margin-right: 5px;
+  padding-right: 3px;
+  padding-left: 3px;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.19), -4px 6px 6px rgba(0, 0, 0, 0.23);
+}
+.rightReport{
+  width: calc(100vw - 210px);
+  overflow: auto;
+  box-shadow: 2px 4px 20px rgba(0, 0, 0, 0.19), 2px 6px 6px rgba(0, 0, 0, 0.23);
+}
+button.butl {
+     width: 30px;
+  padding: 3px 1px 4px 1px;
+  position: absolute;
+  left: 170px;
+  bottom: 0px;
+  line-height: 18px;
+  border: none;
+  background: #2b5797;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+}
+.headerReport{
+position: relative;
+.rowHead{
+  width: calc(100vw - 249px);
+  display: flex;
+  justify-content: space-between;
+}
+}
+.signReport{
+display: flex;
+width: calc(100vw - 238px);
+padding: 5px 10px;
+justify-content: space-between;
+}
+.rowReport{
+  .search-view-box {
+    .search-view-col {
+      float: left;
+      padding: 0 8px 0 4px;
+    }
+    .row {
+        max-width: 500px;
+        margin: 0;
+    }
+    .row.input-custom-inline{
+      height: 30px;
+    }
+    .input-custom-inline p {
+
+        line-height: 16px;
+    }
+    .slide-in-btn {
+        text-align: right;
+        margin: 5px -3px;
+    }
+    .input-custom-inline .inline {
+      width: 100%;
+      margin-bottom: 0px !important;
+      margin-top: 3px !important;
+    }
+    .slide-in-btn .btn-save {
+      background: var(--primary-color);
+      margin: auto;
+      display: block;
+      margin-top: 14px;
+    }
+    .input-custom-inline p {
+      font-size: 14px;
+      color: #2b5797
+    }
+    .slide-in-btn .btn-action i {
+      font-size: 0.7rem;
+      margin-right: 6px;
+      transform: translateY(-1px);
+      position: unset;
+    }
+    .slide-in-btn button {
+      padding: 0 10px 0 10px !important;
+    }
+    .browser-default{
+      display: block;
+      height: 29px;
+      border: none;
+      border-bottom: 1px solid #dddddd;
+    }
+    .ng-select {
+      .ng-has-value .ng-clear-wrapper {
+        margin-top: 22px;
+    }
+    .ng-has-value .ng-arrow-wrapper {
+      margin-top: 0;
+  }
+      margin-top: 7px !important;
+  }
+  }
+  .table-custom-color:not(.table-custom-excel) td input {
+    height: 21px !important;
+    font-size: 14px;
+    -webkit-transform: translateY(5px) !important;
+    transform: translateY(5px) !important;
+    border: 1px solid #dadada !important;
+    padding: 0 3px;
+    &:focus{
+      border: 1px solid #000000 !important;
+    }
+    &:hover{
+      border: 1px solid #000000 !important;
+    }
+  }
+
+}
+.daterange{
+   input.date-val {
+    height: 34px !important;
+  }
+  .input-field .prefix {
+    right: -2px !important;
+    top: 18px !important;
+    color: #b1b1b1 !important;
+  }
+}
+
+.report-menu-config{
+  max-width: 800px !important;
+  width: 800px;
+}

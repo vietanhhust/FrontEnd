@@ -1,0 +1,115 @@
+#sign-in, #sign-up, #forgot-password, #lock{
+    z-index: 899999;
+    position: relative;
+}
+#sign-in{
+    .fill{
+        height: 100vh;
+        background: #02020261;
+    }
+    background: url(../../../assets/images/LockScreen.png);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    object-fit: contain;
+}
+.c-login{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 330px;
+box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.1);
+.login{
+    opacity: 0.8;
+    background-color: #ffffff;
+    padding: 27px 25px 25px;
+    min-height: 200px;
+    border-radius: 0 0 4px 4px;
+}
+form{
+    position: absolute;
+    top: 73px;
+    left: 24px;
+    button{
+        width: 200px;
+  height: 32px;
+  line-height: 31px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #2b5797;
+  width: 100%;
+  border: none;
+  color: white;
+  font-weight: 400;
+    }
+}
+    .title-lg{
+      width: 500px;
+        height: 46px;
+        z-index: 999;
+        position: relative;
+        box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+         opacity: 0.9;
+        border-radius: 4px 4px 0 0 ;
+        h4{
+            font-size: 18px;
+            text-align: center;
+            line-height: 45px;
+            font-weight: 500;
+            color: var(--font-color);
+        }
+    }
+    .input-f{
+        position: relative;
+        i{
+            position: absolute;
+            top: 8px;
+            right: 11px;
+          }
+      input{
+        width: 430px;
+        height: 30px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        margin-bottom: 14px;
+        border: none;
+        padding: 0 10px 2px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+      select{
+        height: 32px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        margin-bottom: 14px;
+        border: none;
+        padding: 0 10px 0;
+        font-size: 15px;
+        font-weight: 500;
+        -webkit-appearance: none;
+    -moz-appearance: none;
+      }
+
+    }
+}
+.danger{
+    color: red;
+    width: 449px;
+    margin-top: 13px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+}
+.loding{
+    pointer-events: none;
+    opacity: 0.6;
+  i.fa-spinner{
+    display: inline-flex !important;
+  }
+}

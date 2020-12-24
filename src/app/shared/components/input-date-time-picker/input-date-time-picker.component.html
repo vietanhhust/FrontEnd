@@ -1,0 +1,12 @@
+<div class="date-time-picker">
+    <input type="text" class="hour-input" input-number decimal-place="0" [min-number]="0" [max-number]="23"
+        placeholder="Giờ" [(ngModel)]="hour" (ngModelChange)="onChangeTime()" />
+    <label>h</label>
+    <input type="text" class="minute-input" input-number decimal-place="0" [min-number]="0" [max-number]="59"
+        placeholder="Phút" [(ngModel)]="minute" (ngModelChange)="onChangeTime()" />
+
+    <div class="date-input">
+        <input-unix-date-picker [(ngModel)]="date" (ngModelChange)="onChangeDate()" [name]="name" [format]="format"
+            [disabled]="disabled" [readonly]="readonly" [required]="required"></input-unix-date-picker>
+    </div>
+</div>

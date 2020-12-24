@@ -1,0 +1,55 @@
+<div class="modal-title">
+    <div class="row nav-tools">
+        <div class="col s12 flex">
+            <div class="title-n-t">
+                <a>Chi tiết lỗi: {{data.error.type}}</a>
+            </div>
+
+
+            <div class="tool1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-content">
+    <div class="row">
+
+        <form novalidate name="form" #form='ngForm'>
+            <!-- Thời gian lỗi-->
+            <div class="row input-custom-inline" style="margin-top: -20px;">
+                <!-- <input-field [(ngModel)]="data.error.time" type="text" name="'time'" disable='true' title="Thời gian"
+                    [frm]="form">
+                </input-field> -->
+                <p style="transform: translateY(0px);">Thời gian: </p>
+                <span>{{data.error.time | date:"dd-MM-yyyy h:mm:ss"}}</span>
+            </div>
+            <!--Đường dẫn bị lỗi-->
+            <div class="row input-custom-inline" style="margin-top: -5px;">
+
+                <input-field [(ngModel)]="data.error.url" type="text" name="'url'" disable='true' title="Đường dẫn"
+                    [frm]="form">
+                </input-field>
+            </div>
+        </form>
+
+    </div>
+    <div style="height: calc(100% - 71px);">
+        <div style="margin-bottom: 4px">
+            <p>
+                <a (click)='copy()' class="btn-copy">
+                    <i class="fas fa-copy"></i> Copy
+                </a>
+            </p>
+
+        </div>
+        <textarea readonly='1' id="error-content" class="error-content">{{data.error.content}}</textarea>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+        <i class="fa fa-times"></i>Đóng
+    </a>
+</div>

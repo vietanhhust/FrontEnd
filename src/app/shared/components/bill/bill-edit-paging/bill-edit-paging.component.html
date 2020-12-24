@@ -1,0 +1,20 @@
+
+
+    <div class="search" *ngIf="isShowSearch != false">
+      <input placeholder="Tìm kiếm..." (keyup.enter)="onSearchs(prepareKey)"  [(ngModel)]="prepareKey" name="prepareKey" type="text">
+      <i (click)='keyword = "";prepareKey=""; onSearch.emit(prepareKey)' *ngIf='keyword!="" || prepareKey!=""' class="fa fa fa-times"></i>
+      <button (click)="onSearchs(prepareKey)"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="pagination">
+      <select class="browser-default" [(ngModel)]="limit"  [ngModelOptions]="{standalone: true}" (ngModelChange)="changelimit()" title="Số hàng mỗi trang">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="500">500</option>
+          <option value="9999">All</option>
+      </select>
+      <p class="pf">{{fromRecord}}</p>-<p class="pl">{{toRecord}}</p><span>/{{total}}</span>
+      <i [class.disablepagi]="fromRecord == 1" class="fa fa-angle-left" (click)="prevp()"></i>
+      <i [class.disablepagi]="toRecord == total" (click)="nextp()"class="fa fa-angle-right"></i>
+    </div>
