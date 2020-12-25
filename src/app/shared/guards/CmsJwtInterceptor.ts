@@ -32,8 +32,6 @@ export class CMSJwtInterceptor implements HttpInterceptor {
 
         //const currentUser = this.sessionService.user;
         //const isLoggedIn = currentUser && currentUser.token;
-
-        console.log("Đây là request: "  + JSON.stringify(request));
         return next.handle(request);
     }
 
@@ -47,7 +45,6 @@ export class CMSJwtInterceptor implements HttpInterceptor {
 
         const isApiUrl = request.url.startsWith(environment.apiEndpoint);
         
-        console.log('có phải url?: ' + isApiUrl);
         if (!isApiUrl) {
             return request;
         }

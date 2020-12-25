@@ -75,7 +75,6 @@ export class PopupComponent implements OnInit, AfterViewInit {
 
     $(this.elm).modal({
       complete: function () {
-        console.log('complete', $this)
       },
       onCloseEnd: function () {
         PopupCountService.removePopup($this);

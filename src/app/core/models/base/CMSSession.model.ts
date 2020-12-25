@@ -16,3 +16,4 @@ export interface FrontEndRoles{
 }
 
 export const ApiEndpoint = 'http://192.168.0.2:5001/api/'
+export const ServerIp = '192.168.0.2:5001';

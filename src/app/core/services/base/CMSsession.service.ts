@@ -158,7 +158,6 @@ export class CMSSessionService {
 
   // Xem có quyền không theo frontend Code. 
   getPermissionByFrontendCode(frontenCode: number): boolean {
-    console.log("gọi hàm kiểm tra: " + this.getCMSPermission());
     if (this.getCMSPermission().length == 0) 
       return false;
     else 

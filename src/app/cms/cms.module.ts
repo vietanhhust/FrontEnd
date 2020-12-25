@@ -4,11 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { CMSAccountComponent } from './cmsaccount/cmsaccount.component';
 import { CMSRoutingRoutes } from './cms-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { CMSCategoryItemComponent } from './cms-category-item/cms-category-item.component';
+import { CMSCategoryitemAddComponent } from './cms-category-item/cms-categoryitem-add/cms-categoryitem-add.component';
+import { CMSCategoryitemEditComponent } from './cms-category-item/cms-categoryitem-edit/cms-categoryitem-edit.component';
 
 
 @NgModule({
   declarations: [
-    CMSAccountComponent
+    CMSAccountComponent,
+    CMSCategoryItemComponent,
+    CMSCategoryitemAddComponent, 
+    CMSCategoryitemEditComponent
   ],
   imports: [
     FormsModule,
@@ -17,7 +23,9 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ], 
   exports: [
-    CMSAccountComponent
+    CMSAccountComponent, 
+    CMSCategoryItemComponent, 
+    CMSCategoryitemEditComponent
   ]
 })
 export class CMSModule { }

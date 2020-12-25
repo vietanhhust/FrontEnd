@@ -165,7 +165,6 @@ export class ApiService {
   }
 
   post<T>(requestUrl: RequestUrl | string, body: any | null, xmodule?: number, options?: ExtraRequestOptions) {
-    console.log(ApiService.getRequestUrl(requestUrl));
     return this.request<T>(
       this.httpClient.post<T>(
         ApiService.getRequestUrl(requestUrl),
@@ -261,7 +260,6 @@ export class ApiService {
     return this.request(r, options)
       .pipe(map((r) => {
 
-        console.log(r);
         const req = r as HttpResponse<Blob>;
 
         const blob = req.body;

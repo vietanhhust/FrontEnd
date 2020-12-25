@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CMSAccountComponent implements OnInit {
 
   constructor() { }
+  isShowPage = true;  
 
 
   selectedValueTab: any;

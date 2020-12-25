@@ -13,6 +13,7 @@ import { EnumObjectType } from 'src/app/common/constants/system/EnumObjectType';
 import { CustomGenCodeOutputModel } from '../system/CustomGenCodeOutputModel';
 import { CMSSessionService } from '../../services/base/CMSsession.service';
 import { storage } from 'src/app/common/helpers/storage';
+import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
 
 @Directive()
 export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleContext, AfterViewChecked {
@@ -44,9 +45,10 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
         protected router: Router,
         protected cmsSessionService: CMSSessionService,
         public objectTypeId?: number,
-        public objectId?: number
+        public objectId?: number,
+        public isPopup: boolean = false
     ) {
-      this.moduleId = moduleId;
+        this.moduleId = moduleId;
     }
     ngAfterViewChecked(): void {
         // if (this.checkPermissionAdd && !this.checkPermissionAdd.getModule()) {
@@ -90,11 +92,14 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
         // console.log(this.cmsSessionService.getCMSSession());
         // console.log(this.cmsSessionService.getCMSPermission());
         // console.log(this.cmsSessionService.getPermissionByFrontendCode(1));
-        console.log(this.moduleId);
+        if (this.moduleId == CSMEnumModule.FreeAccess) {
+            return;
+        }
         if (!this.checkActionPermission(this.moduleId)) {
-            console.log("không có quyền");
-            this.router.navigate([`/error/access-denied`, this.moduleId]);
-            this.ngOnDestroy();
+            if (!this.isPopup) {
+                this.router.navigate([`/error/access-denied`, this.moduleId]);
+                this.ngOnDestroy();
+            }
         }
 
     }
@@ -114,13 +119,9 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
     //     // }
     //     // this.curentPermission = cloneDeep(modulePermission);
     //     // this.sessionService.moduleId = this.moduleId;
-        
+
     //     // Cần set this.currentPermission
     // }
-
-   
-
-
 
     getActionPayload<T>(payload: T) {
         return { context: this.getContext(), payload: cloneDeep(payload) };
@@ -152,7 +153,7 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
     }
 
     // Triển khai lại
-    checkActionPermission(frontendCode: number): boolean{
+    checkActionPermission(frontendCode: number): boolean {
         return this.cmsSessionService.getPermissionByFrontendCode(frontendCode);
     }
 }

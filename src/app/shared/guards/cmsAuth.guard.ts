@@ -14,14 +14,11 @@ export class CMSAuthGuard implements CanActivate {
   }
 
   private checkCondition(state: RouterStateSnapshot): boolean {
-    console.log("checkcondition" + this.cmsSessionService.getCMSSession());
     if ( this.cmsSessionService.getCMSSession() !== null) {
-      console.log("có vào"); 
       return true;
 
     } else if (this.cmsSessionService.getCMSSession() == null) {
       this.router.navigate(['logins'], {queryParams: {returnUrl: state.url}});
-      console.log("không có quyền");
       return false;
     }
   }
