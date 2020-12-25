@@ -136,7 +136,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
     ShortcutHintComponent,
     PopupDetailErrorComponent,
     ListErrorComponent,
-    InputUnixDatePickerComponent
+    InputUnixDatePickerComponent, 
   ],
   exports: [
     AnchorDirective,
@@ -195,7 +195,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
     ShortcutHintComponent,
     PopupDetailErrorComponent,
     ListErrorComponent,
-    InputUnixDatePickerComponent
+    InputUnixDatePickerComponent, 
   ]
 })
 export class SharedModule { }

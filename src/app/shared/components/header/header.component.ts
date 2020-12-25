@@ -11,6 +11,7 @@ import { Module, RolePermission } from 'src/app/core/models/system/role.model';
 import { UserOutput } from 'src/app/core/models/system/user.model';
 import { PopupService } from '../../services/popup.service';
 import { ListErrorComponent } from '../popup-detail-error/list-error/list-error.component';
+import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
 declare let $;
 @Component({
   selector: 'app-header',
@@ -44,7 +45,8 @@ export class HeaderComponent implements OnInit {
     private infoCompany: Store<{ infoCompany: BusinessInfo }>,
     private logoCompany: Store<{ logoCompany: string }>,
     private menuInfo: Store<{ menuInfo: any }>, 
-    private popup: PopupService
+    private popup: PopupService, 
+    private cmsSessionService: CMSSessionService
   ) { }
 
   ngOnInit() {
@@ -187,7 +189,8 @@ export class HeaderComponent implements OnInit {
   }
   loguot() {
     this.sessionService.clear();
-    this.router.navigateByUrl('login');
+    this.cmsSessionService.clearStorage(); 
+    this.router.navigateByUrl('logins');
   }
 
   // Mở pop up danh sách lỗi 

@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { AppConfig } from './common/config/app.config';
 import { Error403Page } from './shared/pages/error403/error403.page';
-import { LayoutComponent } from './shared/components/layout/layout.component';
 import { Error404Page } from './shared/pages/error404/error404.page';
+import { CMSLayoutComponent } from './shared/components/cmsLayout/cmsLayout.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'error', component: LayoutComponent, children: [
+    path: 'error', component: CMSLayoutComponent, children: [
       {
         path: 'access-denied',
         component: Error403Page
@@ -17,7 +17,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'error', component: LayoutComponent, children: [
+    path: 'error', component: CMSLayoutComponent, children: [
       {
         path: 'access-denied/:id',
         component: Error403Page
@@ -25,7 +25,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'error', component: LayoutComponent, children: [
+    path: 'error', component: CMSLayoutComponent, children: [
       {
         path: '403',
         component: Error403Page
@@ -33,7 +33,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'error', component: LayoutComponent, children: [
+    path: 'error', component: CMSLayoutComponent, children: [
       {
         path: '404',
         component: Error404Page
@@ -41,7 +41,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**', component: LayoutComponent, children: [
+    path: '**', component: CMSLayoutComponent, children: [
       {
         path: '**',
         component: Error404Page

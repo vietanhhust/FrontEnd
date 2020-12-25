@@ -16,6 +16,9 @@ import { ProfileComponent } from './users/profile/profile.component';
 import { SubsidiaryComponent } from './Subsidiary/subsidiary.component';
 import { SubsidiaryAddComponent } from './Subsidiary/subsidiary-add/subsidiary-add.component';
 import { SubsidiaryEditComponent } from './Subsidiary/subsidiary-edit/subsidiary-edit.component';
+import { CMSAuthGuard } from '../shared/guards/cmsAuth.guard';
+import { TestComponentComponent } from './test-component/test-component.component';
+import { CMSLayoutComponent } from '../shared/components/cmsLayout/cmsLayout.component';
 const systemRoutes: Routes =
   [{
     path: 'system',
@@ -82,6 +85,17 @@ const systemRoutes: Routes =
         component: SubsidiaryEditComponent, data: { breadcrumb: 'Cập nhật' }, canDeactivate: [CanDeactivateGuard]
       }
     ]
-  }];
+  }, 
+  {
+    path: 'cms', 
+    canActivate: [CMSAuthGuard], 
+    component: CMSLayoutComponent, 
+    children:[
+      {
+        path: 'test', 
+        component: TestComponentComponent
+    }]
+  }
+];
 export const SystemRoutingRoutes = RouterModule.forChild(systemRoutes);
 

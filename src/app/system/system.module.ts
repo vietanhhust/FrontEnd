@@ -27,6 +27,7 @@ import { UserActiveInfoComponent } from './users/user-edit/user-active-info/user
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     SubsidiaryViewComponent,
     UserGeneralInfoComponent,
     UserActiveInfoComponent,
+    TestComponentComponent,
   ]
 
 })

@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
   }
   formdata: FormGroup;
   ngOnInit() {
-     this.loadCompany();
+    this.loadCompany();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     document.getElementById('navbar-fixed').style.display = 'none';
     // reset login status

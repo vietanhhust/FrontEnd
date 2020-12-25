@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { EnumAction, EnumModule } from 'src/app/common/constants/global/Enums';
 import { BaseComponent } from 'src/app/core/models/base/base.component';
 import { SessionService } from 'src/app/core/services/base/session.service';
+import { CMSBaseComponent } from 'src/app/core/models/base/CMSBase.component';
+import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
+import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
+import { CMSAuthenticationService } from 'src/app/core/services/base/cmsAuth.service';
 
 let itv;
 @Component({
@@ -10,24 +14,23 @@ let itv;
   templateUrl: './home.page.component.html',
   styleUrls: ['./home.page.component.scss']
 })
-export class HomePageComponent extends BaseComponent implements OnDestroy {
+export class HomePageComponent extends CMSBaseComponent implements OnDestroy {
   avatar: any;
   isShowPage = true;
   constructor(
-    router: Router,
-    sessionService: SessionService,
-
-  ) {
-    super(EnumModule.Me, EnumAction.View, router, sessionService);
-    this.date = this.getdate();
-
+    public cmsSessionService: CMSSessionService,
+    public router: Router,
+    public apiTest: CMSAuthenticationService
+    ) {
+    super(100, EnumAction.View, router , cmsSessionService);
   }
   itv = setInterval(() => {
     this.time = this.gettime();
   }, 1000);
 
   ngOnInit() {
-    super.ngOnInit();
+    super.ngOnInit(); 
+    this.apiTest.testApi().subscribe(data=>{console.log(data)})
   }
 
   date: string;

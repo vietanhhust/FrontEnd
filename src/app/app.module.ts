@@ -40,6 +40,8 @@ import { stateRegister } from './shared/store/appstate';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './shared/store/effects';
+import { CMSLayoutComponent } from './shared/components/cmsLayout/cmsLayout.component';
+import { CMSJwtInterceptor } from './shared/guards/CmsJwtInterceptor';
 
 // Ck-Editor
 @NgModule({
@@ -51,6 +53,7 @@ import { effects } from './shared/store/effects';
     MenuComponent,
     LayoutComponent,
     PopupComponent,
+    CMSLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { effects } from './shared/store/effects';
 
   providers: [
     { provide: APP_CONFIG, useValue: AppConfig },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CMSJwtInterceptor, multi: true },
     UrlServices
   ],
   bootstrap: [AppComponent], 

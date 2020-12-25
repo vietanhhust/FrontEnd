@@ -4,6 +4,7 @@ import { LoginRoutingRoutes } from './login.routing';
 
 import { LoginPageComponent } from './loginpage/login.page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CMSLoginPageComponent } from './cmsLoginPage/cmslogin.page.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginRoutingRoutes,
     ReactiveFormsModule
   ],
-  declarations: [LoginPageComponent]
+  declarations: [
+    LoginPageComponent,
+    CMSLoginPageComponent
+  ]
 })
 export class LoginModule { }

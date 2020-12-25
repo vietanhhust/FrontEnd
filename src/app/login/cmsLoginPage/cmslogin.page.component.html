@@ -1,0 +1,41 @@
+<section id="sign-in">
+  <div class="fill">
+
+  </div>
+  <div class="c-login">
+    <div class="title-lg">
+      <h4>Đăng nhập hệ thống</h4>
+      <!-- <img style="position: absolute;
+                    top: 11px;
+                    right: 8px;" src="assets/images/login.png"> -->
+    </div>
+    <div class="login">
+    </div>
+    <form [formGroup]="formdata" (ngSubmit)="login(formdata.value)" [class.loding]="!isShowPage">
+      <div class="clearfix">
+        <div class="input-f">
+          <input placeholder="Tên đăng nhập" type="text" class="fortextbox" name="username" formControlName="username">
+          <i class="fa fa-user prefix"></i>
+        </div>
+        <!-- /Username -->
+        <!-- Password -->
+        <div class="input-f">
+          <input #password placeholder="Mật khẩu" type="password" class="fortextbox" name="password"
+            formControlName="password">
+          <i class="fa fa-lock prefix"></i>
+
+        </div>
+        <!-- /Password -->
+
+
+        <button type="submit" style="font-weight: 500;">
+          <i style="display: none;" class="fas fa-spinner fa-spin"></i> Đăng nhập</button>
+        <div *ngIf="error" class="danger animated flash">{{error?error:''}}<br><span style="color: #3c3c3c;">Để được hỗ
+            trợ, vui
+            lòng liên hệ quản trị viên hệ thống.</span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</section>
