@@ -58,6 +58,9 @@ import { ShortcutHintComponent } from './components/shortcut-hint/shortcut-hint.
 import { PopupDetailErrorComponent } from './components/popup-detail-error/popup-detail-error.component';
 import { ListErrorComponent } from './components/popup-detail-error/list-error/list-error.component';
 import { InputUnixDatePickerComponent } from './components/input-date-time-picker/input-unix-date-picker/input-unix-date-picker.component';
+import { CMSTableComponent } from './components/CMSResponsiveTable/cms-table/cms-table.component';
+import { CMSContextmenuComponent } from './components/CMSResponsiveTable/cms-contextmenu/cms-contextmenu.component';
+import { CMSActionmenuComponent } from './components/CMSResponsiveTable/cms-actionmenu/cms-actionmenu.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
   baseUrl: '/assets', // configure base path for monaco editor default: './assets'
@@ -137,6 +140,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
     PopupDetailErrorComponent,
     ListErrorComponent,
     InputUnixDatePickerComponent, 
+
+    // CmS table, context menu, action
+    CMSTableComponent, 
+    CMSContextmenuComponent, 
+    CMSActionmenuComponent
   ],
   exports: [
     AnchorDirective,
@@ -196,6 +204,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
     PopupDetailErrorComponent,
     ListErrorComponent,
     InputUnixDatePickerComponent, 
+
+    // CMS table, action, menu,...
+    CMSTableComponent, 
+    CMSContextmenuComponent, 
+    CMSActionmenuComponent
   ]
 })
 export class SharedModule { }

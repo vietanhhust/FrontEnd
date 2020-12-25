@@ -1,0 +1,21 @@
+.contextmenu {
+    position: fixed;
+    min-width: 125px;
+    box-shadow: #666 3px 3px 8px;
+    background-color: #fefefe;
+    z-index: 9999;
+}
+.contextmenu li a {
+    font-weight: normal;
+}
+.contextmenu li a i {
+    // font-size: small;
+    font-size: 15px !important;
+    width: 20px;
+}
+.del i {
+    color: #bb6f6f;
+}
+.edit i {
+    color: var(--edit-color);
+}

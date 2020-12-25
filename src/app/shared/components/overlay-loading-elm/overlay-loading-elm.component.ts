@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
 <div class="overlay-loading">
   <div class="center loadingio-spinner">
-  <img src="assets/images/logoload.png">
+  <!-- <img src="assets/images/loadingLogo.png"> -->
     <div class="loadercss">
         <div>
         </div>

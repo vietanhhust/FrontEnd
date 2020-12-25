@@ -1,0 +1,10 @@
+<a class="dropdown-trigger dropdown-trigger2" dropdown data-target='thaotac'>Thao tác <i class="fa fa-angle-down"></i></a>
+        <ul id='thaotac' class='dropdown-content drop-tool1'>
+          <ng-container *ngFor="let item of lstEvent">
+              <li *ngIf="item.isShow != false">
+                  <a (click)="item.action(value)" >
+                      <i *ngIf="item.icon.length > 1" class="fa {{item.icon}}"></i> {{item.name}}
+                  </a>
+                </li>
+          </ng-container>
+        </ul>

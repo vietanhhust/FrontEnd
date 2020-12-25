@@ -42,6 +42,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { effects } from './shared/store/effects';
 import { CMSLayoutComponent } from './shared/components/cmsLayout/cmsLayout.component';
 import { CMSJwtInterceptor } from './shared/guards/CmsJwtInterceptor';
+import { CMSModule } from './cms/cms.module';
 
 // Ck-Editor
 @NgModule({
@@ -62,6 +63,7 @@ import { CMSJwtInterceptor } from './shared/guards/CmsJwtInterceptor';
     HttpClientModule,
     SharedModule,
     HomeModule,
+    CMSModule,
     SystemModule,
     LoginModule,
     NgxPaginationModule,
@@ -74,6 +76,8 @@ import { CMSJwtInterceptor } from './shared/guards/CmsJwtInterceptor';
     LoadingBarModule,
     StoreModule.forRoot(stateRegister),
     EffectsModule.forRoot(effects),
+    
+    //-- CMS 
   ],
 
   providers: [
