@@ -7,6 +7,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CMSCategoryItemComponent } from './cms-category-item/cms-category-item.component';
 import { CMSCategoryitemAddComponent } from './cms-category-item/cms-categoryitem-add/cms-categoryitem-add.component';
 import { CMSCategoryitemEditComponent } from './cms-category-item/cms-categoryitem-edit/cms-categoryitem-edit.component';
+import { CMSAccountCreateComponent } from './cmsaccount/cms-account-create/cms-account-create.component';
+import { CMSBalanceComponent } from './cmsaccount/cms-balance/cms-balance.component';
+import { CMSAccountPutComponent } from './cmsaccount/cms-account-put/cms-account-put.component';
 
 
 @NgModule({
@@ -14,7 +17,7 @@ import { CMSCategoryitemEditComponent } from './cms-category-item/cms-categoryit
     CMSAccountComponent,
     CMSCategoryItemComponent,
     CMSCategoryitemAddComponent, 
-    CMSCategoryitemEditComponent
+    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent
   ],
   imports: [
     FormsModule,

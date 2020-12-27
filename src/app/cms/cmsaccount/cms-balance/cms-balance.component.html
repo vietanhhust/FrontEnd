@@ -1,0 +1,59 @@
+<form novalidate name="frmBalance" #frmBalance="ngForm" (ngSubmit)='frmBalance.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a *ngIf='data.isAddBalance'>Nạp tiền tài khoản</a>
+                    <a *ngIf='!data.isAddBalance'>Trừ tiền tài khoản</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <!--Tên tài khoản và số tiền hiện tại-->
+        <div class="row input-custom-inline">
+            <div class="col s12">
+                <p>Tài khoản:</p>
+                <div class="input-field inline">
+                    <h6>{{accountModel.accountName}}</h6>
+                </div>
+            </div>
+            <div class="col s12">
+                <p>Số tiền còn lại</p>
+                <div class="input-field inline">
+                    <h6>{{accountModel.balance}}</h6>
+                </div>
+            </div>
+        </div>
+
+        <!--Số tiền nạp/trừ-->
+        <div class="row input-custom-inline ">
+            <div class="col s12">
+                <input-field min='0' required [(ngModel)]="money" type="number" name="accountBalance"
+                    title="Số tiền thao tác" [frm]="frmBalance">
+                </input-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button *ngIf='data.isAddBalance' class="modal-action waves-effect waves-green ok-but btn-flat btn-update"
+            type="submit">
+            <i class="far fa-save"></i> Nạp tiền
+        </button>
+
+        <button *ngIf='!data.isAddBalance' class="modal-action waves-effect waves-green ok-but btn-flat btn-update"
+            type="submit">
+            <i class="far fa-save"></i> Giảm tiền
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>

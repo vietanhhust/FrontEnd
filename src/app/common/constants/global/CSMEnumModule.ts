@@ -1,5 +1,6 @@
 export enum CSMEnumModule{
 
+    // Tự do truy cập
     FreeAccess = 0,
     // Màn hình tài khoản người dùng.
     AccountView = 100,

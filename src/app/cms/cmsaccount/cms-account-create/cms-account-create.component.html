@@ -1,0 +1,88 @@
+<form novalidate name="frmAccountForm" #frmAccountForm="ngForm" (ngSubmit)='frmAccountForm.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a>Thêm mới tài khoản</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <!--Tài khoản, mật khẩu-->
+        <div class="row input-custom-inline">
+            <div class="col s6">
+                <input-field required [(ngModel)]="accountModel.accountName" type="text" name="'accountName'"
+                    title="Tên tài khoản" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+            <div class="col s6">
+                <input-field required [(ngModel)]="accountModel.password" type="password" name="'accountPassword'"
+                    title="Mật khẩu" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+        </div>
+
+        <!--Số tiền, Mô tả-->
+        <div class="row input-custom-inline ">
+            <div class="col s6">
+                <input-field min='0' required [(ngModel)]="accountModel.balance" type="number" name="accountBalance"
+                    title="Số tiền" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+
+            <div class="col s6">
+                <input-field [(ngModel)]="accountModel.description" type="text" name="'accountdes'"
+                    title="Mô tả" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+        </div>
+
+        <!-- Chứng minh nhân dân, địa chỉ-->
+        <div class="row input-custom-inline ">
+            <div class="col s6">
+                <input-field min='0' [(ngModel)]="accountModel.identityNumber" type="text" name="accountIdentity"
+                    title="Chứng minh thư" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+
+            <div class="col s6">
+                <input-field [(ngModel)]="accountModel.address" type="text" name="'accountaddress'"
+                    title="Địa chỉ" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+        </div>
+
+        <!-- Email, số điện thoại-->
+        <div class="row input-custom-inline ">
+            <div class="col s6">
+                <input-field [(ngModel)]="accountModel.email" type="text" name="accountemail"
+                    title="Email" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+
+            <div class="col s6">
+                <input-field [(ngModel)]="accountModel.phoneNumber" type="text" name="'accountPhone'"
+                    title="Số điện thoại" [frm]="frmAccountForm">
+                </input-field>
+            </div>
+        </div>
+    
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="far fa-save"></i> Lưu lại
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>

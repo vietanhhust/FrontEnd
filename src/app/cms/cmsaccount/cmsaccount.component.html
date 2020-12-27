@@ -5,20 +5,19 @@
             <!--<span>/</span>-->
         </div>
         <div class="tool1">
-            <!-- <a class="mr5 btn-add" routerLink='add'  *ngIf="(curentPermission.isAdd)"><i class="fa fa-plus"></i>Tạo mới</a> -->
+            <a class="mr5 btn-add" (click)='addAccount()' *ngIf="cmsSessionService.getPermissionByFrontendCode(permissionEnum.AccountCreate)"><i class="fa fa-plus"></i>Tạo tài khoản</a>
             <ng-container *ngIf="selectedValueTab">
-                    <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
+                <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
             </ng-container>
         </div>
 
         <div class="tool3">
             <div class="t3" style="opacity: 0;">
-                <a class="" >Bộ lọc <i
-                        class="fa fa-angle-down"></i></a>
+                <a class="">Bộ lọc <i class="fa fa-angle-down"></i></a>
 
             </div>
             <div class="search">
-                <input placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text">
+                <input (keyup.enter)='search(keyword)' placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text">
                 <!-- <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i> -->
                 <button><i class="fa fa-search"></i></button>
             </div>
@@ -26,16 +25,11 @@
             (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
         </div>
     </div>
-</div> 
+</div>
 
 
 <div overlay-loading [loading]="!isShowPage" class="row animated slideInDown">
-    <cms-app-table 
-    id="tableus" 
-    (DoubleClickValue)="viewmode($event)"
-    (selectedValue)="selectedValueTab = $event"
-    [configTable]="configTable" 
-    [data]="fakeData" 
-    >
+    <cms-app-table id="tableus" (DoubleClickValue)="viewmode($event)" (selectedValue)="selectedValueTab = $event"
+        [configTable]="configTable" [data]="listAccount">
     </cms-app-table>
 </div>
