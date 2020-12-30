@@ -1,0 +1,40 @@
+<form novalidate name="frmgroupRoleModel" #frmgroupRoleModel="ngForm" (ngSubmit)='frmgroupRoleModel.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a *ngIf='data.isAdd'>Thêm mới nhóm quyền</a>
+                    <a *ngIf='!data.isAdd'>Sửa thông tin nhóm quyền</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content animated fadeInLeft">
+        <div class="row input-custom-inline">
+            <input-field required [(ngModel)]="groupRoleModel.groupName" type="text" name="'roleGroupName'"
+                title="Tên nhóm quyền" [frm]="frmgroupRoleModel">
+            </input-field>
+        </div>
+        
+        <div class="row input-custom-inline ">
+            <input-field required [(ngModel)]="groupRoleModel.description" type="text" name="roleDescription" title="Mô tả"
+                [frm]="frmgroupRoleModel">
+            </input-field>
+        </div>
+
+       
+    </div>
+
+    <div class="modal-footer">
+        <button class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="far fa-save"></i> Lưu lại
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>

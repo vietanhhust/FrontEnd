@@ -1,0 +1,56 @@
+<form novalidate name="frmGroupClient" #frmGroupClient="ngForm" (ngSubmit)='frmGroupClient.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a *ngIf='data.isAdd'>Thêm mới nhóm máy</a>
+                    <a *ngIf='!data.isAdd'>Sửa thông tin nhóm máy</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <!--Tên, mô tả-->
+        <div class="row input-custom-inline">
+            <div class="col s12">
+                <input-field required [(ngModel)]="groupClientModel.groupName" type="text" name="'groupName'"
+                    title="Tên nhóm máy" [frm]="frmGroupClient">
+                </input-field>
+            </div>
+            <div class="col s12">
+                <input-field [(ngModel)]="groupClientModel.description" type="text" name="'groupClientDescription'"
+                    title="Mô tả" [frm]="frmGroupClient">
+                </input-field>
+            </div>
+        </div>
+
+        <!--Giá nhóm máy-->
+        <div class="row input-custom-inline ">
+            <div class="col s12">
+                <input-field required min='0' [(ngModel)]="groupClientModel.price" type="number" name="'groupClientPrice'"
+                    title="Giá tiền" [frm]="frmGroupClient">
+                </input-field>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button *ngIf='!data.isAdd' class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="far fa-save"></i> Lưu lại
+        </button>
+
+        <button *ngIf='data.isAdd' class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="fa fa-plus"></i> Tạo mới
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>

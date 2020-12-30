@@ -1,0 +1,94 @@
+<div class="container-fluid" style="overflow: auto;
+height: calc(79vh - 48px);max-height: 539px;">
+    <form novalidate name="frmCMSRoleGrant" #frmCMSRoleGrant="ngForm" (keydown.enter)="$event.preventDefault()">
+        <div class="modal-title">
+            <div class="row nav-tools">
+                <div class="col s12 flex">
+                    <div class="title-n-t">
+                        <a>Phân quyền / {{groupRoleName}}</a>
+                    </div>
+                    <div class="tool1">
+                        <!-- <a class="mr5 modal-trigger" href="#modalap" ><i class="fa fa-plus"></i>Tạo mới đối tác</a> -->
+                    </div>
+                    <div class="tool2">
+
+                    </div>
+                    <div class="tool3">
+                        <div class="t3">
+                        </div>
+                        <div style="margin-right: 10px;" class="search">
+                            <input placeholder="Tìm kiếm..." [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}"
+                                name="keyword" type="text" (keyup.enter)="search(keyword)">
+                            <button (click)="search(keyword)" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                        
+                        <i class="modal-action modal-close fa fa-times close"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content" style="overflow: hidden;padding: 0;">
+            <!-- Table -->
+            <div class="row content-m max-height">
+                <div class="table-custom table-responsive max-height">
+                    <table class="highlight table glowTableBody">
+                        <thead>
+                            <tr>
+                                <ng-container *ngFor="let header of tableConfig.columns">
+                                    <th title="{{header.title}}" appResizeTable resizeTable='true'>
+                                        {{header.title}}
+                                    </th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody style="height: calc(70vh - 59px);">
+                            <ng-container>
+                                <tr *ngFor="let item of lstRole" class="ccid" [id]="'row_'+item['frontendCode']"
+                                    (click)="highlight(item)" (dblclick)="onDbClick(item)">
+                                    <ng-container *ngFor="let f of tableConfig.columns">
+                                        <td *ngIf='!f.isCheckBox' title="{{item[f.title]}}">
+                                            {{item[f.value]}}
+                                        </td>
+                                    </ng-container>
+                                    <ng-container>
+                                        <td *ngIf='data.id==2'>
+                                            <label>
+                                                <input disabled type="checkbox" class="filled-in"
+                                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="item.isActive" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                        <td *ngIf='data.id!==2'>
+                                            <label>
+                                                <input  type="checkbox" class="filled-in"
+                                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="item.isActive" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+
+                            <tr *ngIf="rows && rows.length==0">
+                                <td colspan="12">
+                                    Không tìm thấy bản ghi nào
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- .Table -->
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="modal-action waves-effect waves-green ok-but btn-flat" (click)='saveRole()'>
+                <i class="fa fa-plus"></i> Lưu thay đổi
+            </button>
+            <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i
+                    class="fa fa-times"></i>Đóng</a>
+        </div>
+    </form>
+</div>

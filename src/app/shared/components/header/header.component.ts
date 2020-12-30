@@ -50,27 +50,27 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lstPermission = this.sessionService.permission;
-    if (this.lstPermission.length < 1) {
-      return;
-    }
+    // this.lstPermission = this.sessionService.permission;
+    // if (this.lstPermission.length < 1) {
+    //   return;
+    // }
 
-    this.sessionService.getCurentInfo().subscribe(r => {
-      this.user = r;
-      if (this.user.fullName && this.user.fullName.split(' ').length > 1) {
-        this.nameSplit = this.user.fullName.split(' ')[this.user.fullName.split(' ').length - 1].substring(0, 1);
-      }
-      if (r.avatarFileId) {
-        
-      }
-    });
+    // this.sessionService.getCurentInfo().subscribe(r => {
+    //   this.user = r;
+    //   if (this.user.fullName && this.user.fullName.split(' ').length > 1) {
+    //     this.nameSplit = this.user.fullName.split(' ')[this.user.fullName.split(' ').length - 1].substring(0, 1);
+    //   }
+    //   if (r.avatarFileId) {
+      
+    //   }
+    // });
 
-    this.menuInfo.pipe(select('menuInfo')).subscribe(data => {
-      if (data && data.items && Array.isArray(data.items)) {
-        this.transferMenu(data.items);
-      }
-    });
-    this.loadbussiness();
+    // this.menuInfo.pipe(select('menuInfo')).subscribe(data => {
+    //   if (data && data.items && Array.isArray(data.items)) {
+    //     this.transferMenu(data.items);
+    //   }
+    // });
+    // this.loadbussiness();
   }
 
   transferMenu(data) {

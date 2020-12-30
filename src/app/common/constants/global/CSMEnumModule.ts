@@ -1,7 +1,7 @@
 export enum CSMEnumModule{
 
     // Tự do truy cập
-    FreeAccess = 0,
+    FreeAccess = 1,
     // Màn hình tài khoản người dùng.
     AccountView = 100,
     AccountCreate = 101, 
@@ -19,6 +19,19 @@ export enum CSMEnumModule{
     CategoryPut = 202, 
     CategoryDetele = 203, 
     
-    // Màn hình sửa giá nhóm máy.
+    // Màn hình phân quyền
+    GroupRoleView = 300, 
+    GroupRoleCreate = 301, 
+    GroupRolePut = 302, 
+    GroupRoleDelete = 303, 
+    GroupRoleGrante = 304, 
+    RoleActiveUpdate = 305,
+
+    // Màn hình Nhóm máy
+    GroupClientView = 400, 
+    GroupClientCreate = 401, 
+    GroupClientPut = 402,
+    GroupClientDelete = 403, 
+    GroupClientChange = 404
     
 }

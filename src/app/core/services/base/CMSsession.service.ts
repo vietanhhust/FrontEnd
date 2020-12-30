@@ -165,7 +165,11 @@ export class CMSSessionService {
       if(found ==undefined){
         return false;
       }else{
-        return true; 
+        if(found.isActive){
+          return true; 
+        }else{
+          return false;
+        }
       }
   }
 

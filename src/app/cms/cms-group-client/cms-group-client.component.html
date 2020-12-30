@@ -1,0 +1,69 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a tootip>Nhóm máy trạm</a>
+        </div>
+        <div class="tool1">
+            <a class="mr5 btn-add" (click)='addGroupClient()'
+                *ngIf="cmsSessionService.getPermissionByFrontendCode(permissionEnum.GroupClientView)">
+                <i class="fa fa-plus"></i>Tạo nhóm máy
+            </a>
+
+            <a class="mr5 btn-add" (click)='changeGroupClient()'
+                *ngIf="cmsSessionService.getPermissionByFrontendCode(permissionEnum.GroupClientChange) && isShowChangeGroupButton">
+                <i class="fa fa-edit"></i>Chuyển nhóm máy
+            </a>
+            <!-- <ng-container *ngIf="selectedValueTab">
+                <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
+            </ng-container> -->
+        </div>
+
+        <div class="tool3">
+            <div class="t3" style="opacity: 0;">
+                <a class="">Bộ lọc <i class="fa fa-angle-down"></i></a>
+
+            </div>
+            <div class="search">
+                <input (keyup.enter)='search(keyword)' placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword"
+                    type="text">
+                <!-- <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i> -->
+                <button><i class="fa fa-search"></i></button>
+            </div>
+            <!-- <app-paging-data (changeLimit)="limit = $event;search(1)" (next)="pageIndex = $event;search(pageIndex)" 
+            (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
+        </div>
+    </div>
+</div>
+
+<!--Phần body bên dưới-->
+<div class="row">
+    <!-- Phần này chứa list clinet-->
+    <div class="col s2 group-client-list">
+        <div class="group-container">
+            <ng-container *ngFor='let group of lstGroupClient'>
+                <a id="row_{{group['id']}}" (click)='selectGroup(group)' title="{{group.price}}"
+                    class="group-item">{{group.groupName}}
+
+                    <span class="control-button">
+                        <span *ngIf="cmsSessionService.getPermissionByFrontendCode(permissionEnum.GroupClientPut)"
+                            (click)='updateGroupClient(group)' style="padding: 0;margin: 0;"
+                            class="badge fa fa-cog"></span>
+                        <span *ngIf="cmsSessionService.getPermissionByFrontendCode(permissionEnum.GroupClientDelete)"
+                            (click)='deleteGroupClient(group)' style="padding: 0; margin: 0;"
+                            class="badge fa fa-trash"></span>
+                    </span>
+                </a>
+
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- Hiển thị các máy ra-->
+    <div class="col s10 client-list">
+        <div overlay-loading [loading]="!isShowPage" class="row animated slideInDown">
+            <cms-app-table id="tableus" (DoubleClickValue)="viewmode($event)" [configTable]="configTable"
+                [data]="lstClient" (checkedValue)='clientCheck()'>
+            </cms-app-table>
+        </div>
+    </div>
+</div>

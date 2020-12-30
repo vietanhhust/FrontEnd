@@ -114,7 +114,7 @@ export class CMSAccountComponent extends CMSBaseComponent implements OnInit {
             }
           })
         },
-        isShow: this.cmsSessionService.getPermissionByFrontendCode(CSMEnumModule.AccountView)
+        isShow: this.cmsSessionService.getPermissionByFrontendCode(CSMEnumModule.AccountPut)
       },
       {
         name: 'Xóa',

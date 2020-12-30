@@ -64,7 +64,7 @@
           <a routerLink='cms'>Dashboard</a>
         </li>
         <li>
-          <a>Phân quyền</a>
+          <a routerLinkActive='test' routerLink='cms/role'>Phân quyền</a>
         </li>
         <li>
           <a  routerLinkActive='test' routerLink='cms/account'>Tài khoản</a>
@@ -73,7 +73,7 @@
           <a routerLinkActive='test' routerLink='cms/category'>Danh mục</a>
         </li>
         <li>
-          <a>Nhóm máy</a>
+          <a routerLinkActive='test' routerLink='cms/groupclient'>Nhóm máy</a>
         </li>
         <li>
           <a>Báo cáo</a>
@@ -129,7 +129,8 @@
                         </li>
                   </ul>
               </li> -->
-        <li class="comp"><a class="company"><span class="hide-on-md" *ngIf="!isExpand">Administrator</span> <img
+        <li class="comp"><a class="company"><span class="hide-on-md">{{cmsSessionService.getCMSSession().name}}</span> 
+          <img
               *ngIf="logo" [src]="logo" alt=""></a>
           <!-- <div class="infohovercomp">
             <p style="font-weight: 500;">{{Company?.companyName}}</p>
