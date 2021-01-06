@@ -32,6 +32,10 @@ export enum CSMEnumModule{
     GroupClientCreate = 401, 
     GroupClientPut = 402,
     GroupClientDelete = 403, 
-    GroupClientChange = 404
+    GroupClientChange = 404,
     
+    // Màn hình chat 
+    ChatView = 500, 
+    // Gửi tin nhắn.
+    ChatSend = 501
 }

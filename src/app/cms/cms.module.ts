@@ -16,6 +16,7 @@ import { CMSRoleGrantComponent } from './cms-role/cms-role-grant/cms-role-grant.
 import { CMSGroupClientComponent } from './cms-group-client/cms-group-client.component';
 import { CMSGroupClientPutComponent } from './cms-group-client/cms-group-client-put/cms-group-client-put.component';
 import { CMSChangeGroupClientComponent } from './cms-group-client/cms-change-group-client/cms-change-group-client.component';
+import { CMSChatComponent } from './cms-chat/cms-chat.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { CMSChangeGroupClientComponent } from './cms-group-client/cms-change-gro
     CMSAccountComponent,
     CMSCategoryItemComponent,
     CMSCategoryitemAddComponent, 
-    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent
+    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent, CMSChatComponent
   ],
   imports: [
     FormsModule,

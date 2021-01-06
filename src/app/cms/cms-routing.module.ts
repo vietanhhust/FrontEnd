@@ -6,6 +6,7 @@ import { CMSAccountComponent } from './cmsaccount/cmsaccount.component';
 import { CMSCategoryItemComponent } from './cms-category-item/cms-category-item.component';
 import { CMSRoleComponent } from './cms-role/cms-role.component';
 import { CMSGroupClientComponent } from './cms-group-client/cms-group-client.component';
+import { CMSChatComponent } from './cms-chat/cms-chat.component';
 
 const cmsRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ const cmsRoutes: Routes = [
       {
         path: 'groupclient', 
         component: CMSGroupClientComponent
+      }, 
+      {
+        path: 'chat', 
+        component: CMSChatComponent
       }
     ]
   }

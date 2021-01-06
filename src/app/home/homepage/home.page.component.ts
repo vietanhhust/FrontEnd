@@ -30,7 +30,7 @@ export class HomePageComponent extends CMSBaseComponent implements OnDestroy {
 
   ngOnInit() {
     super.ngOnInit(); 
-    this.apiTest.testApi().subscribe(data=>{console.log(data)})
+    //this.apiTest.testApi().subscribe(data=>{console.log(data)})
   }
 
   date: string;

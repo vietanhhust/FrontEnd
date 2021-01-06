@@ -16,6 +16,7 @@ import { ErrorLogService } from 'src/app/shared/services/errorLog.service';
 import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
 import { FrontEndRoles, CMSSessionModel } from '../../models/base/CMSSession.model';
 import { RolePermission, ModuleGroup, Module } from '../../models/system/role.model';
+import { chat_storage_key } from 'src/app/cms/cmsModel/chat.model';
 
 
 @Injectable({
@@ -154,6 +155,7 @@ export class CMSSessionService {
     storage.removeItem(this.cmsStoragePermission);
     storage.removeItem(ErrorLogService.errorKey);
     storage.removeItem(this.cmsCurrentSession);
+    storage.removeItem(chat_storage_key);
   }
 
   // Xem có quyền không theo frontend Code. 

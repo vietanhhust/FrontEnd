@@ -8,7 +8,7 @@ import { PopupCountService } from './shared/services/popupCount.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'VERP-Web';
+  title = 'Phần mềm tính giờ';
 
   listeners: {
     [key: string]: any;

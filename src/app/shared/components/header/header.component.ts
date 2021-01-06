@@ -12,6 +12,14 @@ import { UserOutput } from 'src/app/core/models/system/user.model';
 import { PopupService } from '../../services/popup.service';
 import { ListErrorComponent } from '../popup-detail-error/list-error/list-error.component';
 import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
+import { ApiEndpoint, SignalREndpoint } from 'src/app/core/models/base/CMSSession.model';
+import { ToastrService } from 'ngx-toastr';
+import {HubConnection, HubConnectionBuilder, HubConnectionState} from '@microsoft/signalr'
+import { PopupCountService } from '../../services/popupCount.service';
+import { CMSSignalRService } from 'src/app/cms/cmsServices/signalR.service';
+import { CMSNewMessengerModel } from 'src/app/cms/cmsModel/chat.model';
+
+
 declare let $;
 @Component({
   selector: 'app-header',
@@ -44,9 +52,11 @@ export class HeaderComponent implements OnInit {
     private businessInfoService: BusinessInfoService,
     private infoCompany: Store<{ infoCompany: BusinessInfo }>,
     private logoCompany: Store<{ logoCompany: string }>,
-    private menuInfo: Store<{ menuInfo: any }>, 
-    private popup: PopupService, 
-    private cmsSessionService: CMSSessionService
+    private menuInfo: Store<{ menuInfo: any }>,
+    private popup: PopupService,
+    private toast: ToastrService,
+    private cmsSessionService: CMSSessionService, 
+    private cmsSignalRService: CMSSignalRService
   ) { }
 
   ngOnInit() {
@@ -61,7 +71,7 @@ export class HeaderComponent implements OnInit {
     //     this.nameSplit = this.user.fullName.split(' ')[this.user.fullName.split(' ').length - 1].substring(0, 1);
     //   }
     //   if (r.avatarFileId) {
-      
+
     //   }
     // });
 
@@ -71,6 +81,7 @@ export class HeaderComponent implements OnInit {
     //   }
     // });
     // this.loadbussiness();
+    this.subcribe(); 
   }
 
   transferMenu(data) {
@@ -167,7 +178,7 @@ export class HeaderComponent implements OnInit {
     this.businessInfoService.getInfo({ moduleId: EnumModule.Me }).subscribe(r2 => {
       if (r2) {
         this.Company = r2;
-       
+
         this.getAvartar(r2.logoFileId);
       }
     });
@@ -175,7 +186,7 @@ export class HeaderComponent implements OnInit {
 
   getAvartar(id) {
     if (id) {
-     
+
     }
   }
 
@@ -189,7 +200,7 @@ export class HeaderComponent implements OnInit {
   }
   loguot() {
     this.sessionService.clear();
-    this.cmsSessionService.clearStorage(); 
+    this.cmsSessionService.clearStorage();
     this.router.navigateByUrl('logins');
   }
 
@@ -197,5 +208,15 @@ export class HeaderComponent implements OnInit {
   // openListError(){
   //   this.popup.open(ListErrorComponent,{}, res=>{})
   // }
+
+  subcribe(){
+    this.cmsSignalRService.signalRMessageSubject.subscribe(res=>{
+      this.toast.success(res.accountName + " : " + res.message,"Máy "  + res.clientId.toString()).onTap.subscribe(res=>{
+        this.router.navigateByUrl('cms/chat');
+      });
+    })
+  }
+  
+  
 }
 

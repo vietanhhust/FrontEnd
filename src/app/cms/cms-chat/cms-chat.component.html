@@ -1,0 +1,69 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a tootip>Giao tiếp</a>
+            <!--<span>/</span>-->
+        </div>
+        <div class="tool1">
+            <a (click)='resetItem()' class="mr5 btn-add"><i class="fa fa-sync"></i>Xóa sesion</a>
+            <!-- <a (click)='addCategoryItem(); keyword=""' class="mr5 btn-add"><i class="fa fa-plus"></i>Tạo mới</a> -->
+            
+            <!-- Phần này để hiển thị danh sách làm với tab được chọn-->
+            <!-- <ng-container *ngIf="selectedValueTab">
+                    <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
+            </ng-container> -->
+        </div>
+
+        <div class="tool3">
+            <div class="t3" style="opacity: 0;">
+                <a class="" >Bộ lọc <i
+                        class="fa fa-angle-down"></i></a>
+
+            </div>
+            <div class="search">
+                <!-- <input (keyup.enter)='search(keyword)' placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text"> -->
+                <!-- <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i> -->
+                <!-- <button><i class="fa fa-search"></i></button> -->
+            </div>
+            <!-- <app-paging-data (changeLimit)="limit = $event;search(1)" (next)="pageIndex = $event;search(pageIndex)" 
+            (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
+        </div>
+    </div>
+</div> 
+
+<!--Phần body bên dưới-->
+<div class="row">
+    <!-- Phần này chứa list clinet-->
+    <div class="col s4 group-client-list">
+        <div class="group-container">
+            <ng-container *ngFor='let conv of lstConveration'>
+                <a (click)='convClick(conv)' [ngClass]='!conv.isRead?"active":""' id="row_{{conv['connectionId']}}"
+                    class="group-item">{{conv.accountName}}
+
+                    <span class="control-button">
+                        
+                    </span>
+                </a>
+
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- Hiển thị các máy ra-->
+    <div class="col s8 mess-list">
+        <div class="messcontainer">
+            <ng-container *ngFor='let mess of lstMessage'>
+                <div class="mess-item" *ngIf='mess.isAdmin' style=" text-align: right;">
+                    {{mess.message}}
+                </div>
+                <div class="mess-item" *ngIf='!mess.isAdmin' style="text-align: left;">
+                    {{mess.message}}
+                </div>
+            </ng-container>
+        </div>
+        <div class="admin-chat">
+            <input #input (keyup.enter)='sendToClient(input.value); input.value=""' style="display: inline-block;" type="text" name="zzz" id="">
+            <a class="mr5 btn-add"><i class="fa fa-plus"></i> Gửi</a>
+        </div>
+    </div>
+</div>

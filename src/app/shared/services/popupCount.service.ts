@@ -1,5 +1,6 @@
 import { OnInit, OnChanges, Renderer2, Injectable } from '@angular/core';
 import { PopupComponent } from '../components/popup/popup.component';
+import { Subject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
@@ -39,5 +40,9 @@ export class PopupCountService {
         }
         return null;
     }
+
+
+    // Cho phần signalR service
+    static signalRSubject = new Subject<any>(); 
 }
 
