@@ -1,0 +1,125 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a tootip>Yêu cầu gọi đồ</a>
+            <!--<span>/</span>-->
+        </div>
+        <div class="tool1">
+            <a (click)='resetItem()' class="mr5 btn-add"><i class="fa fa-sync"></i>Xóa hết yêu cầu</a>
+            <a (click)='addIncurredOrder()' class="mr5 btn-add"><i class="fa fa-plus"></i>Tạo yêu cầu</a>
+            <!-- <a (click)='addCategoryItem(); keyword=""' class="mr5 btn-add"><i class="fa fa-plus"></i>Tạo mới</a> -->
+
+            <!-- Phần này để hiển thị danh sách làm với tab được chọn-->
+            <!-- <ng-container *ngIf="selectedValueTab">
+                    <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
+            </ng-container> -->
+        </div>
+
+        <div class="tool3">
+            <div class="t3" style="opacity: 0;">
+                <a class="">Bộ lọc <i class="fa fa-angle-down"></i></a>
+
+            </div>
+            <div class="search">
+                <!-- <input (keyup.enter)='search(keyword)' placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text"> -->
+                <!-- <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i> -->
+                <!-- <button><i class="fa fa-search"></i></button> -->
+            </div>
+            <!-- <app-paging-data (changeLimit)="limit = $event;search(1)" (next)="pageIndex = $event;search(pageIndex)" 
+            (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
+        </div>
+    </div>
+</div>
+
+
+<!--Phần body-->
+<div class="row">
+
+    <!--Hiển thị list yêu cầu đến-->
+    <div class="col s3 group-client-list">
+        <div *ngIf='lstOrder.length > 0' class="group-container">
+            <ng-container *ngFor='let order of lstOrder'>
+
+                <a (click)='orderClick(order)' [ngClass]='order.clicked?"clicked":""' class="group-item">
+                    <img src="/assets/images/user-icon2.png" alt="">
+                    <span class="last-mess-date">
+                        {{cmsTimeService.unixToSecondMinuteHour(order.timeStamp)}}
+                    </span>
+
+                    <span class="client-id">{{"Máy " + order.clientId.toString()}}
+                        <span class="account-name">
+                            {{order.userName}}
+                        </span>
+                    </span>
+
+                    <span *ngIf='order.status' class="order-status">Trạng thái: <span
+                            style="color: rgb(104, 221, 104); font-weight: bold;">Đã duyệt</span></span>
+                    <span *ngIf='!order.status' class="order-status">Trạng thái: <span
+                            style="color: red; font-weight: bold;">Đang
+                            chờ</span></span>
+                    <span class="order-id-client" *ngIf='order.id!=0'>{{"Id: " + order.id}}</span>
+                </a>
+
+            </ng-container>
+        </div>
+
+        <div *ngIf='lstOrder.length == 0' class="group-container">
+            Không có yêu cầu nào
+        </div>
+    </div>
+
+    <!--Hiển thị chi tiết yêu cầu-->
+    <div class="col s9 order-detail animated slideInDown">
+        <div class="current-user">
+            <span style="color: black;" *ngIf='currentOrder.clientId'>
+                {{"Máy " + currentOrder.clientId + " - " + currentOrder.userName}}
+                <span style="color: black;">{{cmsTimeService.unixToSecondMinuteHour(currentOrder.timeStamp)}}</span>
+            </span>
+            <span *ngIf='currentOrder.id > 0' class="order-id">{{"Id: " +currentOrder.id}}</span>
+        </div>
+
+
+        <div *ngIf='currentOrder.clientId' class="order-detail-container" id='order-detail-containerScroll'>
+            <div class="order-de">
+                Chi tiết yêu cầu
+            </div>
+            <div class="order-detail-body" id="order-detail-body">
+                <div class="row input-custom-inline body-list">
+                    <div>
+                        <div class="col s6 l6 detail-header">Tên sản phẩm</div>
+                        <div class="col s3 l3 detail-header">Đơn giá</div>
+                        <div class="col s3 l3 detail-header">Số lượng</div>
+                    </div>
+                    <div *ngFor='let item of currentOrder.listCategory'>
+                        <div class="col s6 l6">{{item.CategoryName}}</div>
+                        <div class="col s3 l3">{{item.UnitPrice |currency:'VND'}}</div>
+                        <div class="col s3 l3">x{{item.Quantity}}</div>
+                    </div>
+                    <div class="total-price col s12 l12"><span style="font-weight: bold;">Tổng tiền: {{totalCost | currency:'VND'}}</span></div>
+                </div>
+                
+            </div>
+            <div  *ngIf='!currentOrder.status' class="order-detail-control-button" style="text-align: right;">
+                <button (click)='rejectOrder()' class="waves-green ok-but btn-flat btn-update accept-order">
+                    <i style="font-size: 15px;" class="fa fa-times"></i> Hủy
+                </button>  &nbsp;
+
+                <button class="waves-green ok-but btn-flat btn-update accept-order">
+                    <i style="font-size: 15px;" class="fa fa-cog"></i> Chỉnh sửa
+                </button>  &nbsp;
+
+                <button (click)='acceptOrder()' class="waves-green ok-but btn-flat btn-update accept-order">
+                    <i style="font-size: 15px;" class="fa fa-check"></i> Duyệt
+                </button>  
+            </div>
+
+
+            <div *ngIf='currentOrder.status' class="order-detail-control-button" style="text-align: right;">
+
+                <button disabled style="background-color: limegreen !important; color: white !important;" class=" waves-green ok-but btn-flat btn-update accept-order">
+                    <i style="font-size: 15px;" class="fa fa-check"></i>Đã duyệt
+                </button>  
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,19 +3,27 @@
 
     .group-container{
         display: inline-block; 
-        height: 100%; 
+        max-height: 100%; 
+        overflow: scroll;
         width: 100%; 
         border: 1px solid #e0e0e0;
         border-bottom: none;
+        position: relative;
+        
         .group-item{
             display: inline-block; 
             overflow: hidden;
             width: 100%;
-            border-bottom: 1px solid #6248fa;
             padding: 10px;
             position: relative;
             height: 60px;
 
+            .order-id-client{
+                position: absolute;
+                right: 17px;
+                top: 30px;
+                font-weight: bold;
+            }
             img{
                 width: 45px;
                 height: 80%;
@@ -45,20 +53,27 @@
     }
 }
 
-.mess-list{
+.order-detail{
     height: calc(100vh - 90px);
     .current-user{
         height: 40px;
         font-weight: bold;
         padding-top: 6px;
+        position: relative;
         span{
             font-weight: bold;
             font-size: 20px;
             color: var(--primary-color);
         }
+        .order-id{
+            position: absolute;
+            right: 0px;
+            color: black;
+        }
     }
-    .messcontainer{
-        height: calc(100% - 100px);
+    .order-detail-container{
+        height: calc(100% - 45px);
+        border-bottom: 1px solid;
         overflow: scroll;
         margin-bottom: 20px;
         .mess-bound{
@@ -74,6 +89,16 @@
                 max-width: 60%;
                 word-break: break-all;
             }
+        }
+        .order-de{
+            padding-left: 0px;
+            font-size: 23px;
+            font-weight: bold;
+            border-bottom: 1.5px solid;
+        }
+
+        .order-detail-body{
+
         }
         
 
@@ -121,7 +146,7 @@
 
 .client-id{
     position: absolute;
-    top: 3px;
+    top: 4px;
     left: 50px;
     font-weight: bolder;
     color: red;
@@ -130,10 +155,60 @@
     }
 }
 
-.last-message{
+.order-status{
     position: absolute;
     top: 30px;
     left: 50px;
+    font-weight: bold;
+}
+
+.last-message{
+    position: absolute;
+    top: 30px;
+    left: 5px;
     color: black;
     font-weight: 600;
+}
+
+.clicked{
+    background-color: #aacef1
+}
+
+.detail-header{
+    font-weight: bold;
+}
+
+.body-list{
+    max-height: calc(100% - 30px);
+    overflow: scroll;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.total-price{
+    padding-top: 20px;
+}
+
+.accept-order{
+    background-color: var(--bgbutton-color);
+
+    &:hover{
+        background-color: var(--primary-color);
+        i{
+            color: white;
+            
+        }
+        color: white;
+    }
+}
+
+
+
+.order-detail-container{
+    position: relative;
+    .order-detail-control-button{
+        position: absolute;
+        bottom: 15px;
+        right: 0px;
+    }
 }

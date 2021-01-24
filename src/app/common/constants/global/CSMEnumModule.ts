@@ -37,5 +37,16 @@ export enum CSMEnumModule{
     // Màn hình chat 
     ChatView = 500, 
     // Gửi tin nhắn.
-    ChatSend = 501
+    ChatSend = 501,
+
+    // Màn hình dashboard 
+    DashboardView = 600, 
+
+    // Màn hình order 
+    OrderView = 700,
+        // Duyệt yêu cầu gọi đồ
+    AcceptOrder = 701, 
+        // Hủy yêu cầu gọi đồ
+    RejectOrder = 702
+    
 }

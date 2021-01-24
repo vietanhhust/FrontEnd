@@ -4,7 +4,7 @@
     <!-- navbar content here  -->
     <div class="nav-wrapper">
 
-      <ul class="left" #widtne [class.expend]="isExpand" [style.max-width]="isExpand? '':'903px'">
+      <ul class="left" #widtne [class.expend]="isExpand" style="max-width: 100% !important;">
         <li><a data-target="slide-out" class="sidenav-open">
             <div id="btn-menu" class="">
               <img src="/assets/images/menub.png" alt="">
@@ -61,7 +61,7 @@
             </li> -->
 
         <li>
-          <a routerLink='cms'>Dashboard</a>
+          <a routerLinkActive='test' routerLink='cms/dashboard'>Dashboard</a>
         </li>
         <li>
           <a routerLinkActive='test' routerLink='cms/role'>Phân quyền</a>
@@ -77,14 +77,22 @@
         </li>
         <li>
           <a routerLinkActive='test' routerLink='cms/chat'>
-            Chat
+            Giao tiếp
           </a>
         </li>
+
         <li>
-          <a>
-            Chức năng khác
+          <a routerLinkActive='test' routerLink='cms/order'>
+            Gọi đồ
           </a>
         </li>
+        
+        <li>
+          <a routerLinkActive='test' routerLink='cms/history'>
+            Lịch sử
+          </a>
+        </li>
+        
 
 
 

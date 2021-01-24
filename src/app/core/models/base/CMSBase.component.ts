@@ -88,10 +88,6 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
     protected EnumModule = EnumModule;
 
     ngOnInit() {
-        // console.log("gọi hàm khởi tạo");
-        // console.log(this.cmsSessionService.getCMSSession());
-        // console.log(this.cmsSessionService.getCMSPermission());
-        // console.log(this.cmsSessionService.getPermissionByFrontendCode(1));
         if (this.moduleId == CSMEnumModule.FreeAccess) {
             return;
         }
@@ -104,25 +100,6 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
 
     }
 
-    // setObjectData(objectTypeId: number, objectId: number) {
-    //     this.objectTypeId = objectTypeId;
-    //     this.objectId = objectId;
-    //     this.findCurentPermission();
-    // }
-
-    // findCurentPermission() {
-    //     // let modulePermission;
-    //     // if (this.objectTypeId && this.objectId) {
-    //     //     modulePermission = this.sessionService.permission.find(x => x.moduleId === this.moduleId && x.objectTypeId == this.objectTypeId && x.objectId == this.objectId);
-    //     // } else {
-    //     //     modulePermission = this.sessionService.permission.find(x => x.moduleId === this.moduleId);
-    //     // }
-    //     // this.curentPermission = cloneDeep(modulePermission);
-    //     // this.sessionService.moduleId = this.moduleId;
-
-    //     // Cần set this.currentPermission
-    // }
-
     getActionPayload<T>(payload: T) {
         return { context: this.getContext(), payload: cloneDeep(payload) };
     }
@@ -130,16 +107,6 @@ export abstract class CMSBaseComponent implements OnInit, OnDestroy, IXModuleCon
     getContext(): IXModuleContext {
         return { moduleId: this.moduleId } as IXModuleContext;
     }
-
-    customGenCode: CustomGenCodeOutputModel;
-    // loadCustomGenCode(targeObjectTypeId: EnumObjectType, configObjectTypeId?: EnumObjectType, configObjectId?: number, date?: number, code?: string) {
-    //     configObjectTypeId = configObjectTypeId ? configObjectTypeId : targeObjectTypeId;
-    //     configObjectId = configObjectId ? configObjectId : 0;
-    //     this.sessionService.customGenCodeService.currentConfig(this, targeObjectTypeId, configObjectTypeId, configObjectId, null, code, date)
-    //         .subscribe(c => {
-    //             this.customGenCode = c;
-    //         })
-    // }
 
     generateCodeAndConfirm(date: number | string, code?: string) {
         //return this.sessionService.gencodeConfigService.generateCodeAndConfirm(this, this.customGenCode.customGenCodeId, this.customGenCode.lastValue, null, code, date);

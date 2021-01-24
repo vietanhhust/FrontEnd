@@ -3,7 +3,8 @@ export interface CMSSessionModel {
     token?: string, 
     name?: string, 
     groupRoleId?: number, 
-    role?: FrontEndRoles[]
+    role?: FrontEndRoles[], 
+    adminId?: number
 }
 
 export interface FrontEndRoles{

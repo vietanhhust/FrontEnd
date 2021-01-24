@@ -7,6 +7,8 @@ import { CMSCategoryItemComponent } from './cms-category-item/cms-category-item.
 import { CMSRoleComponent } from './cms-role/cms-role.component';
 import { CMSGroupClientComponent } from './cms-group-client/cms-group-client.component';
 import { CMSChatComponent } from './cms-chat/cms-chat.component';
+import { CMSDashboardComponent } from './cms-dashboard/cms-dashboard.component';
+import { CMSOrderComponent } from './cms-order/cms-order.component';
 
 const cmsRoutes: Routes = [
   {
@@ -33,6 +35,14 @@ const cmsRoutes: Routes = [
       {
         path: 'chat', 
         component: CMSChatComponent
+      }, 
+      {
+        path: 'dashboard',
+        component: CMSDashboardComponent
+      }, 
+      {
+        path: 'order', 
+        component: CMSOrderComponent
       }
     ]
   }

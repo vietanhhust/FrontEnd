@@ -134,6 +134,5 @@ export class CMSCategoryItemComponent extends CMSBaseComponent implements OnInit
   }
 
   ngOnDestroy(){
-    console.log("bị hủy");
   }
 }

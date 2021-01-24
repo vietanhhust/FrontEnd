@@ -107,6 +107,9 @@ export class ApiService {
 
   // log error to local storage
   logError(errors, logType) {
+    console.clear(); 
+    console.log(errors); 
+    console.log(logType);
     let errorMessage = errors.error && errors.error.message ? errors.error.message : errors.message;
     let shortMessage = (errorMessage && errorMessage.length > 50) ?
       (errorMessage as string).substr(0, 50) + '...'
@@ -122,11 +125,15 @@ export class ApiService {
 
     ErrorLogService.addError(err);
 
-    this.toast.error(shortMessage).onTap.subscribe(data => {
-      this.popup.open(PopupDetailErrorComponent, {
-        error: err
-      })
-    });
+    if(errors.error.messege){
+      this.toast.error(errors.error.messege).onTap.subscribe(data => {
+        this.popup.open(PopupDetailErrorComponent, {
+          error: err
+        })
+      });
+    }else{
+      this.toast.error(errors.error.message)
+    }
   }
 
 

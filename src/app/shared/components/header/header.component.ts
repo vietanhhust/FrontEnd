@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { SessionService } from 'src/app/core/services/base/session.service';
 import { Router } from '@angular/router';
 import { PageTitleService } from './../../../core/services/base/page-title.service';
@@ -14,10 +14,13 @@ import { ListErrorComponent } from '../popup-detail-error/list-error/list-error.
 import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
 import { ApiEndpoint, SignalREndpoint } from 'src/app/core/models/base/CMSSession.model';
 import { ToastrService } from 'ngx-toastr';
-import {HubConnection, HubConnectionBuilder, HubConnectionState} from '@microsoft/signalr'
+import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr'
 import { PopupCountService } from '../../services/popupCount.service';
 import { CMSSignalRService } from 'src/app/cms/cmsServices/signalR.service';
-import { CMSNewMessengerModel } from 'src/app/cms/cmsModel/chat.model';
+import { CMSNewMessengerModel, CMSChatModel, chat_storage_key, CMSAdminToAdminMessengerModel } from 'src/app/cms/cmsModel/chat.model';
+import { storage } from 'src/app/common/helpers/storage';
+import { CMSTimeService } from 'src/app/cms/cmsServices/cms-time.service';
+import { CMSCategoryOrderSubject, CMSCategoryModel, CMSOrderModel, order_storage_key } from 'src/app/cms/cmsModel/order.model';
 
 
 declare let $;
@@ -26,7 +29,7 @@ declare let $;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('inputSearch', { static: false }) inputSearch: ElementRef;
   EnumModule = EnumModule;
   uri: MenuOutputModel;
@@ -55,33 +58,13 @@ export class HeaderComponent implements OnInit {
     private menuInfo: Store<{ menuInfo: any }>,
     private popup: PopupService,
     private toast: ToastrService,
-    private cmsSessionService: CMSSessionService, 
-    private cmsSignalRService: CMSSignalRService
+    private cmsSessionService: CMSSessionService,
+    private cmsSignalRService: CMSSignalRService,
+    private cmsTimeService: CMSTimeService
   ) { }
 
   ngOnInit() {
-    // this.lstPermission = this.sessionService.permission;
-    // if (this.lstPermission.length < 1) {
-    //   return;
-    // }
-
-    // this.sessionService.getCurentInfo().subscribe(r => {
-    //   this.user = r;
-    //   if (this.user.fullName && this.user.fullName.split(' ').length > 1) {
-    //     this.nameSplit = this.user.fullName.split(' ')[this.user.fullName.split(' ').length - 1].substring(0, 1);
-    //   }
-    //   if (r.avatarFileId) {
-
-    //   }
-    // });
-
-    // this.menuInfo.pipe(select('menuInfo')).subscribe(data => {
-    //   if (data && data.items && Array.isArray(data.items)) {
-    //     this.transferMenu(data.items);
-    //   }
-    // });
-    // this.loadbussiness();
-    this.subcribe(); 
+    this.subcribe();
   }
 
   transferMenu(data) {
@@ -204,19 +187,177 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('logins');
   }
 
-  // Mở pop up danh sách lỗi 
-  // openListError(){
-  //   this.popup.open(ListErrorComponent,{}, res=>{})
-  // }
-
-  subcribe(){
-    this.cmsSignalRService.signalRMessageSubject.subscribe(res=>{
-      this.toast.success(res.accountName + " : " + res.message,"Máy "  + res.clientId.toString()).onTap.subscribe(res=>{
+  // Khởi tạo subcribe các item đến từ signalR Service
+  subcribe() {
+    // Nhận tin nhắn từ Client
+    this.cmsSignalRService.signalRMessageSubject.subscribe(res => {
+      if (!this.router.url.includes("cms/chat")) {
+        this.addNewMessage(res);
+      }
+      this.toast.success(res.accountName + " : " + res.message, "Máy " + res.clientId.toString()).onTap.subscribe(res => {
         this.router.navigateByUrl('cms/chat');
       });
     })
+
+    // xóa tin nhắn trong storage khi client tắt máy. 
+    this.cmsSignalRService.signalRMessageDisconnectSubject.subscribe(res => {
+      var lstConversation = storage.getObject<CMSChatModel[]>(chat_storage_key);
+      var disconect = lstConversation.find(item => item.connectionId = res);
+      let index = lstConversation.indexOf(disconect, 0);
+      if (index > -1) {
+        lstConversation.splice(index, 1);
+      }
+      storage.setObject(chat_storage_key, lstConversation);
+      console.log("Dis connect");
+    })
+
+    // Nhận tin nhắn từ Admin khác
+    this.cmsSignalRService.signalRFromAnotherAdmin.subscribe(res => {
+      if (!this.router.url.includes('cms/chat')) {
+        this.addNewAdminMessage(res);
+      }
+    })
+
+    // Order 
+    this.cmsSignalRService.signalROrderSubject.subscribe(res => {
+      // Nếu ở màn khác thì lưu vào storage, và bấm thì chuyển hướng, nếu đang ở màn gọi đồ thì để màn gọi đồ xử lý.
+      if (this.router.url.includes('cms/order')) {
+        this.toast.show("Máy: " + res.clientId, 'Yêu cầu gọi đồ');
+      } else {
+        this.toast.show("Máy: " + res.clientId, 'Yêu cầu gọi đồ').onTap.subscribe(tap => {
+          this.router.navigateByUrl('cms/order');
+        })
+        // Thêm yêu cầu mới vào local storage.
+        this.addNewOrderRequest(res);
+      }
+    })
+
+    // Order được duyệt 
+    this.cmsSignalRService.signalROrderAcceptNotify.subscribe(res => {
+      if (!this.router.url.includes('cms/order')) {
+        let lstOrder = storage.getObject<CMSOrderModel[]>(order_storage_key);
+        if (lstOrder) {
+          var orderFound = lstOrder.find(item => item.connectionId == res.connectionId);
+          if (orderFound) {
+            orderFound.id = res.orderId,
+              orderFound.status = true,
+              this.toast.success('Đã duyệt yêu cầu máy: ' + orderFound.clientId, 'Yêu cầu')
+            storage.setObject(order_storage_key, lstOrder);
+          }
+        }
+      }
+    })
+
+    // Order bị từ chối 
+    this.cmsSignalRService.signalRRejectOrder.subscribe(res => {
+      if (!this.router.url.includes('cms/order')) {
+        let lstOrder = storage.getObject<CMSOrderModel[]>(order_storage_key);
+        if (lstOrder) {
+          var orderFound = lstOrder.find(item => item.connectionId == res.connectionId && item.userId == res.accountId && item.timeStamp == res.timeStamp);
+          if (orderFound) {
+            let index = lstOrder.indexOf(orderFound, 0);
+            if (index > -1) {
+              lstOrder.splice(index, 1);
+            }
+            this.toast.success('Đã hủy yêu cầu máy: ' + orderFound.clientId + " lúc "+ this.cmsTimeService.unixToSecondMinuteHour(res.timeStamp), 'Yêu cầu')
+            storage.setObject(order_storage_key, lstOrder);
+          }
+        }
+      }
+    })
   }
-  
-  
+
+  ngOnDestroy() {
+    this.cmsSignalRService.hubConnection.stop();
+  }
+
+  // Thêm tin nhắn mới ( nếu không ở trang chat )
+  addNewMessage(res: CMSNewMessengerModel) {
+    let lstConveration = storage.getObject<CMSChatModel[]>(chat_storage_key);
+    if (!lstConveration) {
+      lstConveration = []
+    }
+    var conversationFound = lstConveration.find(x => x.connectionId == res.connectionId);
+    if (conversationFound) {
+      conversationFound.messages.push({
+        isAdmin: false,
+        message: res.message,
+        timeStamp: res.timeStamp
+      });
+      conversationFound.isRead = false;
+      conversationFound.lastMessage = res.message,
+        conversationFound.lastMessageTimeStamp = res.timeStamp
+    }
+    else {
+      lstConveration.push({
+        accountName: res.accountName, clientId: res.clientId, connectionId: res.connectionId,
+        isRead: false, messages: [
+          {
+            isAdmin: false,
+            message: res.message,
+            timeStamp: res.timeStamp
+          }
+        ],
+        lastMessage: res.message,
+        lastMessageTimeStamp: res.timeStamp
+      })
+    }
+    // sort lại thứ tự chưa đọc. 
+    lstConveration = this.sortListConversion(lstConveration)
+    storage.setObject(chat_storage_key, lstConveration);
+  }
+
+  // Thêm tin nhắn của admin vào list 
+  addNewAdminMessage(res: CMSAdminToAdminMessengerModel) {
+    let lstConveration = storage.getObject<CMSChatModel[]>(chat_storage_key);
+    if (!lstConveration) {
+      lstConveration = []
+    }
+    var conversationFound = lstConveration.find(x => x.connectionId == res.connectionId);
+    if (conversationFound) {
+      conversationFound.messages.push({
+        isAdmin: true,
+        message: res.message,
+        timeStamp: res.timeStamp,
+        adminName: res.adminName
+      });
+      conversationFound.isRead = false;
+      conversationFound.lastMessage = res.message,
+        conversationFound.lastMessageTimeStamp = res.timeStamp
+    }
+    else {
+    }
+    storage.setObject(chat_storage_key, lstConveration);
+  }
+
+  // sắp xếp lại cuộc hội thoại
+  sortListConversion(convs: CMSChatModel[]) {
+    return convs.sort((x, y) => {
+      // true value first
+      return (!x.isRead === !y.isRead) ? 0 : x ? -1 : 1
+    });
+  }
+
+  // Thêm mới categoryOrder vào storage. 
+  addNewOrderRequest(res: CMSCategoryOrderSubject) {
+    let listOrder = storage.getObject<CMSOrderModel[]>(order_storage_key);
+    if (!listOrder) {
+      listOrder = []
+    }
+    listOrder.push({
+      adminName: this.cmsSessionService.getCMSSession().name,
+      adminId: this.cmsSessionService.getCMSSession().adminId,
+      clientId: res.clientId,
+      clientNumber: 0,
+      connectionId: res.connectionId,
+      id: 0,
+      timeStamp: res.timeStamp,
+      listCategory: JSON.parse(res.listCategory) as CMSCategoryModel[],
+      userId: 0,
+      userName: res.accountName,
+      status: false
+    })
+    storage.setObject(order_storage_key, listOrder);
+  }
 }
 

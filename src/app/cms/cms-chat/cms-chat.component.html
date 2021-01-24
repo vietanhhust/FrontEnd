@@ -5,9 +5,9 @@
             <!--<span>/</span>-->
         </div>
         <div class="tool1">
-            <a (click)='resetItem()' class="mr5 btn-add"><i class="fa fa-sync"></i>Xóa sesion</a>
+            <a (click)='resetItem()' class="mr5 btn-add"><i class="fa fa-sync"></i>Xóa hết tin nhắn</a>
             <!-- <a (click)='addCategoryItem(); keyword=""' class="mr5 btn-add"><i class="fa fa-plus"></i>Tạo mới</a> -->
-            
+
             <!-- Phần này để hiển thị danh sách làm với tab được chọn-->
             <!-- <ng-container *ngIf="selectedValueTab">
                     <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
@@ -16,8 +16,7 @@
 
         <div class="tool3">
             <div class="t3" style="opacity: 0;">
-                <a class="" >Bộ lọc <i
-                        class="fa fa-angle-down"></i></a>
+                <a class="">Bộ lọc <i class="fa fa-angle-down"></i></a>
 
             </div>
             <div class="search">
@@ -29,40 +28,63 @@
             (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
         </div>
     </div>
-</div> 
+</div>
 
 <!--Phần body bên dưới-->
 <div class="row">
-    <!-- Phần này chứa list clinet-->
-    <div class="col s4 group-client-list">
-        <div class="group-container">
+    <!-- Phần này chứa list client-->
+    <div class="col s3 group-client-list">
+        <div *ngIf='lstConveration.length > 0' class="group-container">
             <ng-container *ngFor='let conv of lstConveration'>
                 <a (click)='convClick(conv)' [ngClass]='!conv.isRead?"active":""' id="row_{{conv['connectionId']}}"
-                    class="group-item">{{conv.accountName}}
-
-                    <span class="control-button">
-                        
+                    class="group-item">
+                    <img src="/assets/images/user-icon2.png" alt="">
+                    <span class="last-mess-date">
+                        {{cmsTimeService.unixToSecondMinuteHour(conv.lastMessageTimeStamp)}}
                     </span>
+
+                    <span class="client-id">{{"Máy " + conv.clientId.toString()}}
+                        <span class="account-name">
+                            {{conv.accountName}}
+                        </span>
+                    </span>
+
+                    <span class="last-message">{{conv.lastMessage}}</span>
                 </a>
 
             </ng-container>
         </div>
+        <div style="padding-top: 10px; padding-left: 5px;" *ngIf='lstConveration.length ==0' class="group-container">
+            Không có cuộc hội thoại
+        </div>
     </div>
 
-    <!-- Hiển thị các máy ra-->
-    <div class="col s8 mess-list">
-        <div class="messcontainer">
+    <!-- Hiển thị cuộc hội thoại hiện tại-->
+    <div class="col s9 mess-list">
+        <div class="current-user">
+            <span *ngIf='currentConversation.clientId'>
+                {{"Máy " + currentConversation.clientId + " - " + currentConversation.accountName}}
+            </span>
+        </div>
+        <!--List tin nhắn ở mỗi cuộc hội thoại-->
+        <div class="messcontainer" id='messcontainerScroll'>
             <ng-container *ngFor='let mess of lstMessage'>
-                <div class="mess-item" *ngIf='mess.isAdmin' style=" text-align: right;">
-                    {{mess.message}}
-                </div>
-                <div class="mess-item" *ngIf='!mess.isAdmin' style="text-align: left;">
-                    {{mess.message}}
+                <div class="mess-bound">
+                    <div title="{{cmsTimeService.unixToHumanDateAndHour(mess.timeStamp)+ ' , from: ' + mess.adminName}}"
+                        class="mess-item" *ngIf='mess.isAdmin' style="float: right">
+                        {{mess.message}}
+                    </div>
+                    <div title="{{cmsTimeService.unixToHumanDateAndHour(mess.timeStamp)}}" class="mess-item"
+                        *ngIf='!mess.isAdmin' style="float: left;">
+                        {{mess.message}}
+                    </div>
+
                 </div>
             </ng-container>
         </div>
         <div class="admin-chat">
-            <input #input (keyup.enter)='sendToClient(input.value); input.value=""' style="display: inline-block;" type="text" name="zzz" id="">
+            <input #input (keyup.enter)='sendToClient(input.value); input.value=""' style="display: inline-block;"
+                type="text" name="zzz" id="">
             <a class="mr5 btn-add"><i class="fa fa-plus"></i> Gửi</a>
         </div>
     </div>

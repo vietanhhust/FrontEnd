@@ -1,0 +1,50 @@
+<form novalidate name="frmOrderCreated" #frmOrderCreated="ngForm" (ngSubmit)='frmOrderCreated.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a>Tạo yêu cầu mới</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <!--Tài khoản-->
+        <div *ngFor='let order of lstOrder; let i = index' class="row input-custom-inline">
+            <div class="col s8">
+                <p>Sản phẩm: </p>
+                <div class="input-field inline">
+                    <select-field (ngModelChange)='categoryChoose(order)' [(ngModel)]="order.CategoryId" [data]="lstSelect" name="'cateGroupId_{{i}}'" title="Trạng thái"
+                        [frm]="frmOrderCreated">
+                    </select-field>
+                </div>
+            </div>
+            <div class="col s4 quantity">
+                <span class="">Số lượng &nbsp;</span>
+                <span><i (click)='minusQuantity(order)' style="color: var(--primary-color); cursor: pointer;" class="fa fa-minus"></i></span>
+                <span>&nbsp;{{order.Quantity}}&nbsp;</span>
+                <span>&nbsp;<i (click)='addQuantity(order)' style="color: var(--primary-color); cursor: pointer;" class="fa fa-plus"></i>&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp; <i (click)='removeCategory(order)' class="fa fa-trash"></i></span>
+            </div>
+        </div>
+
+        <div>
+            <a (click)='addOrder()'> + Thêm sản phẩm</a>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="far fa-save"></i> Lưu lại
+        </button>
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>
