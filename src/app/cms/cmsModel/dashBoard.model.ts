@@ -19,12 +19,21 @@ export interface CMSDashboardModel {
         isActived?: boolean,
         isLogged?: boolean
     }, 
+    elapsedTime?: number, 
+    elapsedTimeString?: string
+    timeLogin?: number, 
+    timeLoginString?: string, 
     // Trường tự thêm
     status?: string,
     isUsed?: boolean, 
     balance?: number, 
     clientName?: string, 
-    accountName?: string
+    accountName?: string, 
+    class?: string, 
+    day?: string, 
+    groupClientName?: string, 
+    clientPrice?: number
+
 }
 
 //Endpoint

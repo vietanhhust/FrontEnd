@@ -7,12 +7,14 @@ import { Router } from '@angular/router';
 import { CMSSignalRService } from '../cmsServices/signalR.service';
 import { CMSTimeService } from '../cmsServices/cms-time.service';
 import { Subscription } from 'rxjs';
-import { CMSOrderModel, CMSCategoryOrderSubject, order_storage_key, CMSCategoryModel } from '../cmsModel/order.model';
+import { CMSOrderModel, CMSCategoryOrderSubject, order_storage_key, CMSCategoryModel, CMSOrderCreating } from '../cmsModel/order.model';
 import { storage } from 'src/app/common/helpers/storage';
 import { CMSOrderService } from '../cmsServices/cms-order.service';
 import { ToastrService } from 'ngx-toastr';
 import { PopupService } from 'src/app/shared/services/popup.service';
 import { CMSOrderIncurredComponent } from './cms-order-incurred/cms-order-incurred.component';
+import { id } from 'date-fns/locale';
+import { CMSOrderPutComponent } from './cms-order-put/cms-order-put.component';
 
 @Component({
   selector: 'app-cms-order',
@@ -63,6 +65,9 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
       console.log(res);
     })
 
+    this.orderIncurredSubcribe = this.cmsSignalRService.signalRCreateIncurredOrder.subscribe(res => {
+      this.otherAdminAddIncurredOrder(res);
+    })
   }
 
   // Thêm mới một yêu cầu đặt
@@ -123,10 +128,42 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
         }
       }
 
-    
+
     })
   }
 
+  // Khi admin khác tự tạo một yêu cầu mới. 
+  otherAdminAddIncurredOrder(res: {
+    adminId?: number,
+    clientId?: number,
+    timeStamps?: number,
+    orderDetail?: string,
+    accountId?: number,
+    adminName?: string,
+    accountName?: string,
+    id?: number
+  }) {
+    if (!(this.lstOrder.length > 0)) {
+      this.lstOrder = []
+    }
+
+    this.lstOrder.reverse().push({
+      adminName: res.adminName,
+      adminId: res.adminId,
+      clientId: res.clientId,
+      clientNumber: 0,
+      connectionId: '',
+      id: res.id,
+      timeStamp: res.timeStamps,
+      listCategory: JSON.parse(res.orderDetail) as CMSCategoryModel[],
+      userId: res.accountId,
+      userName: res.accountName,
+      status: true,
+      incurred: true
+    })
+    storage.setObject(order_storage_key, this.lstOrder);
+    this.lstOrder = this.lstOrder.reverse();
+  }
 
 
   resetItem() {
@@ -180,7 +217,7 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
         if (index > -1) {
           this.lstOrder.splice(index, 1);
           storage.setObject(order_storage_key, this.lstOrder);
-          this.toast.success("Đã hủy yêu cầu"); 
+          this.toast.success("Đã hủy yêu cầu");
           this.cmsSignalRService.hubConnection.invoke('rejectOrder', connectionId, this.currentOrder.timeStamp, this.currentOrder.userId);
           this.currentOrder = {};
 
@@ -188,6 +225,17 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
 
       }
 
+    })
+  }
+
+  // Chỉnh sửa yêu cầu
+  putOrders(){
+    this.popup.open(CMSOrderPutComponent, this.currentOrder.listCategory, (res: CMSCategoryModel[])=>{
+      this.currentOrder.listCategory = res;
+      this.totalCost = 0; 
+      this.currentOrder.listCategory.forEach(item=>{
+        this.totalCost += item.Quantity * item.UnitPrice;
+      })
     })
   }
 
@@ -219,10 +267,45 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
 
 
   // Tạo yêu cầu phát sinh
-  addIncurredOrder(){
-    this.popup.open(CMSOrderIncurredComponent, {}, res=>{
+  addIncurredOrder() {
+    this.popup.open(CMSOrderIncurredComponent, {}, (res: {
+      id?: number,
+      model?: CMSOrderCreating,
+      accountName?: string,
+      clientId: number
+    }) => {
+      console.clear(); 
+      console.log(res);
+      if (res) {
+        this.lstOrder.reverse().push({
+          id: res.id,
+          adminId: this.cmsSessionService.getCMSSession().adminId,
+          adminName: this.cmsSessionService.getCMSSession().name,
+          clientId: res.model.ClientId,
+          clientNumber: res.clientId,
+          connectionId: '',
+          incurred: true,
+          listCategory: res.model.ListCategory,
+          status: true,
+          timeStamp: res.model.CreatedTime,
+          userId: res.model.accountId,
+          userName: res.accountName
+        })
+
+        this.toast.success("Tạo yêu cầu mới thành công");
+        this.cmsSignalRService.hubConnection.invoke("createIncurredOrders", 
+          res.model.AdminId, this.cmsSessionService.getCMSSession().name,
+          res.model.CreatedTime as number, JSON.stringify(res.model.ListCategory), 
+          res.clientId as number, 
+          res.model.accountId as number, res.accountName, res.id as number
+        )
+        storage.setObject(order_storage_key, this.lstOrder);
+        this.lstOrder = this.lstOrder.reverse();
+      }
+
 
     });
+
   }
 
 
@@ -238,6 +321,7 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
   orderAcceptNotify: Subscription;
   orderDisconnectSubcribe: Subscription;
   orderRejectedSubcribe: Subscription;
+  orderIncurredSubcribe: Subscription;
   ngOnDestroy() {
     if (this.orderCommingSubcribe) {
       this.orderCommingSubcribe.unsubscribe();
@@ -248,8 +332,11 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
     if (this.orderAcceptNotify) {
       this.orderAcceptNotify.unsubscribe();
     }
-    if(this.orderRejectedSubcribe){
-      this.orderRejectedSubcribe.unsubscribe(); 
+    if (this.orderRejectedSubcribe) {
+      this.orderRejectedSubcribe.unsubscribe();
+    }
+    if (this.orderIncurredSubcribe) {
+      this.orderIncurredSubcribe.unsubscribe();
     }
   }
 }

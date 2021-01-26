@@ -1,27 +1,27 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IModalComponent } from 'src/app/core/models/base/IModalComponent';
-import { CMSCategoryOrderSubject, CMSCategoryModel, CMSOrderCreating } from '../../cmsModel/order.model';
+import { CMSCategoryModel, CMSOrderCreating } from '../../cmsModel/order.model';
 import { CategoryItemModel } from '../../cmsModel/categoryItem.model';
 import { CMSCategoryService } from '../../cmsServices/cms-category.service';
-import { PopupComponent } from 'src/app/shared/components/popup/popup.component';
-import { ToastrService } from 'ngx-toastr';
-import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
-import { CMSGroupClientService } from '../../cmsServices/cms-group-client.service';
 import { PopupService } from 'src/app/shared/services/popup.service';
+import { CMSGroupClientService } from '../../cmsServices/cms-group-client.service';
+import { ToastrService } from 'ngx-toastr';
+import { CMSTimeService } from '../../cmsServices/cms-time.service';
+import { CMSOrderService } from '../../cmsServices/cms-order.service';
+import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
+import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
 import { CMSAccountChooseComponent } from '../../cmsaccount/cms-account-choose/cms-account-choose.component';
 import { AccountModel } from '../../cmsModel/account.model';
 import { clone } from 'lodash';
-import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
-import { CMSTimeService } from '../../cmsServices/cms-time.service';
-import { CMSOrderService } from '../../cmsServices/cms-order.service';
 
 @Component({
-  selector: 'app-cms-order-incurred',
-  templateUrl: './cms-order-incurred.component.html',
-  styleUrls: ['./cms-order-incurred.component.scss']
+  selector: 'app-cms-order-put',
+  templateUrl: './cms-order-put.component.html',
+  styleUrls: ['./cms-order-put.component.scss']
 })
-export class CMSOrderIncurredComponent implements OnInit, IModalComponent {
-  @Input() data;
+export class CMSOrderPutComponent implements OnInit, IModalComponent {
+
+  @Input() data: CMSCategoryModel[];
   @Output() close = new EventEmitter();
   accountModel = {};
 
@@ -55,7 +55,7 @@ export class CMSOrderIncurredComponent implements OnInit, IModalComponent {
   }
 
   ngOnInit(): void {
-    this.lstOrder = [];
+    this.lstOrder = clone(this.data);
     this.lstCategory = [];
     this.getCategories();
   }
@@ -167,24 +167,7 @@ export class CMSOrderIncurredComponent implements OnInit, IModalComponent {
 
   // Lưu lại
   save() {
-    let orderCreating: CMSOrderCreating = {
-      AdminId: this.cmsSessionService.getCMSSession().adminId,
-      ClientId: this.clientId,
-      CreatedTime: this.cmsTimeService.getCurrentUnix(),
-      accountId: this.accountId,
-      ListCategory: this.groupByPrice(this.lstOrder)
-    }
-    this.cmsOrderService.acceptOrder({ moduleId: CSMEnumModule.AcceptOrder }, orderCreating).subscribe(res => {
-      let clientId = null;
-      if (this.clientId)
-        clientId = this.lstClient.find(item => item.value == this.clientId).title.split(' ')[1];
-      this.close.emit({
-        id: res,
-        model: orderCreating,
-        accountName: this.accountName,
-        clientId: clientId ? clientId : null
-      })
-    })
-
+    this.close.next(this.groupByPrice(this.lstOrder));
   }
+
 }

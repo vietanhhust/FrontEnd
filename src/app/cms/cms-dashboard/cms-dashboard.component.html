@@ -33,7 +33,7 @@
 
 
 <div overlay-loading [loading]="!isShowPage" class="row animated slideInDown">
-    <cms-app-table id="tableus" (DoubleClickValue)="viewmode($event)" (selectedValue)="selectedValueTab = $event"
+    <cms-dashboard-table id="tableus" (DoubleClickValue)="viewmode($event)" (selectedValue)="selectedValueTab = $event"
         [configTable]="configTable" [data]="lstData">
-    </cms-app-table>
+    </cms-dashboard-table>
 </div>

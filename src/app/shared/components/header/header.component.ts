@@ -259,10 +259,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
             if (index > -1) {
               lstOrder.splice(index, 1);
             }
-            this.toast.success('Đã hủy yêu cầu máy: ' + orderFound.clientId + " lúc "+ this.cmsTimeService.unixToSecondMinuteHour(res.timeStamp), 'Yêu cầu')
+            this.toast.success('Đã hủy yêu cầu máy: ' + orderFound.clientId + " lúc " + this.cmsTimeService.unixToSecondMinuteHour(res.timeStamp), 'Yêu cầu')
             storage.setObject(order_storage_key, lstOrder);
           }
         }
+      }
+    })
+
+    // Order được tạo bởi admin khác. 
+    this.cmsSignalRService.signalRCreateIncurredOrder.subscribe(res => {
+      if (!this.router.url.includes("cms/order")) {
+        this.toast.show("Máy: " + res.clientId, 'Yêu cầu gọi đồ');
+      } else {
+        this.toast.show("Máy: " + res.clientId, 'Yêu cầu gọi đồ').onTap.subscribe(tap => {
+          this.router.navigateByUrl('cms/order');
+        })
+        this.addIncurredOrder(res);
       }
     })
   }
@@ -356,6 +368,39 @@ export class HeaderComponent implements OnInit, OnDestroy {
       userId: 0,
       userName: res.accountName,
       status: false
+    })
+    storage.setObject(order_storage_key, listOrder);
+  }
+
+  // Khi tạo yêu cầu mới:
+  addIncurredOrder(res: {
+    adminId?: number,
+    clientId?: number,
+    timeStamps?: number,
+    orderDetail?: string,
+    accountId?: number,
+    adminName?: string,
+    accountName?: string,
+    id?: number
+  }) {
+    let listOrder = storage.getObject<CMSOrderModel[]>(order_storage_key);
+    if (!listOrder) {
+      listOrder = []
+    }
+
+    listOrder.push({
+      adminName: res.adminName,
+      adminId: res.adminId,
+      clientId: res.clientId,
+      clientNumber: 0,
+      connectionId: '',
+      id: res.id,
+      timeStamp: res.timeStamps,
+      listCategory: JSON.parse(res.orderDetail) as CMSCategoryModel[],
+      userId: res.accountId,
+      userName: res.accountName,
+      status: true,
+      incurred: true
     })
     storage.setObject(order_storage_key, listOrder);
   }

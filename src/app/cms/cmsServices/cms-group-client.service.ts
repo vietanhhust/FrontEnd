@@ -64,4 +64,10 @@ export class CMSGroupClientService {
         const url = `${ClientApi}/group/${id}/clients`; 
         return this.apiService.requestApi<CMSClientModel[]>(context, url, EnumMethod.Get);
     }
+
+    // Lấy về list client
+    getAllClient(context: IXModuleContext){
+        const url = `${ClientApi}`;
+        return this.apiService.requestApi<CMSClientModel[]>(context, url, EnumMethod.Get);
+    }
 }

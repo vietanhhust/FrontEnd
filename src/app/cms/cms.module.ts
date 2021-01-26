@@ -20,6 +20,8 @@ import { CMSChatComponent } from './cms-chat/cms-chat.component';
 import { CMSDashboardComponent } from './cms-dashboard/cms-dashboard.component';
 import { CMSOrderComponent } from './cms-order/cms-order.component';
 import { CMSOrderIncurredComponent } from './cms-order/cms-order-incurred/cms-order-incurred.component';
+import { CMSAccountChooseComponent } from './cmsaccount/cms-account-choose/cms-account-choose.component';
+import { CMSOrderPutComponent } from './cms-order/cms-order-put/cms-order-put.component';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { CMSOrderIncurredComponent } from './cms-order/cms-order-incurred/cms-or
     CMSAccountComponent,
     CMSCategoryItemComponent,
     CMSCategoryitemAddComponent, 
-    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent, CMSChatComponent, CMSDashboardComponent, CMSOrderComponent, CMSOrderIncurredComponent
+    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent, CMSChatComponent, CMSDashboardComponent, CMSOrderComponent, CMSOrderIncurredComponent, CMSAccountChooseComponent, CMSOrderPutComponent
   ],
   imports: [
     FormsModule,

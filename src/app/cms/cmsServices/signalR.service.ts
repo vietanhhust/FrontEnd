@@ -5,6 +5,8 @@ import { SignalREndpoint } from 'src/app/core/models/base/CMSSession.model';
 import { CMSNewMessengerModel, CMSAdminToAdminMessengerModel } from '../cmsModel/chat.model';
 import { CMSSessionService } from 'src/app/core/services/base/CMSsession.service';
 import { CMSCategoryOrderSubject } from '../cmsModel/order.model';
+import { timestamp } from 'rxjs/operators';
+import { CMSDashboardModel } from '../cmsModel/dashBoard.model';
 @Injectable({
     providedIn: 'root'
 })
@@ -82,6 +84,23 @@ export class CMSSignalRService {
         })
 
 
+        // Admin tạo một yêu cầu mới. 
+        this.hubConnection.on("createIncurredOrder", (adminId, timeCreated, orderDetail, clienId, accountId, adminName, accountName, id)=>{
+            this.signalRCreateIncurredOrder.next({
+                adminId: adminId, 
+                adminName: adminName, 
+                clientId: clienId, 
+                accountId: accountId, 
+                orderDetail: orderDetail, 
+                timeStamps: timeCreated, 
+                accountName: accountName, 
+                id: id
+            })
+        })
+
+        this.hubConnection.on('dashboard', (e: CMSDashboardModel)=>{
+            this.signalRDashboard.next(e);
+        })
 
         this.hubConnection.start().catch(()=>{
             this.hubConnection.start(); 
@@ -107,5 +126,20 @@ export class CMSSignalRService {
         accountId?: number, 
         timeStamp?: number
     }>()
+
+    // Khi một admin tạo ra một yêu cầu hàng.
+    signalRCreateIncurredOrder = new Subject<{
+        adminId?: number,
+        clientId?: number, 
+        timeStamps?: number, 
+        orderDetail?: string, 
+        accountId?: number, 
+        adminName?: string, 
+        accountName?: string, 
+        id?: number
+    }>();
+
+    // Dữ liệu dành cho Dashboard 
+    signalRDashboard = new Subject<CMSDashboardModel>(); 
 }
 

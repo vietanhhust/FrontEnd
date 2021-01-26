@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CMSBaseComponent } from 'src/app/core/models/base/CMSBase.component';
 import { PopupService } from 'src/app/shared/services/popup.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,8 @@ import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
 import { EnumAction } from 'src/app/common/constants/global/Enums';
 import { CMSDashboardService } from '../cmsServices/cms-dashboard.service';
 import { CMSDashboardModel } from '../cmsModel/dashBoard.model';
+import { CMSTimeService } from '../cmsServices/cms-time.service';
+import { CMSGroupClientService } from '../cmsServices/cms-group-client.service';
 
 @Component({
   selector: 'app-cms-dashboard',
@@ -21,45 +23,64 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
 
   selectedValueTab: CMSDashboardModel = {}
   lstData: CMSDashboardModel[] = []
+  lstClient;
   constructor(
-    public popup: PopupService, 
-    public toase: ToastrService, 
-    public router: Router, 
-    public cmsSessionService: CMSSessionService, 
-    public cmsDashboardService: CMSDashboardService
-    
+    public popup: PopupService,
+    public toase: ToastrService,
+    public router: Router,
+    public cmsSessionService: CMSSessionService,
+    public cmsDashboardService: CMSDashboardService,
+    private renderer: Renderer2,
+    private cmsTimeService: CMSTimeService,
+    private cmsClientService: CMSGroupClientService
   ) {
     super(CSMEnumModule.DashboardView, EnumAction.Delete, router, cmsSessionService);
   }
-
+  render;
   ngOnInit(): void {
     super.ngOnInit();
-    this.search(); 
-  }
-
-  search(){
-    this.cmsDashboardService.searchGroupClient({moduleId: CSMEnumModule.DashboardView}).subscribe(res=>{
-      this.isShowPage = true; 
-      this.lstData = res;
-      this.lstData.forEach(item=>{
-        item.clientName = "Máy " + item.clientId.toString();
-        if(item.account){
-          item.isUsed =  true; 
-          item.status = "Đang sử dụng", 
-          item.balance = item.account.balance, 
-          item.accountName = item.account.accountName
-        }else if(item.connectionId){
-          item.status = "Đang bật"
-        }else{
-          item.status = "Nghỉ"
-        }
-      })
-
-      this.lstData.sort((a,b)=>{
-        return a.clientId > b.clientId?1: -1
-      })
+    this.search();
+    this.render = this.renderer.listen("body", 'keyup.space', (e) => {
+      this.lstData.forEach(item => item.class = '');
     })
   }
+
+  search() {
+    this.cmsDashboardService.searchGroupClient({ moduleId: CSMEnumModule.DashboardView }).subscribe(res => {
+      this.isShowPage = true;
+      this.lstData = res;
+    })
+  }
+
+  // Xử lý khi có dữ liệu mới:
+  processDate(lstDashboard: CMSDashboardModel[]) {
+
+    lstDashboard.forEach(item => {
+      // Tên nhóm máy
+      item.clientName = "Máy " + item.clientId.toString();
+    
+      if (item.account) {
+        item.isUsed = true;
+        item.status = "Đang sử dụng";
+        item.balance = item.account.balance?this.currencyFormat(item.account.balance).split('.')[0]: '';
+        item.accountName = item.account.accountName;
+
+        // Trường đăng nhập vào lúc:
+        item.timeLoginString = this.cmsTimeService.unixToSecondMinuteHour(item.elapsedTime);
+        // Trường đã sử dụng 
+        item.elapsedTimeString = new Date(item.elapsedTime * 60 * 1000).toISOString().substr(11, 8);
+      } else if (item.connectionId) {
+        item.status = "Đang bật"
+      } else {
+        item.status = "Nghỉ"
+      }
+    });
+    this.lstData = lstDashboard.sort((a, b) => {
+      return a.clientId > b.clientId ? 1 : -1
+    })
+  }
+
+
 
   configTable = {
     columns: [
@@ -77,10 +98,23 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
         title: "Tài khoản",
         value: "accountName",
         isShow: true
-      }, 
+      },
       {
-        title:  "Số dư", 
-        value: "balance", 
+        title: "Số dư",
+        value: "balance",
+        isShow: true
+      }, {
+        title: "Bắt đầu",
+        value: "timeLoginString",
+        isShow: true
+      }, {
+        title: "Đã sử dụng",
+        value: "elapsedTimeString",
+        isShow: true
+      },
+      {
+        title: "Nhóm máy",
+        value: "groupClientName",
         isShow: true
       }
     ],
@@ -97,7 +131,7 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
         name: 'Nạp tiền',
         icon: '',
         action: (item: CMSDashboardModel) => {
-          
+
         },
         isShow: this.cmsSessionService.getPermissionByFrontendCode(CSMEnumModule.DashboardView)
       },
@@ -114,7 +148,7 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
         action: (item: any) => {
         },
         isShow: this.cmsSessionService.getPermissionByFrontendCode(CSMEnumModule.DashboardView)
-      }, 
+      },
       {
         name: 'Chỉnh volumn',
         icon: '',
@@ -127,7 +161,7 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
         action: (item: any) => {
         },
         isShow: this.cmsSessionService.getPermissionByFrontendCode(CSMEnumModule.DashboardView)
-      }, 
+      },
       {
         name: 'Trừ tiền',
         icon: '',
@@ -145,9 +179,41 @@ export class CMSDashboardComponent extends CMSBaseComponent implements OnInit {
 
   }
 
+  
 
   // dbl Click 
-  viewmode(e: any){
+  viewmode(e: any) {
 
+  }
+
+
+
+
+
+
+
+
+
+  // format tiền 
+  currencyFormat(no) {
+    var ar = +(no).toFixed(2).split('.');
+    return [
+        this.numberFormat(ar[0]|0),
+        '.', 
+        ar[1]
+    ].join('');
+  }
+  
+  
+  numberFormat(no) {
+    var str = no + '';
+    var ar = [];
+    var i  = str.length -1;
+  
+    while( i >= 0 ) {
+      ar.push( (str[i-2]||'') + (str[i-1]|| '')+ (str[i]|| ''));
+      i= i-3;
+    }
+    return ar.reverse().join(',');  
   }
 }

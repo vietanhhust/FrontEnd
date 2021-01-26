@@ -61,6 +61,7 @@ import { InputUnixDatePickerComponent } from './components/input-date-time-picke
 import { CMSTableComponent } from './components/CMSResponsiveTable/cms-table/cms-table.component';
 import { CMSContextmenuComponent } from './components/CMSResponsiveTable/cms-contextmenu/cms-contextmenu.component';
 import { CMSActionmenuComponent } from './components/CMSResponsiveTable/cms-actionmenu/cms-actionmenu.component';
+import { CMSDashboardTableComponent } from './components/CMSResponsiveTable/cms-dashboard-table/cms-dashboard-table.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
   baseUrl: '/assets', // configure base path for monaco editor default: './assets'
@@ -144,7 +145,8 @@ const monacoConfig: NgxMonacoEditorConfig = {
     // CmS table, context menu, action
     CMSTableComponent, 
     CMSContextmenuComponent, 
-    CMSActionmenuComponent
+    CMSActionmenuComponent,
+    CMSDashboardTableComponent
   ],
   exports: [
     AnchorDirective,
@@ -208,7 +210,8 @@ const monacoConfig: NgxMonacoEditorConfig = {
     // CMS table, action, menu,...
     CMSTableComponent, 
     CMSContextmenuComponent, 
-    CMSActionmenuComponent
+    CMSActionmenuComponent, 
+    CMSDashboardTableComponent
   ]
 })
 export class SharedModule { }
