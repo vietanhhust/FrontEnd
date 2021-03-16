@@ -98,8 +98,13 @@ export class CMSSignalRService {
             })
         })
 
-        this.hubConnection.on('dashboard', (e: CMSDashboardModel)=>{
+        this.hubConnection.on('dashboard', (e: CMSDashboardModel[])=>{
             this.signalRDashboard.next(e);
+        })
+
+        this.hubConnection.on('imageFromClient', (e)=>{
+            console.log("có nhận được ảnh");
+            this.signalRImageCapture.next(e);
         })
 
         this.hubConnection.start().catch(()=>{
@@ -140,6 +145,10 @@ export class CMSSignalRService {
     }>();
 
     // Dữ liệu dành cho Dashboard 
-    signalRDashboard = new Subject<CMSDashboardModel>(); 
+    signalRDashboard = new Subject<CMSDashboardModel[]>(); 
+
+    // Nhận ảnh chụp màn hình
+    signalRImageCapture = new Subject<string>(); 
+
 }
 

@@ -1,0 +1,29 @@
+<form novalidate name="frmAccountForm" #frmAccountForm="ngForm" (ngSubmit)='frmAccountForm.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a>Chụp màn hình: Máy {{data.clientId}}</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <img [src]="src">        
+
+    </div>
+
+    <div class="modal-footer">
+        <!-- <button class="modal-action waves-effect waves-green ok-but btn-flat btn-update" type="submit">
+            <i class="far fa-save"></i> Lưu lại
+        </button> -->
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>

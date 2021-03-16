@@ -1,0 +1,77 @@
+.table-custom-color{
+    td, th{
+        border: 1px solid rgba(0, 0, 0, 0.12);;
+    }
+    .selected{
+      background: aliceblue;
+    }
+}
+[type="checkbox"].filled-in:disabled:not(:checked) + span:not(.lever):after {
+    border-color: inherit;
+    background-color: transparent;
+}
+.table-custom .drop-tables
+{
+    width: 175px !important;
+}
+.table-custom table thead th i{
+    color: #999;
+}
+.calcsum {
+  th{
+    height: 31px;
+    padding: 0 4px;
+    background-color: var(--th-color);
+  }
+}
+.table-bill table tr.selected {
+  background-color: transparent !important;
+}
+.table-bill{
+  tr td {
+    cursor: pointer;
+  }
+  tr td:hover{
+    background-color: #3d75c524;
+    box-shadow: inset 2px 0px 0px 0px #055ad6;    border-radius: 0;
+  }
+  tr td.active{
+    background-color: #3d75c524;
+    box-shadow: inset 2px 0px 0px 0px #055ad6;    border-radius: 0;
+  }
+  th{
+    position: sticky;
+    top: 0;
+  }
+}
+table tr td {
+  max-width: 250px;
+}
+
+.tableth{
+  position: sticky;
+  top: 0px;
+}
+
+.context{
+  position: fixed;
+  top: 3px;
+  left: -6px;
+}
+
+.table-responsive{
+  position: relative;
+}
+
+
+
+
+.report-table-header-name, .report-table-header-group {
+  font-weight: 600;
+  background-color: #dde5ef;
+  border-right: 1px solid rgb(93, 93, 231);
+}
+
+.fixed-height{
+  max-height: calc(100vh - 220px) !important;
+}

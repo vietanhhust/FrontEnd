@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, Renderer2, OnDestroy } from '@angular/core';
 import { CMSGroupClientService } from '../../cmsServices/cms-group-client.service';
 import { ToastrService } from 'ngx-toastr';
 import { IModalComponent } from 'src/app/core/models/base/IModalComponent';
@@ -10,7 +10,7 @@ import { CSMEnumModule } from 'src/app/common/constants/global/CSMEnumModule';
   templateUrl: './cms-group-client-put.component.html',
   styleUrls: ['./cms-group-client-put.component.scss']
 })
-export class CMSGroupClientPutComponent implements OnInit, IModalComponent {
+export class CMSGroupClientPutComponent implements OnInit, IModalComponent, OnDestroy {
 
   // Nhận 2 tham số là group Id và isAdd
   @Input() data;
@@ -19,7 +19,8 @@ export class CMSGroupClientPutComponent implements OnInit, IModalComponent {
   groupClientModel: CMSGroupClientModel = {
     id: 0, description: '', price: 0, groupName: ''
   }
-  constructor(private cmsGroupClientService: CMSGroupClientService, private toast: ToastrService) { }
+  constructor(private cmsGroupClientService: CMSGroupClientService, private toast: ToastrService, 
+    private renderer: Renderer2) { }
 
   ngOnInit(): void {
     if(!this.data.isAdd){
@@ -27,6 +28,10 @@ export class CMSGroupClientPutComponent implements OnInit, IModalComponent {
         this.groupClientModel = res; 
       })
     }
+    this.sub = this.renderer.listen('body', "keyup.space", (e)=>{
+      console.log(this.testDate);
+      console.log(this.testDateTime);
+    })
   }
 
   save(){
@@ -43,4 +48,14 @@ export class CMSGroupClientPutComponent implements OnInit, IModalComponent {
     }
   }
 
+
+  // Unix
+  testDate;
+
+  // Date-time
+  testDateTime; 
+  sub; 
+  ngOnDestroy(){
+    this.sub(); 
+  }
 }

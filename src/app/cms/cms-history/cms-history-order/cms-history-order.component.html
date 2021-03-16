@@ -1,0 +1,142 @@
+<div class="row nav-tools">
+    <div class="col s12 flex">
+        <div class="title-n-t">
+            <a tootip>Lịch sử đơn yêu cầu</a>
+            <!--<span>/</span>-->
+        </div>
+        <div class="tool1">
+            <a  class="mr5 btn-add"><i class="fa fa-print"></i>In truy vấn</a>
+            <a class="mr5 btn-add"><i class="fa fa-download"></i>Tải file Excel</a>
+            <!-- <a (click)='addCategoryItem(); keyword=""' class="mr5 btn-add"><i class="fa fa-plus"></i>Tạo mới</a> -->
+
+            <!-- Phần này để hiển thị danh sách làm với tab được chọn-->
+            <!-- <ng-container *ngIf="selectedValueTab">
+                    <cms-app-actionmenu [value]="selectedValueTab" [lstEvent]="configTable.eventTable"></cms-app-actionmenu>
+            </ng-container> -->
+        </div>
+
+        <div class="tool3">
+            <div class="t3" style="opacity: 0;">
+                <a class="">Bộ lọc <i class="fa fa-angle-down"></i></a>
+
+            </div>
+            <div class="search">
+                <!-- <input (keyup.enter)='search(keyword)' placeholder="Tìm kiếm..." [(ngModel)]="keyword" name="keyword" type="text"> -->
+                <!-- <i (click)='reset()' *ngIf='keyword!=""' class="fa fa fa-times"></i> -->
+                <!-- <button><i class="fa fa-search"></i></button> -->
+            </div>
+            <!-- <app-paging-data (changeLimit)="limit = $event;search(1)" (next)="pageIndex = $event;search(pageIndex)" 
+            (prev)="pageIndex = $event;search(pageIndex)" [limit]="limit" [pageIndex]="pageIndex" [(total)]="total"></app-paging-data> -->
+        </div>
+    </div>
+</div>
+
+
+<!--Phần body-->
+<div class="row">
+
+    <!--Hiển thị list yêu cầu đến-->
+    <div class="col s3 filter-section">
+        <form novalidate name="frmFilter" #frmFilter="ngForm" (ngSubmit)='query()'>
+            <div class="group-container">
+
+                <!-- Để pick ngày tháng-->
+                <div class="row input-custom-inline " style="margin: 0;">
+                    <div class="col s12 from-date">
+                        <input-date-time-picker min='0' [(ngModel)]="dateTimeFrom" name="'fromDate'" title="Bốc lịch"
+                            [frm]="frmFilter">
+                        </input-date-time-picker>
+                        <span>Từ ngày</span>
+                    </div>
+                </div>
+
+
+                <div class="row input-custom-inline " style="margin: 0;">
+                    <div class="col s12 to-date">
+                        <input-date-time-picker min='0' [(ngModel)]="dateTimeTo" name="'toDate'" title="Bốc lịch"
+                            [frm]="frmFilter">
+                        </input-date-time-picker>
+                        <span>Đến ngày</span>
+                    </div>
+                </div>
+
+
+               <div class="row input-custom-inline" style="margin: 0;margin-bottom: 20px;">
+                    <div class="col s12 account-choose">
+                        <input-field disabled="'true'" [(ngModel)]="adminName" type="text" name="'adminName'"
+                            title="Admin" [frm]="frmFilter">
+                        </input-field>
+                        <i class="fa fa-list" style="cursor: pointer;" (click)='chooseAdmin()'></i>
+                    </div>
+                </div>
+
+                <div class="row input-custom-inline" style="margin: 0;margin-bottom: 20px;">
+                    <div class="col s12 account-choose">
+                        <input-field disabled="'true'" [(ngModel)]="accountName" type="text" name="'accountName'"
+                            title="Tài khoản" [frm]="frmFilter">
+                        </input-field>
+                        <i class="fa fa-list" style="cursor: pointer;" (click)='chooseAccount()'></i>
+                    </div>
+                </div>
+
+                <div class="row input-custom-inline" style="margin: 0;margin-bottom: 20px;">
+                    <div class="col s12 account-choose">
+                        <input-field disabled="'true'" [(ngModel)]="clientNumber" type="text" name="'clientNumber'"
+                            title="Máy trạm" [frm]="frmFilter">
+                        </input-field>
+                        <i class="fa fa-list" style="cursor: pointer;" (click)='chooseClient()'></i>
+                    </div>
+                </div>
+
+
+ <!-- 
+                <div class="row input-custom-inline" style="margin: 0;margin-bottom: 20px;">
+                    <div class="col s12">
+                        <p>Hoạt động: </p>
+                        <div class="input-field inline">
+                            <select-field [(ngModel)]="typeChange" [data]="lstTypeChange" name="'typeSelect'" title="Hoạt động"
+                                [frm]="frmFilter">
+                            </select-field>
+                        </div>
+                    </div>
+
+                </div> -->
+                
+
+                <div class="row input-custom-inline" style="margin: 0;text-align: center; padding-bottom: 20px;">
+                    <button style="background: var(--primary-color);
+                    pointer-events: auto;
+                    outline: none !important;
+                    color:white;
+                    opacity: 1;" type="submit" class="mr5 btn btn-add btn-history"><i
+                            style="font-size: 14px; display: inline-block" class="fa fa-sync"></i>Xem lịch sử</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+    <!--Hiển thị chi tiết yêu cầu-->
+    <div class="col s9 order-detail animated slideInDown">
+        <div class="current-user">
+            <span class="history-header history-type-change" style="display: block;">Lịch sử đơn yêu cầu</span>
+            <span class="history-header history-time" style="display: block;">Từ ngày:
+                {{cmsTimeService.unixToHumanDateAndHour(dateTimeFrom)}} - Đến ngày:
+                {{cmsTimeService.unixToHumanDateAndHour(dateTimeTo)}}</span>
+            <span class="history-header history-account" style="display: block;">Tài khoản: {{accountName}}</span>
+        </div>
+
+        <!--Phần này để show dữ liệu đổ vào bảng-->
+        <div class="report-table" id='order-detail-containerScroll'>
+            <div style="margin: 0; padding: 0 !important;" class="row">
+                <cms-history-balance-table id="tableus" (DoubleClickValue)="viewmode($event)"
+                    (selectedValue)="selectedValueTab = $event" [configTable]="configTable" [data]="lstData">
+                </cms-history-balance-table>
+            </div>
+            <div style="padding: 0;margin: 0 !important;" class="row">
+                Tổng tiền {{total |currency:'VND'}}
+            </div>
+        </div>
+    </div>
+</div>

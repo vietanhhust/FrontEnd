@@ -1,0 +1,214 @@
+.group-client-list{
+    height: calc(100vh - 90px);
+
+    .group-container{
+        display: inline-block; 
+        max-height: 100%; 
+        overflow: scroll;
+        width: 100%; 
+        border: 1px solid #e0e0e0;
+        border-bottom: none;
+        position: relative;
+        
+        .group-item{
+            display: inline-block; 
+            overflow: hidden;
+            width: 100%;
+            padding: 10px;
+            position: relative;
+            height: 60px;
+
+            .order-id-client{
+                position: absolute;
+                right: 17px;
+                top: 30px;
+                font-weight: bold;
+            }
+            img{
+                width: 45px;
+                height: 80%;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+
+            &:hover{
+                background-color: #ddd;
+            }
+            .last-mess-date{
+                position: absolute;
+                right: 18px;
+                top: 5px;
+                font-weight: bold;
+            }
+            .control-button{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                span{
+                    min-width: 20px;
+                }
+            }
+        }
+    }
+}
+
+.order-detail{
+    height: calc(100vh - 90px);
+    .current-user{
+        height: 40px;
+        font-weight: bold;
+        padding-top: 6px;
+        position: relative;
+        span{
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        .order-id{
+            position: absolute;
+            right: 0px;
+            color: black;
+        }
+    }
+    .order-detail-container{
+        height: calc(100% - 45px);
+        border-bottom: 1px solid;
+        overflow: scroll;
+        margin-bottom: 20px;
+        .mess-bound{
+            display: block;
+            overflow: auto;
+            margin-bottom: 5px;
+            .mess-item{
+                padding: 5px;
+                display: inline-block;
+                min-height: 32px;
+                border-radius: 4px;
+                background-color: #c4e9ea;
+                max-width: 60%;
+                word-break: break-all;
+            }
+        }
+        .order-de{
+            padding-left: 0px;
+            font-size: 23px;
+            font-weight: bold;
+            border-bottom: 1.5px solid;
+        }
+
+        .order-detail-body{
+
+        }
+        
+
+    }
+}
+
+.admin-chat{
+    input{
+        width: calc(100% - 95px);
+        height: 23px;
+        border-radius: 3px;
+        background-color: var(--bgbutton-color);
+        border: none;
+        transform: translateY(0px);
+        margin-left: 4px;
+        padding: 2px 11px 5px;
+        font-weight: 400;
+    }
+    a{
+        opacity: 1;
+        pointer-events: auto;
+        background: var(--primarybg-color);
+        width: 61px;
+        height: 30px;
+        display: inline-block;
+        padding: 3px;
+        color: white;
+        text-align: center;
+        transform: translateX(6px);
+        border-radius: 4px;
+
+    }
+}
+
+.active{
+   background-color: var(--primary-color) !important; 
+   color: white;
+   span{
+       color: white;
+       span{
+           color: white;
+       }
+   }
+}
+
+.client-id{
+    position: absolute;
+    top: 4px;
+    left: 50px;
+    font-weight: bolder;
+    color: red;
+    .account-name{
+        color: black
+    }
+}
+
+.order-status{
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    font-weight: bold;
+}
+
+.last-message{
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    color: black;
+    font-weight: 600;
+}
+
+.clicked{
+    background-color: #aacef1
+}
+
+.detail-header{
+    font-weight: bold;
+}
+
+.body-list{
+    max-height: calc(100% - 30px);
+    overflow: scroll;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.total-price{
+    padding-top: 20px;
+}
+
+.accept-order{
+    background-color: var(--bgbutton-color);
+
+    &:hover{
+        background-color: var(--primary-color);
+        i{
+            color: white;
+            
+        }
+        color: white;
+    }
+}
+
+
+
+.order-detail-container{
+    position: relative;
+    .order-detail-control-button{
+        position: absolute;
+        bottom: 15px;
+        right: 0px;
+    }
+}

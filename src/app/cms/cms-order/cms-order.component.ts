@@ -222,7 +222,7 @@ export class CMSOrderComponent extends CMSBaseComponent implements OnInit, OnDes
           this.currentOrder = {};
 
         }
-
+        this.currentOrder = {}
       }
 
     })

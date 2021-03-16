@@ -22,6 +22,14 @@ import { CMSOrderComponent } from './cms-order/cms-order.component';
 import { CMSOrderIncurredComponent } from './cms-order/cms-order-incurred/cms-order-incurred.component';
 import { CMSAccountChooseComponent } from './cmsaccount/cms-account-choose/cms-account-choose.component';
 import { CMSOrderPutComponent } from './cms-order/cms-order-put/cms-order-put.component';
+import { CMSCaptureComponent } from './cms-dashboard/cms-capture/cms-capture.component';
+import { CmsHistoryComponent } from './cms-history/cms-history.component';
+import { CMSHistoryBalanceComponent } from './cms-history/cms-history-balance/cms-history-balance.component';
+import { CMSHistoryBalanceTableComponent } from './cms-history/cms-history-balance-table/cms-history-balance-table.component';
+import { CmsHistoryOrderComponent } from './cms-history/cms-history-order/cms-history-order.component';
+import { CMSManagingAccountChooseComponent } from './cms-history/cms-managing-account-choose/cms-managing-account-choose.component';
+import { CMSClientChooseComponent } from './cms-history/cms-client-choose/cms-client-choose.component';
+import { CMSPopupDetailOrderComponent } from './cms-history/cms-history-order/cmspopup-detail-order/cmspopup-detail-order.component';
 
 
 @NgModule({
@@ -29,7 +37,10 @@ import { CMSOrderPutComponent } from './cms-order/cms-order-put/cms-order-put.co
     CMSAccountComponent,
     CMSCategoryItemComponent,
     CMSCategoryitemAddComponent, 
-    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent, CMSChatComponent, CMSDashboardComponent, CMSOrderComponent, CMSOrderIncurredComponent, CMSAccountChooseComponent, CMSOrderPutComponent
+    CMSCategoryitemEditComponent, CMSAccountCreateComponent, CMSBalanceComponent, CMSAccountPutComponent, CMSRoleComponent, CMSRoleEditComponent, CMSRoleGrantComponent, CMSGroupClientComponent, CMSGroupClientPutComponent, CMSChangeGroupClientComponent, CMSChatComponent, CMSDashboardComponent, CMSOrderComponent, CMSOrderIncurredComponent, CMSAccountChooseComponent, CMSOrderPutComponent, CMSCaptureComponent, CmsHistoryComponent, CMSHistoryBalanceComponent, 
+    CMSHistoryBalanceTableComponent, CmsHistoryOrderComponent, 
+    CMSManagingAccountChooseComponent, 
+    CMSClientChooseComponent, CMSPopupDetailOrderComponent
   ],
   imports: [
     FormsModule,

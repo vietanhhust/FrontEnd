@@ -139,7 +139,7 @@
                         </li>
                   </ul>
               </li> -->
-        <li class="comp"><a class="company"><span class="hide-on-md">{{cmsSessionService.getCMSSession().name}}</span> 
+        <li class="comp"><a class="company"><span class="hide-on-md">{{cmsSessionService.getCMSSession()?.name}}</span> 
           <img
               *ngIf="logo" [src]="logo" alt=""></a>
           <!-- <div class="infohovercomp">

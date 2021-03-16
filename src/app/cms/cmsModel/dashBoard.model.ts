@@ -26,7 +26,7 @@ export interface CMSDashboardModel {
     // Trường tự thêm
     status?: string,
     isUsed?: boolean, 
-    balance?: number, 
+    balance?: string, 
     clientName?: string, 
     accountName?: string, 
     class?: string, 

@@ -9,6 +9,8 @@ import { CMSGroupClientComponent } from './cms-group-client/cms-group-client.com
 import { CMSChatComponent } from './cms-chat/cms-chat.component';
 import { CMSDashboardComponent } from './cms-dashboard/cms-dashboard.component';
 import { CMSOrderComponent } from './cms-order/cms-order.component';
+import { CMSHistoryBalanceComponent } from './cms-history/cms-history-balance/cms-history-balance.component';
+import { CmsHistoryOrderComponent } from './cms-history/cms-history-order/cms-history-order.component';
 
 const cmsRoutes: Routes = [
   {
@@ -43,6 +45,14 @@ const cmsRoutes: Routes = [
       {
         path: 'order', 
         component: CMSOrderComponent
+      }, 
+      {
+        path: 'history/balance', 
+        component: CMSHistoryBalanceComponent
+      }, 
+      {
+        path: 'history/order', 
+        component: CmsHistoryOrderComponent
       }
     ]
   }

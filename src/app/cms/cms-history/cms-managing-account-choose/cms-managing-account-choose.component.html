@@ -1,0 +1,75 @@
+<div class="container-fluid" style="overflow: auto;
+height: calc(79vh - 48px);max-height: 539px;">
+    <form novalidate name="frmAccount" #frmAccount="ngForm" (keydown.enter)="$event.preventDefault()">
+        <div class="modal-title">
+            <div class="row nav-tools">
+                <div class="col s12 flex">
+                    <div class="title-n-t">
+                        <a>Tài khoản Admin</a>
+                    </div>
+                    <div class="tool1">
+                        <!-- <a class="mr5 modal-trigger" href="#modalap" ><i class="fa fa-plus"></i>Tạo mới đối tác</a> -->
+                    </div>
+                    <div class="tool2">
+
+                    </div>
+                    <div class="tool3">
+                        <div class="t3">
+                        </div>
+                        <div style="margin-right: 10px;" class="search">
+                            <input placeholder="Tìm kiếm..." [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}"
+                                name="keyword" type="text" (keyup.enter)="search(keyword)">
+                            <button (click)="search(keyword)" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+
+                        <i class="modal-action modal-close fa fa-times close"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content" style="overflow: hidden;padding: 0;">
+            <!-- Table -->
+            <div class="row content-m max-height">
+                <div class="table-custom table-responsive max-height">
+                    <table class="highlight table glowTableBody">
+                        <thead>
+                            <tr>
+                                <ng-container *ngFor="let header of tableConfig.columns">
+                                    <th title="{{header.title}}" appResizeTable resizeTable='true'>
+                                        {{header.title}}
+                                    </th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody style="height: calc(70vh - 59px);">
+                            <ng-container>
+                                <tr *ngFor="let item of lstAccount; let i = index" class="ccid"
+                                    (click)="highlight(item)" (dblclick)="onDbClick(item)">
+                                    <ng-container *ngFor="let f of tableConfig.columns">
+                                        <td *ngIf='!f.isCheckBox' title="{{item[f.title]}}">
+                                            {{item[f.value]}}
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+
+                            <tr *ngIf="rows && rows.length==0">
+                                <td colspan="12">
+                                    Không tìm thấy bản ghi nào
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- .Table -->
+
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but"><i
+                    class="fa fa-times"></i>Đóng</a>
+        </div>
+    </form>
+</div>

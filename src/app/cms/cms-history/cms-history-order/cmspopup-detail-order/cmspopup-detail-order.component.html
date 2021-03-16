@@ -1,0 +1,65 @@
+<form novalidate name="frmAccountForm" #frmAccountForm="ngForm" (ngSubmit)='frmAccountForm.valid && save()'>
+    <div class="modal-title">
+        <div class="row nav-tools">
+            <div class="col s12 flex">
+                <div class="title-n-t">
+                    <a>Chi tiết yêu cầu {{data.id}}</a>
+                </div>
+
+                <div class="tool1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content animated fadeInLeft">
+
+        <div class="col s9 order-detail animated slideInDown">
+            <div class="current-user">
+                <span style="color: black;">
+                    {{"Máy " + data.clientId + " - " + data.accountName}}
+                    <span style="color: black;">{{cmsTimeService.unixToSecondMinuteHour(data.createdTime)}}</span>
+                </span>
+                <span class="order-id">{{"Id: " +data.id}}</span>
+            </div>
+    
+    
+            <div class="order-detail-container" id='order-detail-containerScroll'>
+                <div class="order-de">
+                    Chi tiết yêu cầu
+                </div>
+                <div class="order-detail-body" id="order-detail-body">
+                    <div class="row input-custom-inline body-list">
+                        <div>
+                            <div class="col s6 l6 detail-header">Tên sản phẩm</div>
+                            <div class="col s3 l3 detail-header">Đơn giá</div>
+                            <div class="col s3 l3 detail-header">Số lượng</div>
+                        </div>
+                        <div *ngFor='let item of data.details'>
+                            <div class="col s6 l6">{{item.categoryItemName}}</div>
+                            <div class="col s3 l3">{{item.categoryPrice |currency:'VND'}}</div>
+                            <div class="col s3 l3">x{{item.amount}}</div>
+                        </div>
+                        <div class="total-price col s12 l12"><span style="font-weight: bold;">Tổng tiền: {{data.totals | currency:'VND'}}</span></div>
+                    </div>
+                    
+                </div>
+                
+    
+    
+                
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="modal-footer">
+
+        <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-but">
+            <i class="fa fa-times"></i>Đóng
+        </a>
+    </div>
+</form>
